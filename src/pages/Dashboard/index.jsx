@@ -6,18 +6,13 @@ import "./index.css";
 const Dashboard = () => {
   return (
     <div className="flex flex-col w-full m-4 gap-4">
-      <div className="flex flex-row text-text-primary space-x-6">
-        <AdminCards />
-        <AdminCards />
-        <AdminCards />
-        <AdminCards />
-      </div>
+      <AdminCards />
       <div className="flex flex-row justify-between gap-4">
         <div className="flex-1 space-y-4">
           <AdminApprovalCard />
           <AdminApprovalCard />
         </div>
-        <div className="flex flex-col w-2/5 gap-4">
+        <div className="flex flex-col w-3/12 gap-4">
           <ProjectSumissionGraph />
           <ProjectSumissionGraph />
         </div>

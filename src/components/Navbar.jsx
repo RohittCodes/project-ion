@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { IoMdNotificationsOutline } from "react-icons/io";
+import { IoMdNotificationsOutline, IoIosSearch } from "react-icons/io";
 
 const Navbar = () => {
   const navigation = [
@@ -26,26 +26,14 @@ const Navbar = () => {
       <div className="w-full px-2 sm:px-4 lg:px-4">
         <div className="h-16 relative flex items-center justify-between">
           <div className="font-bold text-xl">ProjectIon</div>
-          {/*<div className="hidden md:ml-6 md:mr-6 md:block">
-            <div className="flex space-x-4">
-              {navigation.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.href}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-text-primary rounded-md px-3 py-2 text-sm font-medium"
-                      : "text-text-disabled hover:text-text-primary rounded-md px-3 py-2 text-sm font-medium"
-                  }
-                >
-                  {item.name}
-                </NavLink>
-              ))}
-            </div>
-                </div>*/}
-
-          {/* Need to change this  after authentication*/}
           <div className="flex flex-row items-center justify-end gap-4">
+            <div className="flex flex-row items-center w-64 bg-background-components border-border-secondary border-[1px] rounded-lg">
+              <input
+                type="text"
+                className="text-text-disabled bg-background-components text-sm font-semibold px-2 w-full h-8 rounded-l-lg focus:outline-none"
+              />
+              <IoIosSearch className="text-3xl pr-2 font-bold cursor-pointer" />
+            </div>
             <div>
               <IoMdNotificationsOutline className="text-2xl" />
             </div>
