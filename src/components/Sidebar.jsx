@@ -18,19 +18,19 @@ const Sidebar = () => {
       href: "/",
     },
     {
-      label: "Something",
+      label: "Something1",
       icon: MdSearch,
       href: "/some",
     },
     {
-      label: "Something",
+      label: "Something2",
       icon: MdExplore,
       href: "/bro",
     },
     {
-      label: "Something",
+      label: "Something3",
       icon: MdPersonAdd,
-      href: "/what",
+      href: "/register",
     },
   ];
 
@@ -41,17 +41,17 @@ const Sidebar = () => {
       href: "/",
     },
     {
-      label: "Something",
+      label: "Something1",
       icon: MdSearch,
       href: "/some",
     },
     {
-      label: "Something",
+      label: "Something2",
       icon: MdOutlineSyncProblem,
       href: "/bro",
     },
     {
-      label: "Something",
+      label: "Something3",
       icon: MdPersonAdd,
       href: "/what",
     },

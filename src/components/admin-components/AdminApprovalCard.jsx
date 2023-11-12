@@ -7,8 +7,8 @@ const AdminApprovalCard = () => {
     "User id",
     "Name",
     "Branch",
-    "Roll no",
-    "Profile",
+    "Approve",
+    "Reject",
   ];
   const studentsData = [
     {

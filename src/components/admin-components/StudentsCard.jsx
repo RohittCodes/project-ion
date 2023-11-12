@@ -1,5 +1,6 @@
 import React from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 
 const StudentsCard = () => {
   const tableFields = [
@@ -7,6 +8,7 @@ const StudentsCard = () => {
     "User id",
     "Name",
     "Branch",
+    "Section",
     "Roll no",
     "Profile",
   ];
@@ -16,42 +18,49 @@ const StudentsCard = () => {
       name: "Rohith",
       branch: "CSE",
       rollno: 245,
+      section: "A",
     },
     {
       id: 10000001,
       name: "Rohith",
       branch: "CSE",
       rollno: 246,
+      section: "C",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "C",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "A",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "B",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "D",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "C",
     },
   ];
   return (
@@ -86,11 +95,14 @@ const StudentsCard = () => {
                 <td className="h-8 w-32 text-center" key={data.branch}>
                   {data.branch}
                 </td>
-                <td className="h-8 w-24 text-center" key="Not approved">
-                  <button>Approve</button>
+                <td className="h-8 w-24 text-center" key={data.section}>
+                  {data.section}
+                </td>
+                <td className="h-8 w-24 text-center" key={data.rollno}>
+                  {data.rollno}
                 </td>
                 <td className="h-8 w-24 text-center">
-                  <button>Reject</button>
+                  <NavLink to={"/profile/" + data.id}>Profile</NavLink>
                 </td>
               </tr>
             ))}
