@@ -1,7 +1,7 @@
 import React from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 
-const AdminApprovalCard = () => {
+const StudentsCard = () => {
   const tableFields = [
     "S. No.",
     "User id",
@@ -41,11 +41,23 @@ const AdminApprovalCard = () => {
       branch: "CSE",
       rollno: 247,
     },
+    {
+      id: 10000002,
+      name: "Rohith",
+      branch: "CSE",
+      rollno: 247,
+    },
+    {
+      id: 10000002,
+      name: "Rohith",
+      branch: "CSE",
+      rollno: 247,
+    },
   ];
   return (
     <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]">
       <div className="flex flex-row items-center justify-between px-2 text-2xl font-bold font-mono text-gray-400">
-        <div>Approval(s) Pending</div>
+        <div>Students Data</div>
         <IoArrowForwardCircleOutline className="cursor-pointer" />
       </div>
       <div className="w-full">
@@ -74,15 +86,11 @@ const AdminApprovalCard = () => {
                 <td className="h-8 w-32 text-center" key={data.branch}>
                   {data.branch}
                 </td>
-                <td className="h-8 w-24 text-center" key="Approved">
-                  <button className="bg-green-700 rounded-md border-border-secondary border-[1px] px-1 py-[1px]">
-                    Approve
-                  </button>
+                <td className="h-8 w-24 text-center" key="Not approved">
+                  <button>Approve</button>
                 </td>
-                <td className="h-8 w-24 text-center" key="Reject">
-                  <button className="bg-red-500 rounded-md border-border-secondary border-[1px] px-1 py-[1px]">
-                    Reject
-                  </button>
+                <td className="h-8 w-24 text-center">
+                  <button>Reject</button>
                 </td>
               </tr>
             ))}
@@ -93,4 +101,4 @@ const AdminApprovalCard = () => {
   );
 };
 
-export default AdminApprovalCard;
+export default StudentsCard;
