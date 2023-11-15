@@ -1,7 +1,14 @@
-import { useState } from "react";
+
+import { useState ,useEffect} from "react";
 import {useNavigate} from 'react-router-dom'
+import {Triangle} from 'react-loader-spinner'
+import Context from "../data";
+
+
 
 const Login = () =>{
+
+
     const indianStates = [
         'Andhra Pradesh',
         'Arunachal Pradesh',
@@ -47,6 +54,8 @@ const Login = () =>{
       const [loginData,setLoginData] = useState({"email":"","password":""})
       const [error,setError] = useState('')
       const [errorStatus,setErrorStatus] = useState(false)
+      const [loader,setLoader] = useState(false)
+      const [position,setPos] = useState('Admin')
       const navigate = useNavigate()
 
       const setCollege = (e) =>{
@@ -83,8 +92,9 @@ const Login = () =>{
         
       }
       const setRegister = async() =>{
+        setLoader(true)
         if(pass === data.password){
-          let url = "http://localhost:3001/users"
+          let url = "http://localhost:3001/adminReg"
           console.log(data)
           let requestOptions = {
             method: 'POST',
@@ -100,12 +110,14 @@ const Login = () =>{
             setError(data1)
           }else{
             setErrorStatus(false)
+            setStatus(false)
           }
           console.log(data1)
           
         }else{
             alert('Password must be same')
         }
+        setLoader(false)
       }
       const loginEmail = e =>{
         loginData.email = e.target.value
@@ -113,8 +125,16 @@ const Login = () =>{
       const loginPass = e =>{
         loginData.password = e.target.value
       }
+
+
+      const setPosition = (e) =>{
+          setPos(e.target.value)
+      }
+
+
       const goLogin = async() =>{
-         let url = "http://localhost:3001/login"
+         setLoader(true)
+         let url = "http://localhost:3001/adminLog"
          let requestOptions = {
           method:'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -127,14 +147,22 @@ const Login = () =>{
           setError(data1)
         }else{
           setErrorStatus(false)
+          console.log("Comming")
+          if(position == "Admin"){
+            Context.status = true
+          }
           navigate('/')
+
         }
+        setLoader(false)
 
       }
       
     return(
         <div style={{display:'flex',alignItems:'center',justifyContent:'center',width:'100%'}}>
             <div style={{color:'white'}}>
+                {loader ? <Triangle height="80" width="80" color="white" ariaLabel="triangle-loading" wrapperStyle={{}} wrapperClassName="" visible={true}/>
+                  :
                 <form onSubmit={SubmitForm} style={{borderStyle:'inset',borderWidth:'1px',borderColor:'white',borderRadius:'12px'}} className="p-5">
                     <div style={{textAlign:'center'}}>
                         <button className={`btn ${status ? 'btn-light' : 'btn-outline-light'} mb-3 pl-5 pr-5`} onClick={setSignup}>Signup</button>
@@ -161,7 +189,7 @@ const Login = () =>{
                                     :
                         <div>
                             <label>Role</label>
-                            <select className="form-control">
+                            <select className="form-control" onChange={setPosition}>
                                 <option>Admin</option>
                                 <option>Student</option>
                             </select>
@@ -177,7 +205,7 @@ const Login = () =>{
                     
                     
                     
-                </form>
+                </form>}
             </div>
         </div>
     )
