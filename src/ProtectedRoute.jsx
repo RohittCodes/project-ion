@@ -1,14 +1,16 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router';
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import Cookies from "js-cookie";
 
-const isAuthenticated = true; 
+export const Protected = ({ children }) => {
+  
+  let logStatus = Cookies.get('Login')
+  console.log(logStatus)
 
-const ProtectedRoute = ({ element, ...rest }) => {
-  return isAuthenticated ? (
-    <Route {...rest} element={element} />
-  ) : (
-    <Navigate to="/login" replace={true} />
-  );
+  if(logStatus){
+    return children;
+  }else{
+    return <Navigate to="/login" />;
+  }
+  
 };
-
-export default ProtectedRoute;

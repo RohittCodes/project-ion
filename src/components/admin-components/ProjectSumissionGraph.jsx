@@ -11,7 +11,7 @@ const ProjectSumissionGraph = () => {
     {
       year: 2023,
       name: "Total Projects",
-      data: [30, 40, 45, 50, 49, 60, 70, 91, 34, 3, 34, 55],
+      data: [30, 40, 45, 50, 49, 60, 70, 91, 34, 20, 34, 55],
     },
     {
       year: 2022,
@@ -21,7 +21,7 @@ const ProjectSumissionGraph = () => {
     {
       year: 2021,
       name: "Total Projects",
-      data: [25, 40, 45, 50, 49, 60, 70, 75, 34, 3, 34, 1],
+      data: [25, 40, 45, 50, 49, 60, 70, 75, 34, 100, 34, 1],
     },
   ];
 
