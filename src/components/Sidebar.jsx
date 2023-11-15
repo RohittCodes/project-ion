@@ -1,4 +1,5 @@
 import React from "react";
+import { IoPersonOutline } from "react-icons/io5";
 import {
   MdSpaceDashboard,
   MdSearch,
@@ -19,8 +20,8 @@ const Sidebar = () => {
     },
     {
       label: "Something1",
-      icon: MdSearch,
-      href: "/some",
+      icon: IoPersonOutline,
+      href: "/students",
     },
     {
       label: "Something2",

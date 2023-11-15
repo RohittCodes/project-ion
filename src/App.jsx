@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Sidebar from "./components/Sidebar";
 import PageNotFound from "./pages/PageNotFound";
 import AddStudents from "./pages/AddStudents/index";
+import StudentsData from "./pages/StudentsData.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/register" element={<AddStudents />} />
+          <Route path="/admin/students" element={<StudentsData />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
