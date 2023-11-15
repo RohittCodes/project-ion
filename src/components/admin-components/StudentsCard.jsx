@@ -1,14 +1,16 @@
 import React from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 
-const AdminApprovalCard = () => {
+const StudentsCard = () => {
   const tableFields = [
     "S. No.",
     "User id",
     "Name",
     "Branch",
-    "Approve",
-    "Reject",
+    "Section",
+    "Roll no",
+    "Profile",
   ];
   const studentsData = [
     {
@@ -16,36 +18,55 @@ const AdminApprovalCard = () => {
       name: "Rohith",
       branch: "CSE",
       rollno: 245,
+      section: "A",
     },
     {
       id: 10000001,
       name: "Rohith",
       branch: "CSE",
       rollno: 246,
+      section: "C",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "C",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "A",
     },
     {
       id: 10000002,
       name: "Rohith",
       branch: "CSE",
       rollno: 247,
+      section: "B",
+    },
+    {
+      id: 10000002,
+      name: "Rohith",
+      branch: "CSE",
+      rollno: 247,
+      section: "D",
+    },
+    {
+      id: 10000002,
+      name: "Rohith",
+      branch: "CSE",
+      rollno: 247,
+      section: "C",
     },
   ];
   return (
     <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]">
       <div className="flex flex-row items-center justify-between px-2 text-2xl font-bold font-mono text-gray-400">
-        <div>Approval(s) Pending</div>
+        <div>Students Data</div>
         <IoArrowForwardCircleOutline className="cursor-pointer" />
       </div>
       <div className="w-full">
@@ -74,15 +95,14 @@ const AdminApprovalCard = () => {
                 <td className="h-8 w-32 text-center" key={data.branch}>
                   {data.branch}
                 </td>
-                <td className="h-8 w-24 text-center" key="Approved">
-                  <button className="bg-green-700 rounded-md border-border-secondary border-[1px] px-1 py-[1px]">
-                    Approve
-                  </button>
+                <td className="h-8 w-24 text-center" key={data.section}>
+                  {data.section}
                 </td>
-                <td className="h-8 w-24 text-center" key="Reject">
-                  <button className="bg-red-500 rounded-md border-border-secondary border-[1px] px-1 py-[1px]">
-                    Reject
-                  </button>
+                <td className="h-8 w-24 text-center" key={data.rollno}>
+                  {data.rollno}
+                </td>
+                <td className="h-8 w-24 text-center">
+                  <NavLink to={"/profile/" + data.id}>Profile</NavLink>
                 </td>
               </tr>
             ))}
@@ -93,4 +113,4 @@ const AdminApprovalCard = () => {
   );
 };
 
-export default AdminApprovalCard;
+export default StudentsCard;
