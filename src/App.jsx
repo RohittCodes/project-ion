@@ -4,11 +4,17 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Sidebar from "./components/Sidebar";
+
 import Login from "./pages/Login";
 import { Protected } from "./ProtectedRoute";
 
 
 
+
+
+import PageNotFound from "./pages/PageNotFound";
+import AddStudents from "./pages/AddStudents/index";
+import StudentsData from "./pages/StudentsData.jsx";
 
 
 function App() {
@@ -37,6 +43,12 @@ function App() {
                 </Protected>
               }
             />
+
+          <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/register" element={<AddStudents />} />
+          <Route path="/admin/students" element={<StudentsData />} />
+          <Route path="*" element={<PageNotFound />} />
+
         </Routes>
       </div>
     </BrowserRouter>  

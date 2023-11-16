@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { IoMdNotificationsOutline, IoIosSearch } from "react-icons/io";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import SearchBar from "./admin-components/SearchBar";
 
 const Navbar = () => {
-  const navigation = [
-    { name: "Dashboard", href: "/" },
-    { name: "Students", href: "/students" },
-    { name: "Problems", href: "/problems" },
-    { name: "Projects", href: "/projects" },
-    { name: "Register", href: "/student-registration" },
-  ];
-
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -27,13 +20,7 @@ const Navbar = () => {
         <div className="h-16 relative flex items-center justify-between">
           <div className="font-bold text-xl">ProjectIon</div>
           <div className="flex flex-row items-center justify-end gap-4">
-            <div className="flex flex-row items-center w-64 bg-background-components border-border-secondary border-[1px] rounded-lg">
-              <input
-                type="text"
-                className="text-text-disabled bg-background-components text-sm font-semibold px-2 w-full h-8 rounded-l-lg focus:outline-none"
-              />
-              <IoIosSearch className="text-3xl pr-2 font-bold cursor-pointer" />
-            </div>
+            <SearchBar />
             <div>
               <IoMdNotificationsOutline className="text-2xl" />
             </div>
