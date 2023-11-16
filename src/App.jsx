@@ -22,6 +22,14 @@ function App() {
         <Routes>
           <Route exact path="/login" element={<Login/>}/>
           <Route
+              path="/admin"
+              element={
+                <Protected>
+                  <Dashboard />
+                </Protected>
+              }
+            />
+            <Route
               path="/"
               element={
                 <Protected>

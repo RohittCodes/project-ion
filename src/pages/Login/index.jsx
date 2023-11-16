@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import {Triangle} from 'react-loader-spinner'
 import Cookies from "js-cookie";
@@ -8,6 +8,13 @@ import Cookies from "js-cookie";
 
 
 const Login = () =>{
+  const navigate = useNavigate()
+  useEffect(() =>{
+      let logStatus = Cookies.get('Login')
+      if(logStatus){
+        navigate('/')
+      }
+  },[])
     
     const indianStates = [
         'Andhra Pradesh',
@@ -56,7 +63,7 @@ const Login = () =>{
       const [errorStatus,setErrorStatus] = useState(false)
       const [loader,setLoader] = useState(false)
       const [position,setPos] = useState('Admin')
-      const navigate = useNavigate()
+
       
 
       const setCollege = (e) =>{
@@ -150,14 +157,16 @@ const Login = () =>{
           setErrorStatus(false)
           console.log("Comming")
           if(position == "Admin"){
-            Cookies.set('Auth', 'Admin', { expires: 7 });
+            Cookies.set('Auth', '/admin', { expires: 7 });
             Cookies.set('Login',true,{expires:7})
+            navigate('/admin')
           }else{
-            Cookies.set('Auth', 'Student', { expires: 7 });
+            Cookies.set('Auth', '/', { expires: 7 });
             Cookies.set('Login',true,{expires:7})
+            navigate('/')
           }
           
-          navigate('/')
+
 
         }
         setLoader(false)
