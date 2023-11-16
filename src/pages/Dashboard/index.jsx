@@ -1,12 +1,30 @@
+import { useEffect } from "react";
+import { redirect } from "react-router-dom";
+
 import AdminApprovalCard from "../../components/admin-components/AdminApprovalCard";
 import AdminCards from "../../components/admin-components/AdminCards";
 import CreditsCard from "../../components/admin-components/CreditsCard";
 import ProjectSumissionGraph from "../../components/admin-components/ProjectSumissionGraph";
 import RanksCard from "../../components/admin-components/RanksCard";
 import StudentsCard from "../../components/admin-components/StudentsCard";
+
 import "./index.css";
 
-const Dashboard = () => {
+
+const Dashboard = () => {  
+  useEffect(() =>{
+    const status = false
+    const Protect = () =>{
+      
+      if (!status) {
+        return redirect("/login");  
+      }
+      return null;
+    };
+    
+    Protect()
+  },[])
+
   return (
     <div className="flex flex-col w-full m-4 gap-4">
       <AdminCards />
