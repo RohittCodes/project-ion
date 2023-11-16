@@ -1,11 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import Dashboard from "./pages/Dashboard";
+import AdminDashboard from "./pages/admin-pages/Dashboard";
 import Sidebar from "./components/Sidebar";
 import PageNotFound from "./pages/PageNotFound";
-import AddStudents from "./pages/AddStudents/index";
-import StudentsData from "./pages/StudentsData.jsx";
+import AddStudents from "./pages/admin-pages/AddStudents/index";
+import StudentsData from "./pages/admin-pages/StudentsData/index";
+import HomePage from "./pages/HomePage";
+import Login from "./pages/Login";
+import { Protected } from "./ProtectedRoute";
 
 function App() {
   return (
@@ -14,9 +17,39 @@ function App() {
       <div className="flex">
         <Sidebar />
         <Routes>
-          <Route path="/admin" element={<Dashboard />} />
-          <Route path="/admin/register" element={<AddStudents />} />
-          <Route path="/admin/students" element={<StudentsData />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <Protected>
+                <HomePage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <Protected>
+                <AdminDashboard />
+              </Protected>
+            }
+          />
+          <Route
+            path="/admin/register"
+            element={
+              <Protected>
+                <AddStudents />
+              </Protected>
+            }
+          />
+          <Route
+            path="/admin/students"
+            element={
+              <Protected>
+                <StudentsData />
+              </Protected>
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
