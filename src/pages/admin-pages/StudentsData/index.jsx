@@ -127,14 +127,15 @@ const StudentsData = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full text-text-primary gap-2 mx-4 my-2">
+    <div className="flex flex-col w-full text-light gap-2 mx-4 my-2">
       <input
         type="text"
-        className="w-80 h-10 rounded-md bg-background-components focus:outline-none p-2"
+        className="form-control form-control-dark w-80 rounded-md p-2 ms-auto"
+        placeholder="Search..."
       />
-      <div className="rounded-lg bg-background-components h-full w-full">
-        <table className="w-full border-separate">
-          <thead className="table-header-group text-text-disabled">
+      <div className="rounded-lg bg-dark overflow-hidden h-full w-full">
+        <table className="table table-bordered table-hover table-dark rounded-xxl">
+          <thead className="table-header-group text-muted">
             <tr>
               {tableFields.map((fields) => (
                 <th className="text-center h-12" key={fields}>
@@ -143,7 +144,7 @@ const StudentsData = () => {
               ))}
             </tr>
           </thead>
-          <tbody className="text-text-disabled">
+          <tbody className="text-muted">
             {studentsData.map((data, index) => (
               <tr key={index}>
                 <td className="h-8 w-16 text-center" key={index + 1}>
@@ -165,7 +166,12 @@ const StudentsData = () => {
                   {data.rollno}
                 </td>
                 <td className="h-8 w-24 text-center">
-                  <NavLink to={"/profile/" + data.id}>Profile</NavLink>
+                  <NavLink
+                    to={`/profile/${data.id}`}
+                    className="btn btn-primary"
+                  >
+                    Profile
+                  </NavLink>
                 </td>
               </tr>
             ))}

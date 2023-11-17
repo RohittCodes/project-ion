@@ -9,6 +9,7 @@ import StudentsData from "./pages/admin-pages/StudentsData/index";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import { Protected } from "./ProtectedRoute";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route exact path="/login" element={<Login />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route
             path="/"
             element={

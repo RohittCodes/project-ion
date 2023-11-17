@@ -48,20 +48,6 @@ const StudentsCard = () => {
       rollno: 247,
       section: "B",
     },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "D",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
   ];
   return (
     <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]">
@@ -102,7 +88,7 @@ const StudentsCard = () => {
                   {data.rollno}
                 </td>
                 <td className="h-8 w-24 text-center">
-                  <NavLink to={"/profile/" + data.id}>Profile</NavLink>
+                  <NavLink to={`/profile/${data.id}`}>Profile</NavLink>
                 </td>
               </tr>
             ))}
