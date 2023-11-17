@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import SearchBar from "./admin-components/SearchBar";
+import { GoProject } from "react-icons/go";
+import { SlUserFollow } from "react-icons/sl";
+import { SlUserFollowing } from "react-icons/sl";
+import { FaRankingStar } from "react-icons/fa6";
+import { MdOutlineHelpCenter,MdSupportAgent } from "react-icons/md";
+import { CiLogout } from "react-icons/ci";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,43 +36,26 @@ const Navbar = () => {
           </div>
         </div>
         {isOpen && (
-          <div className="origin-top-right absolute right-0 top-[48px] mt-2 mr-2 w-60 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-            <ul
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="options-menu"
-            >
-              <div className="block w-full px-2 py-1 text-sm">
-                <li className="bg-gray-200 px-2 py-1">Something</li>
+          <div className=" origin-top-right absolute right-0 top-[48px]  mt-2 mr-3 bg-background-components" style={{borderRadius:'8px',backgroundSize:'cover',borderStyle:'inset',borderWidth:'1px',borderColor:'white',width:'18%'}}>
+           <ul>
+            <li style={{color:'black',display:'flex'}} className="m-3"> 
+              <div className="w-8 h-8 mt-1 rounded-full border-border-primary border-[1px] bg-background-main cursor-pointer"></div>
+              <div className="ml-2">
+                <p style={{fontSize:'15px',color:'white'}}>R.Uday kiran</p>
+                <p style={{fontSize:'10px',color:'white'}}>uuday3804@gmail.com</p>
               </div>
-              <li>
-                <a
-                  href="/some"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={closeDropdown}
-                >
-                  Option 1
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/some1"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={closeDropdown}
-                >
-                  Option 1
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/some2"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={closeDropdown}
-                >
-                  Option
-                </a>
-              </li>
-            </ul>
+              
+            </li>
+            <hr style={{backgroundColor:'white'}}/>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><FaRankingStar className="mt-1 mr-2"/><p>Ranking</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollow className="mt-1 mr-2"/><p>Followers</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollowing className="mt-1 mr-2"/><p>Following</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><GoProject className="mt-1 mr-2"/><p>Your Projects</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><MdOutlineHelpCenter className="mt-1 mr-2"/><p>Problems</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><MdSupportAgent className="mt-1 mr-2"/><p>Help</p></li>
+            <hr style={{backgroundColor:'white'}}/>
+            <li style={{display:'flex',color:'white'}} className="ml-3 mt-2 mb-2 ml-4 cursor-pointer"><CiLogout className="mt-1 mr-2"/>Logout</li>
+           </ul>
           </div>
         )}
       </div>
