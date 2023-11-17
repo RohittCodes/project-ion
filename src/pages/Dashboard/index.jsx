@@ -12,18 +12,6 @@ import "./index.css";
 
 
 const Dashboard = () => {  
-  useEffect(() =>{
-    const status = false
-    const Protect = () =>{
-      
-      if (!status) {
-        return redirect("/login");  
-      }
-      return null;
-    };
-    
-    Protect()
-  },[])
 
   return (
     <div className="flex flex-col w-full m-4 gap-4">

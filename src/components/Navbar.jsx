@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import SearchBar from "./admin-components/SearchBar";
@@ -8,9 +8,14 @@ import { SlUserFollowing } from "react-icons/sl";
 import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineHelpCenter,MdSupportAgent } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  
+  
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate()
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -19,6 +24,13 @@ const Navbar = () => {
   const closeDropdown = () => {
     setIsOpen(false);
   };
+
+  const setLogout = () =>{
+    Cookies.remove('Login')
+    Cookies.remove('Auth')
+    navigate('/login')
+    
+  }
 
   return (
     <div className="bg-background-main border-border-primary border-b-[1px] text-text-primary">
@@ -36,6 +48,8 @@ const Navbar = () => {
           </div>
         </div>
         {isOpen && (
+          <>
+          {Cookies.get('Login') && 
           <div className=" origin-top-right absolute right-0 top-[48px]  mt-2 mr-3 bg-background-components" style={{borderRadius:'8px',backgroundSize:'cover',borderStyle:'inset',borderWidth:'1px',borderColor:'white',width:'18%'}}>
            <ul>
             <li style={{color:'black',display:'flex'}} className="m-3"> 
@@ -54,9 +68,10 @@ const Navbar = () => {
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><MdOutlineHelpCenter className="mt-1 mr-2"/><p>Problems</p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><MdSupportAgent className="mt-1 mr-2"/><p>Help</p></li>
             <hr style={{backgroundColor:'white'}}/>
-            <li style={{display:'flex',color:'white'}} className="ml-3 mt-2 mb-2 ml-4 cursor-pointer"><CiLogout className="mt-1 mr-2"/>Logout</li>
+            <li style={{display:'flex',color:'white'}} className="ml-3 mt-2 mb-2 ml-4 cursor-pointer" onClick={setLogout}><CiLogout className="mt-1 mr-2"/>Logout</li>
            </ul>
-          </div>
+          </div>}
+          </>
         )}
       </div>
     </div>

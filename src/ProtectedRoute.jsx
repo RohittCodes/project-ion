@@ -10,13 +10,12 @@ export const Protected = ({ children }) => {
 
   console.log(location.pathname);
 
-  if (true) {
-    // if (authStatus == location.pathname) {
-    //   return children;
-    // } else {
-    //   return <Navigate to={`${authStatus}`} />;
-    // }
-    return children;
+  if (logStatus) {
+    if (location.pathname.startsWith(authStatus)) {
+      return children;
+    } else {
+      return <Navigate to={`${authStatus}`} />;
+    }
   } else {
     return <Navigate to="/login" />;
   }

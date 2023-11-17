@@ -268,7 +268,7 @@ const Login = () => {
                 )}
               </div>
             ) : (
-              <div>
+              <div style={{width:'40vh'}}>
                 <label>Role</label>
                 <select className="form-control" onChange={setPosition}>
                   <option>Admin</option>

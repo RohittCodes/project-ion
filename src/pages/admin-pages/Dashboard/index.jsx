@@ -16,8 +16,8 @@ const AdminDashboard = () => {
           <StudentsCard />
         </div>
         <div className="flex flex-col w-4/12 gap-4">
-          <ProjectSumissionGraph />
           <RanksCard />
+          <ProjectSumissionGraph />
           <CreditsCard />
         </div>
       </div>
