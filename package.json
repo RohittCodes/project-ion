@@ -10,20 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "apexcharts": "^3.44.0",
     "cookies": "^0.8.0",
-    "firebase": "^10.6.0",
     "js-cookie": "^3.0.5",
+    "apexcharts": "^3.44.0",
+    "firebase": "^10.6.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
-    "react-cookie": "^6.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.18.0",
-    "react-speech-recognition": "^3.10.0",
-    "react-tooltip": "^5.22.0"
+    "react-tooltip": "^5.22.0",
+    "react-cookie": "^6.1.1",
+    "react-loader-spinner": "^5.4.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

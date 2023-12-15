@@ -22,6 +22,9 @@ const AdminCards = () => {
           </div>
         </div>
       </div>
+
+      {/* .................................................................................................... */}
+
       <div className="flex flex-row gap-4 w-full items-center h-28 bg-background-components px-4 py-2 border-rounded rounded-2xl border-border-secondary border-[1px]">
         <div className="text-2xl rounded-full bg-orange-400 p-2">
           <IoPersonOutline />
@@ -36,6 +39,9 @@ const AdminCards = () => {
           </div>
         </div>
       </div>
+
+      {/* ........................................................................................................ */}
+
       <div className="flex flex-row gap-4 w-full items-center h-28 bg-background-components px-4 py-2 border-rounded rounded-2xl border-border-secondary border-[1px]">
         <div className="text-2xl rounded-full bg-indigo-500 p-2">
           <BiBuildings />
@@ -47,6 +53,9 @@ const AdminCards = () => {
           </div>
         </div>
       </div>
+
+{/* ....................................................................................................................... */}
+
       <div className="flex flex-row gap-4 w-full items-center h-28 bg-background-components px-4 py-2 border-rounded rounded-2xl border-border-secondary border-[1px]">
         <div className="text-2xl rounded-full bg-green-700 p-2">
           <BsCheck2Circle />

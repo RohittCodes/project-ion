@@ -12,10 +12,22 @@ const AdminApprovalCard = () => {
   ];
   const studentsData = [
     {
+      id: 10000002,
+      name: "Dheeraj",
+      branch: "CSE",
+      rollno: 247,
+    },
+    {
       id: 10000000,
       name: "Rohith",
       branch: "CSE",
       rollno: 245,
+    },
+    {
+      id: 10000002,
+      name: "Rohith",
+      branch: "CSE",
+      rollno: 247,
     },
     {
       id: 10000001,
