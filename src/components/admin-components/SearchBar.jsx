@@ -57,7 +57,7 @@ const SearchBar = () => {
       )}
       <IoIosSearch className="text-3xl pr-2 font-bold cursor-pointer" />
       {searchBarActive && (
-        <div className="origin-top-right absolute right-20 top-[48px] mt-2 mr-2 w-64 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-24 top-[48px] mt-2 mr-2 w-64 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <SearchResultsList results={results} />
         </div>
       )}
