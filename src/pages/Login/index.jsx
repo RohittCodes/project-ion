@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
 import Cookies from "js-cookie";
+import { useAuth } from "../../AuthContext";
+
+
 
 const Login = () => {
   const navigate = useNavigate();
+  const {login,logUser} = useAuth()
   useEffect(() => {
     let logStatus = Cookies.get("Login");
     if (logStatus) {
@@ -109,7 +113,6 @@ const Login = () => {
       console.log(requestOptions);
       const res = await fetch(url, requestOptions);
       const data1 = await res.json();
-      console.log(res.status);
       if (res.status == 400) {
         setErrorStatus(true);
         setError(data1);
@@ -136,30 +139,54 @@ const Login = () => {
 
   const goLogin = async () => {
     setLoader(true);
-    let url = "http://localhost:3001/adminLog";
-    let requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(loginData),
-    };
-    const res = await fetch(url, requestOptions);
-    const data1 = await res.json();
-    if (res.status == 400) {
-      setErrorStatus(true);
-      setError(data1);
-    } else {
-      setErrorStatus(false);
-      console.log("Comming");
-      if (position == "Admin") {
+    if(position == "Admin"){
+      let url = "http://localhost:3001/adminLog";
+      let requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+      };
+      console.log(loginData)
+      const res = await fetch(url, requestOptions);
+      
+      const data1 = await res.json();
+     
+      if (res.status == 400) {
+        setErrorStatus(true);
+        setError(res);
+      } else {
+        setErrorStatus(false);
+        console.log("Comming");
         Cookies.set("Auth", "/admin", { expires: 7 });
         Cookies.set("Login", true, { expires: 7 });
+        
         navigate("/admin");
-      } else {
-        Cookies.set("Auth", "/", { expires: 7 });
-        Cookies.set("Login", true, { expires: 7 });
-        navigate("/");
       }
+    }else{
+          let url = "http://localhost:3001/studentLog"
+          let requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(loginData),
+          };
+          const res = await fetch(url, requestOptions);
+          const data1 = await res.json();
+          if (res.status == 400) {
+            setErrorStatus(true);
+            setError(data1);
+          } else {
+            console.log(data1.name)
+            setErrorStatus(false);
+            Cookies.set("Auth", "/student", { expires: 7 });
+            Cookies.set('User',data1.name,{expires:7})
+            Cookies.set("Login", true, { expires: 7 });
+            login(data1)
+            
+            navigate("/student");
+            
+          }
     }
+    
     setLoader(false);
   };
 
@@ -268,7 +295,7 @@ const Login = () => {
                 )}
               </div>
             ) : (
-              <div>
+              <div style={{width:'40vh'}}>
                 <label>Role</label>
                 <select className="form-control" onChange={setPosition}>
                   <option>Admin</option>
