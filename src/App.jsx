@@ -10,6 +10,12 @@ import StudentsData from "./pages/admin-pages/StudentsData/index";
 import HomePage from "./pages/students-pages/HomePage";
 import Login from "./pages/Login";
 import ProfilePage from "./pages/ProfilePage";
+import { AuthProvider } from "./AuthContext";
+import Ranking from "./pages/students-pages/Ranking";
+import Projects from "./pages/Projects";
+
+import AddProgramPage from "./task/AddProgramPage";
+import ProjectList from "./task/ProjectList";
 
 function App() {
   return (
@@ -22,38 +28,20 @@ function App() {
             {/* ADMIN ROUTES */}
             <Route exact path="/login" element={<Login />} />
             <Route path="/profile/:id" element={<ProfilePage />} />
-            <Route
-              path="/"
-              element={
-                <Protected>
-                  <HomePage />
-                </Protected>
-              }
-            />
-            <Route
-              path="/admin"
-              element={
-                <Protected>
-                  <AdminDashboard />
-                </Protected>
-              }
-            />
-            <Route
-              path="/admin/register"
-              element={
-                <Protected>
-                  <AddStudents />
-                </Protected>
-              }
-            />
-            <Route
-              path="/admin/students"
-              element={
-                <Protected>
-                  <StudentsData />
-                </Protected>
-              }
-            />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/register" element={<AddStudents />} />
+            <Route path="/admin/students" element={<StudentsData />} />
+
+            {/* STUDENTS ROUTES */}
+            <Route path="/student" element={<HomePage />} />
+            <Route exact path="/student/ranking" element={<Ranking />} />
+            <Route exact path="/student/projects" element={<Projects />} />
+
+            {/* TASK ROUTES */}
+            <Route path="/task/projectlist" element={<ProjectList />} />
+            <Route path="/task/addProject" element={<AddProgramPage />} />
+
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
