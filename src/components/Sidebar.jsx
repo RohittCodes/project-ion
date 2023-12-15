@@ -8,8 +8,12 @@ import {
   MdOutlineSyncProblem,
   MdHelp,
   MdSupportAgent,
+  MdOutlineHelpCenter,
+  MdHelpCenter
 } from "react-icons/md";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
+import { FaRankingStar } from "react-icons/fa6";
 
 const Sidebar = () => {
   const adminNav = [
@@ -33,6 +37,16 @@ const Sidebar = () => {
       icon: MdPersonAdd,
       href: "/register",
     },
+    {
+      label: "Project",
+      icon: AiOutlineFundProjectionScreen,
+      href: "/project",
+    },
+    {
+      label:'Ranking',
+      icon:FaRankingStar,
+      href:'/ranking'
+    }
   ];
 
   const navItems = [
@@ -47,15 +61,21 @@ const Sidebar = () => {
       href: "/some",
     },
     {
-      label: "Something2",
+      label: "Problems",
       icon: MdOutlineSyncProblem,
-      href: "/bro",
+      href: "/problem",
+    },  
+    {
+      label: "Project",
+      icon: AiOutlineFundProjectionScreen,
+      href: "/projects",
     },
     {
-      label: "Something3",
-      icon: MdPersonAdd,
-      href: "/what",
-    },
+      label:'Ranking',
+      icon:FaRankingStar,
+      href:'/ranking'
+    }
+
   ];
 
   const location = useLocation();
@@ -77,6 +97,7 @@ const Sidebar = () => {
               >
                 <items.icon className="text-2xl text-text-primary" />
               </NavLink>
+              
             ))}
           </div>
           <div className="flex flex-col gap-6">
@@ -98,7 +119,7 @@ const Sidebar = () => {
           {navItems.map((items) => (
             <NavLink
               key={items.label}
-              to={items.href}
+              to={"/student" + items.href}
               className={({ isActive }) =>
                 isActive
                   ? "flex justify-center rounded-md cursor-pointer items-center w-8 h-8 bg-background-components"

@@ -28,7 +28,11 @@ const Navbar = () => {
   const setLogout = () =>{
     Cookies.remove('Login')
     Cookies.remove('Auth')
+    
     navigate('/login')
+    setIsOpen(!isOpen)
+    window.location.reload(false);
+    
     
   }
 
@@ -49,7 +53,7 @@ const Navbar = () => {
         </div>
         {isOpen && (
           <>
-          {Cookies.get('Login') && 
+          {isOpen&& 
           <div className=" origin-top-right absolute right-0 top-[48px]  mt-2 mr-3 bg-background-components" style={{borderRadius:'8px',backgroundSize:'cover',borderStyle:'inset',borderWidth:'1px',borderColor:'white',width:'18%'}}>
            <ul>
             <li style={{color:'black',display:'flex'}} className="m-3"> 
@@ -62,8 +66,10 @@ const Navbar = () => {
             </li>
             <hr style={{backgroundColor:'white'}}/>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><FaRankingStar className="mt-1 mr-2"/><p>Ranking</p></li>
-            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollow className="mt-1 mr-2"/><p>Followers</p></li>
-            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollowing className="mt-1 mr-2"/><p>Following</p></li>
+            {!location.pathname.startsWith("/admin")&&
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollow className="mt-1 mr-2"/><p>Followers</p></li>}
+            {!location.pathname.startsWith("/admin")&&
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollowing className="mt-1 mr-2"/><p>Following</p></li>}
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><GoProject className="mt-1 mr-2"/><p>Your Projects</p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><MdOutlineHelpCenter className="mt-1 mr-2"/><p>Problems</p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><MdSupportAgent className="mt-1 mr-2"/><p>Help</p></li>

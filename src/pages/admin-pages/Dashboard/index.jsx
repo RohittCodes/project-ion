@@ -4,9 +4,13 @@ import CreditsCard from "../../../components/admin-components/CreditsCard";
 import ProjectSumissionGraph from "../../../components/admin-components/ProjectSumissionGraph";
 import RanksCard from "../../../components/admin-components/RanksCard";
 import StudentsCard from "../../../components/admin-components/StudentsCard";
-import "./index.css";
 
-const AdminDashboard = () => {
+
+
+
+
+const Dashboard = () => {  
+
   return (
     <div className="flex flex-col w-full m-4 gap-4">
       <AdminCards />
@@ -25,4 +29,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default Dashboard;
