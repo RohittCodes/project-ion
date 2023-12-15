@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import { Protected } from "./ProtectedRoute";
 import ProfilePage from "./pages/ProfilePage";
+import ProfileProjects from "./components/ProfileProjects";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
               </Protected>
             }
           />
+          <Route path="/projects" element={<ProfileProjects />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
