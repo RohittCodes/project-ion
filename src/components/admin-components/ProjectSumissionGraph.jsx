@@ -77,7 +77,7 @@ const ProjectSumissionGraph = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-60 bg-background-components px-3 pt-2 rounded-2xl border-border-secondary border-[1px]">
+    <div className="flex flex-col w-full h-60 bg-background-components px-3 pt-2 rounded-2xl border-border-secondary border-[1px]" >
       <div className="flex flex-row items-center justify-between px-2">
         <div className="text-2xl font-bold font-mono text-gray-400">
           Projects
@@ -97,7 +97,9 @@ const ProjectSumissionGraph = () => {
         series={[{ name: "Total Projects", data: seriesData }]}
         type="bar"
         height="200"
-        className="flex justify-center w-full h-2/3"
+        className="flex justify-center w-full h-2/3" 
+        
+        
       />
     </div>
   );
