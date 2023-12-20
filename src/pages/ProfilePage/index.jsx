@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
@@ -10,40 +10,37 @@ import GraphWidget from "../../components/profile-components/GraphWidget";
 
 const ProfilePage = () => {
   const location = useLocation();
-  const id = location.pathname.slice(location.pathname.lastIndexOf("/") + 1);
+  const id = location.pathname.slice(location.pathname.lastIndexOf("/")+1);
+  const [display,setDisplay] = useState(false)
+  const [students,setStudents] = useState()
+  const [account,setAccout] = useState(false)
 
-  const studentsData = [
-    {
-      id: 10000000,
-      name: "Varshith",
-      branch: "CSE",
-      rollno: 245,
-      section: "A",
-    },
-    {
-      id: 10000001,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 246,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000003,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-  ];
+  useEffect(() =>{
+    const fetchData = async() =>{
+        const url = 'http://localhost:3001/getStudent'
+        const res = await fetch(url)
+        const data =await res.json()
+        setDisplay(true)
+        console.log(data)
+        console.log(data[0].StudentProfileId == id)
+        console.log(data[0].StudentProfileId)
+        console.log(id)
+          const temp = data.filter((acc) => acc.StudentProfileId == id);
+          setStudents(temp)
+          console.log(temp)
+          if(temp.length > 0){
+            setAccout(true)
+          console.log(temp.length)
+        }
+        
+        
+    }
+    fetchData()
+  },[])
+  
 
-  const account = studentsData.find((acc) => acc.id == id);
+
+  
 
   if (!account) {
     return <div>Account not found</div>;
@@ -97,12 +94,15 @@ const ProfilePage = () => {
     },
   };
   return (
+    <>
+    {display &&
     <div
       style={{ width: "100%", padding: "25px", position: "relative" }}
       className="flex text-text-primary"
     >
       <div>
-        <ProfileWidget />
+        <ProfileWidget props={students} />
+        
       </div>
       <div>
         <div>
@@ -121,7 +121,8 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

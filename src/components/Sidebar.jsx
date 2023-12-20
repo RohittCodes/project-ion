@@ -40,7 +40,7 @@ const Sidebar = () => {
     {
       label: "Project",
       icon: AiOutlineFundProjectionScreen,
-      href: "/project",
+      href: "/projects",
     },
     {
       label:'Ranking',

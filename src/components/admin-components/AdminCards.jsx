@@ -4,7 +4,10 @@ import { IoPersonOutline } from "react-icons/io5";
 import { BiBuildings } from "react-icons/bi";
 import { BsCheck2Circle } from "react-icons/bs";
 
-const AdminCards = () => {
+const AdminCards = (props) => {
+  let pending = props.pending.length
+  let students = props.students.length
+  let projects = props.projects.length
   return (
     <div className="flex flex-row text-text-primary gap-6">
       <div className="flex flex-row gap-4 w-full items-center h-28 bg-background-components px-4 py-2 border-rounded rounded-2xl border-border-secondary border-[1px]">
@@ -14,7 +17,7 @@ const AdminCards = () => {
         <div className="flex flex-col w-full gap-1">
           <div className="text-gray-400 font-semibold">Total Projects</div>
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-semibold font-mono">25,237</div>
+            <div className="text-2xl font-semibold font-mono">{projects-pending}</div>
             <div className="text-green-700 inline-flex text-sm items-center bg-background-main rounded-md px-1">
               <AiOutlineRise />
               12
@@ -32,7 +35,7 @@ const AdminCards = () => {
         <div className="flex flex-col w-full gap-1">
           <div className="text-gray-400 font-semibold">Total Students</div>
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-semibold font-mono">237</div>
+            <div className="text-2xl font-semibold font-mono">{students}</div>
             <div className="text-green-700 inline-flex text-sm items-center bg-background-main rounded-md px-1">
               <AiOutlineRise />2
             </div>
@@ -63,7 +66,7 @@ const AdminCards = () => {
         <div className="flex flex-col w-full gap-1">
           <div className="text-gray-400 font-semibold">Approval(s) pending</div>
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-semibold font-mono">6</div>
+            <div className="text-2xl font-semibold font-mono">{pending}</div>
             <div className="text-green-700 inline-flex text-sm items-center bg-background-main rounded-md px-1">
               <AiOutlineRise />4
             </div>

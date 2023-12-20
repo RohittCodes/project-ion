@@ -1,7 +1,23 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { NavLink } from "react-router-dom";
 
 const StudentsData = () => {
+
+  const [display,setDisplay] = useState(false)
+  const [students,setStudents] = useState()
+
+  useEffect(() =>{
+    const fetchData = async() =>{
+        const url = 'http://localhost:3001/getStudent'
+        const res = await fetch(url)
+        const data =await res.json()
+        setStudents(data)
+        setDisplay(true)
+        console.log(data)
+    }
+    fetchData()
+  },[])
+
   const tableFields = [
     "S. No.",
     "User id",
@@ -11,120 +27,7 @@ const StudentsData = () => {
     "Roll no",
     "Profile",
   ];
-  const studentsData = [
-    {
-      id: 10000000,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 245,
-      section: "A",
-    },
-    {
-      id: 10000001,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 246,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "A",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "B",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "D",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-    {
-      id: 10000002,
-      name: "Rohith",
-      branch: "CSE",
-      rollno: 247,
-      section: "C",
-    },
-  ];
+ 
 
   return (
     <div className="flex flex-col w-full text-light gap-2 mx-4 my-2">
@@ -133,6 +36,7 @@ const StudentsData = () => {
         className="form-control form-control-dark w-80 rounded-md p-2 ms-auto"
         placeholder="Search..."
       />
+      {display&&
       <div className="rounded-lg bg-dark overflow-hidden h-full w-full">
         <table className="table table-bordered table-hover table-dark rounded-xxl">
           <thead className="table-header-group text-muted">
@@ -145,29 +49,33 @@ const StudentsData = () => {
             </tr>
           </thead>
           <tbody className="text-muted">
-            {studentsData.map((data, index) => (
+            {students.map((data, index) => (
               <tr key={index}>
+              {console.log(data.StudentProfileId)}
                 <td className="h-8 w-16 text-center" key={index + 1}>
                   {index + 1}
                 </td>
-                <td className="h-8 w-40 text-center" key={data.id}>
-                  {data.id}
+                <td className="h-8 w-40 text-center" key={data.StudentProfileId}>
+                  {data.StudentProfileId}
                 </td>
-                <td className="text-center" key={data.name}>
-                  {data.name}
+                <td className="text-center" style={{width:'30%'}} key={data.StudentName}>
+                  {data.StudentName}
                 </td>
-                <td className="h-8 w-32 text-center" key={data.branch}>
-                  {data.branch}
+                <td className="h-8 w-32 text-center" key={data.StudentBranch}>
+                  {data.StudentBranch}
                 </td>
-                <td className="h-8 w-24 text-center" key={data.section}>
-                  {data.section}
+                <td className="h-8 w-24 text-center" key={data.StudentSection}>
+                  {data.StudentSection}
                 </td>
-                <td className="h-8 w-24 text-center" key={data.rollno}>
-                  {data.rollno}
+                <td className="h-8 w-24 text-center" key={data.StudentId}>
+                  {data.StudentId}
                 </td>
                 <td className="h-8 w-24 text-center">
                   <NavLink
-                    to={`/profile/${data.id}`}
+                    to={{
+                      pathname: `/admin/profile/${data.StudentProfileId}`,
+                      state: { data1: data }
+                    }}
                     className="btn btn-primary"
                   >
                     Profile
@@ -178,6 +86,7 @@ const StudentsData = () => {
           </tbody>
         </table>
       </div>
+      }
     </div>
   );
 };
