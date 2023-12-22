@@ -7,6 +7,7 @@ import { SlUserFollow } from "react-icons/sl";
 import { SlUserFollowing } from "react-icons/sl";
 import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineHelpCenter,MdSupportAgent } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +61,7 @@ const Navbar = () => {
               <div className="w-8 h-8 mt-1 rounded-full border-border-primary border-[1px] bg-background-main cursor-pointer"></div>
               <div className="ml-2">
                 <p style={{fontSize:'15px',color:'white'}}>R.Uday kiran</p>
-                <p style={{fontSize:'10px',color:'white'}}>uuday3804@gmail.com</p>
+                <p style={{fontSize:'13px',color:'white'}}>uuday3804@gmail.com</p>
               </div>
               
             </li>
@@ -72,6 +73,7 @@ const Navbar = () => {
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollowing className="mt-1 mr-2"/><p>Following</p></li>}
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><GoProject className="mt-1 mr-2"/><p>Your Projects</p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><MdOutlineHelpCenter className="mt-1 mr-2"/><p>Problems</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><RiLockPasswordLine className="mt-1 mr-2"/><p>Reset Password</p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><MdSupportAgent className="mt-1 mr-2"/><p>Help</p></li>
             <hr style={{backgroundColor:'white'}}/>
             <li style={{display:'flex',color:'white'}} className="ml-3 mt-2 mb-2 ml-4 cursor-pointer" onClick={setLogout}><CiLogout className="mt-1 mr-2"/>Logout</li>

@@ -6,7 +6,7 @@ const AddProgramPage = () =>{
     const [cmd,setCmd] = useState('')
     const [code,setCode] = useState('')
     const [info,setInfo] = useState('')
-    const { transcript, resetTranscript } = useSpeechRecognition();
+    let { transcript, resetTranscript } = useSpeechRecognition();
     const [data,setData] = useState([])
       
     const startListening = () => {
@@ -50,7 +50,7 @@ const AddProgramPage = () =>{
             console.log(data)
             let list = []
 
-            setData(data)
+            
             data.filter(each =>{
                 const similarity = documentSimilarity(each.data.About, transcript);
                 if(similarity*100 > 30){
@@ -59,6 +59,8 @@ const AddProgramPage = () =>{
                 
             })
             console.log(list)
+            setData(list)
+            transcript = ""
     }
 
     const changeCmd = (e) =>{
@@ -71,15 +73,6 @@ const AddProgramPage = () =>{
     const changeInfo =e =>{
         setInfo(e.target.value)
     }
-
-
-
-
-
-
-
-
-
 
 
     function preprocessText(text) {
@@ -115,6 +108,10 @@ const AddProgramPage = () =>{
         return cosineSimilarity(vector1, vector2);
       }
 
+      
+      const goTo =(data) =>{
+        console.log(data)
+      }
 
       
 
@@ -126,7 +123,7 @@ const AddProgramPage = () =>{
     return(
         <div style={{width:'100%',display:'flex',flexDirection:'column'}}>
             <h1 style={{color:'white',fontSize:'30px',textAlign:'center'}} className="mb-5 mt-3">Add Program</h1>
-            <form style={{borderWidth:'1px',width:'50%',alignSelf:'center'}} className="p-5 " onSubmit={submitForm}>
+            <form style={{borderWidth:'1px',width:'50%',alignSelf:'center',backgroundSize:'cover'}} className="p-5 " onSubmit={submitForm}>
                 <label className="form-label mt-3 mb-1" style={{color:'white',fontSize:'18px'}}>COMMEND</label>
                 <input type="text" className="form-control" style={{fontWeight:'bolder'}} onChange={changeCmd} />
                 <label className="form-label mt-3 mb-1" style={{color:'white',fontSize:'18px'}}>CODE</label>
@@ -140,11 +137,15 @@ const AddProgramPage = () =>{
                 <button type="button" className="btn btn-success mt-3 ml-5" style={{width:'40%'}} onClick={SearchCodes}>Search</button>
                     
                 <p style={{color:'white'}}>{transcript}</p>
-                
-            </form>
-            <div>
+                {data.map(each =>(
+                <div style={{backgroundColor:'white',height:'3%',borderRadius:'10px'}} className="m-3 p-2" onClick={goTo(each.data)}>
+                    <h1 style={{textAlign:'center'}} >{each.data.Command}</h1>
                     
                 </div>
+            ))}
+                
+            </form>
+            
         </div>
     )
 }

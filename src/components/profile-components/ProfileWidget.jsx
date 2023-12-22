@@ -2,11 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import profilePhoto from "./profilepic.jpg";
 
-const ProfileWidget = () => {
+const ProfileWidget = (props) => {
+  console.log(props.props[0].StudentName)
   const user = {
     profilePhoto: profilePhoto,
-    user: "N Dheeraj",
-    userid: "dheeraj123",
+    user: props.props[0].StudentName,
+    userid: props.props[0].StudentProfileId,
     rank: "10,000",
     views: "10",
     solutions: "100",

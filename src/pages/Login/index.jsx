@@ -9,13 +9,6 @@ import { useAuth } from "../../AuthContext";
 const Login = () => {
   const navigate = useNavigate();
   const {login,logUser} = useAuth()
-  useEffect(() => {
-    let logStatus = Cookies.get("Login");
-    if (logStatus) {
-      navigate("/");
-    }
-  }, []);
-
   const indianStates = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -150,18 +143,17 @@ const Login = () => {
       const res = await fetch(url, requestOptions);
       
       const data1 = await res.json();
+      console.log(data1)
      
-      if (res.status == 400) {
-        setErrorStatus(true);
-        setError(res);
-      } else {
+      
         setErrorStatus(false);
         console.log("Comming");
         Cookies.set("Auth", "/admin", { expires: 7 });
         Cookies.set("Login", true, { expires: 7 });
-        
+        Cookies.set('student_id',data1.collegename,{expires:7})
+        Cookies.set("College",data1.collegename,{expires:7})
         navigate("/admin");
-      }
+      
     }else{
           let url = "http://localhost:3001/studentLog"
           let requestOptions = {
@@ -175,10 +167,12 @@ const Login = () => {
             setErrorStatus(true);
             setError(data1);
           } else {
-            console.log(data1.name)
+            console.log(data1.StudentName)
             setErrorStatus(false);
             Cookies.set("Auth", "/student", { expires: 7 });
-            Cookies.set('User',data1.name,{expires:7})
+            Cookies.set('User',data1.StudentName,{expires:7})
+            Cookies.set('student_id',data1.StudentProfileId,{expires:7})
+            Cookies.set("College",data1.College,{expires:7})
             Cookies.set("Login", true, { expires: 7 });
             login(data1)
             
