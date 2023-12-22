@@ -4,8 +4,8 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import ProfileWidget from "../../components/profile-components/ProfileWidget";
 import StudentRank from "../../components/profile-components/StudentRank";
-import Project from "../../components/admin-components/Projects";
-import ProjectTable from "../../components/admin-components/Projects";
+import Project from "../../components/profile-components/Projects";
+import ProjectTable from "../../components/profile-components/Projects";
 import GraphWidget from "../../components/profile-components/GraphWidget";
 
 const ProfilePage = () => {

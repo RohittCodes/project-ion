@@ -16,6 +16,10 @@ import Projects from "./pages/Projects";
 
 import AddProgramPage from "./task/AddProgramPage";
 import ProjectList from "./task/ProjectList";
+import Explore from "./pages/explore";
+import Domain from "./pages/explore/domain";
+import Technology from "./pages/explore/technology";
+import AdminProfile from "./pages/admin-pages/AdminProfile";
 
 function App() {
   return (
@@ -43,6 +47,10 @@ function App() {
             <Route path="/task/addProject" element={<AddProgramPage />} />
 
             <Route path="*" element={<PageNotFound />} />
+            <Route path="/admin/explore" element={<Explore />} />
+            <Route path="/admin/explore/domain" element={<Domain />} />
+            <Route path="/admin/explore/technology" />
+            <Route path="/admin/profile" element={<AdminProfile />} />
           </Routes>
         </div>
       </BrowserRouter>
