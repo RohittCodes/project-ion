@@ -1,4 +1,5 @@
 import React, { useState ,useEffect } from 'react';
+import { Triangle } from "react-loader-spinner";
 
 import { FiEye } from "react-icons/fi";
 
@@ -77,7 +78,7 @@ const AddStudents = () => {
 
   return (
     <>
-    {display &&
+    {display ?
     
     <div className="container mt-5 flex justify-center items-center p-4">
       <form style={{borderWidth:'1px',width:'35%',alignSelf:'center',backgroundSize:'cover',borderRadius:'8px'}} onSubmit={submitForm} className="p-5" >
@@ -108,7 +109,21 @@ const AddStudents = () => {
                       <button type="submit" className="btn btn-outline-info mt-5 ">Submit</button>
                     </div>
                 </form>
-    </div>}
+    </div>:<div style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+    <Triangle
+            
+            height="100"
+            width="100"
+            color="white"
+            ariaLabel="triangle-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+            
+            
+          />
+    </div>
+    }
     </>
   );
 };

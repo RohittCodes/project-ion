@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from "react";
+import { Triangle } from "react-loader-spinner";
 import { NavLink } from "react-router-dom";
 
 const StudentsData = () => {
@@ -36,7 +37,7 @@ const StudentsData = () => {
         className="form-control form-control-dark w-80 rounded-md p-2 ms-auto"
         placeholder="Search..."
       />
-      {display&&
+      {display?
       <div className="rounded-lg bg-dark overflow-hidden h-full w-full">
         <table className="table table-bordered table-hover table-dark rounded-xxl">
           <thead className="table-header-group text-muted">
@@ -85,7 +86,20 @@ const StudentsData = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div>:<div style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',minHeight:'80vh'}}>
+    <Triangle
+            
+            height="100"
+            width="100"
+            color="white"
+            ariaLabel="triangle-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+            
+            
+          />
+    </div>
       }
     </div>
   );

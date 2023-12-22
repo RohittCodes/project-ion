@@ -150,6 +150,7 @@ const Login = () => {
         console.log("Comming");
         Cookies.set("Auth", "/admin", { expires: 7 });
         Cookies.set("Login", true, { expires: 7 });
+        Cookies.set('student_id',data1.collegename,{expires:7})
         Cookies.set("College",data1.collegename,{expires:7})
         navigate("/admin");
       

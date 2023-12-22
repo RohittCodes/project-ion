@@ -1,5 +1,7 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react"
+import { Triangle } from "react-loader-spinner";
+import { NavLink } from "react-router-dom";
 
 const Projects = () =>{
     const [status,setStatus] = useState(false)
@@ -15,7 +17,9 @@ const Projects = () =>{
         Developer: '',
         ProjectLink: '',
         Collaborators: '',
-        ProjectImages:'',
+        ProjectImages1:'',
+        ProjectImages2:'',
+        ProjectImages3:''
       });
     
       useEffect(() =>{
@@ -113,6 +117,7 @@ const Projects = () =>{
             formData['StudentProfileId'] = studentId
             formData['College'] = college
             formData['Approved'] = false
+            formData['Likes'] = []
             console.log('Form submitted:', formData);
             let url = "http://localhost:3001/addProjects"
             let requestOptions = {
@@ -133,7 +138,9 @@ const Projects = () =>{
             Developer: '',
             ProjectLink: '',
             Collaborators: '',
-            ProjectImages:'',
+            ProjectImages1:'',
+            ProjectImages2:'',
+            ProjectImages3:''
           });
           
     }
@@ -141,7 +148,7 @@ const Projects = () =>{
 
     return(
         <>
-        {display &&
+        {display ?
         <div style={{backgroundSize:'cover',minHeight:'100vh',paddingBottom:'5vh',textAlign:'center'}}>
             <h1 style={{color:'white',fontFamily:"Roboto",fontSize:'35px',width:'90vw',textAlign:'center'}} className="mt-3" >Projects</h1>
             <div style={{textAlign:'right'}} className="mt-5 mb-3">
@@ -153,11 +160,11 @@ const Projects = () =>{
                     <label  style={{color:'white'}} className="mb-1 mt-3">PROJECT NAME</label>
                     <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Name" value={formData.Name}/>
                     <label style={{color:'white'}} className="mb-1 mt-3">PROJECT OVERVIEW</label>
-                    <textarea style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="OverView" value={formData.OverView}/>
+                    <textarea style={{color:'black',fontWeight:'bolder'}} rows={10} className="form-control" type="text" onChange={handleInputChange} name="OverView" value={formData.OverView}/>
                     <label style={{color:'white'}} className="mb-1 mt-3">TECHNOLOGIES USED</label>
                     <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Technologies" value={formData.Technologies}/>
                     <label style={{color:'white'}} className="mb-1 mt-3">OUTCOME</label>
-                    <textarea style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Outcome" value={formData.Outcome} />
+                    <textarea style={{color:'black',fontWeight:'bolder'}} rows={10} className="form-control" type="text" onChange={handleInputChange} name="Outcome" value={formData.Outcome} />
                     <label style={{color:'white'}} className="mb-1 mt-3">DEVELOPER </label>
                     <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Developer" value={formData.Developer}/>
                     <label style={{color:'white'}} className="mb-1 mt-3">PROJECT LINK</label>
@@ -165,7 +172,9 @@ const Projects = () =>{
                     <label style={{color:'white'}} className="mb-1 mt-3">COLLABORATORS</label>
                     <input style={{color:'black',fontWeight:'bolder'}} type="text" className="form-control" onChange={handleInputChange} name="Collaborators" value={formData.Collaborators} />
                     <label style={{color:'white'}} className="mb-1 mt-3">IMAGE LINK</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="ProjectImages" value={formData.ProjectImages}/>
+                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control mt-3" type="text" onChange={handleInputChange} placeholder="image_url1" name="ProjectImages1" value={formData.ProjectImages1}/>
+                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control mt-3" type="text" onChange={handleInputChange} placeholder="image_url2" name="ProjectImages2" value={formData.ProjectImages2}/>
+                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control mt-3" type="text" onChange={handleInputChange} placeholder="image_url3" name="ProjectImages3" value={formData.ProjectImages3}/>
                     <button type="submit" className="btn btn-info mt-5" style={{backgroundColor:'gray'}} >Submit</button>
                 </form>
             </div>}
@@ -193,7 +202,17 @@ const Projects = () =>{
                         {projects.map(each =>(
                             <tr key={1}>
                             <td className="h-8 w-16 text-center" style={{}} key={1 + 1}>
-                            {each.data.ProjectId}
+                            
+                            <NavLink
+                                to={{
+                                pathname: `/admin/project/${each.data.ProjectId}`,
+                                state: { data1: each.data }
+                                }}
+                                style={{color:'blue'}}
+                               
+                            >
+                                {each.data.ProjectId}
+                            </NavLink>
                             </td>
                             <td className="h-8 w-40 text-center" key={1}>
                             {each.data.Name}
@@ -212,7 +231,20 @@ const Projects = () =>{
         </div>}
 
             
-        </div>}
+        </div>:<div style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+    <Triangle
+            
+            height="100"
+            width="100"
+            color="white"
+            ariaLabel="triangle-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+            
+            
+          />
+    </div>}
         </>
     )
 }

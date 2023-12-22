@@ -6,6 +6,7 @@ import CreditsCard from "../../../components/admin-components/CreditsCard";
 import ProjectSumissionGraph from "../../../components/admin-components/ProjectSumissionGraph";
 import RanksCard from "../../../components/admin-components/RanksCard";
 import StudentsCard from "../../../components/admin-components/StudentsCard";
+import { Triangle } from "react-loader-spinner";
 
 
 
@@ -60,8 +61,8 @@ const Dashboard = () => {
 
   return (
     <>
-    {display &&
-    <div className="flex flex-col w-full m-4 gap-4">
+    {display ?
+    <div className="flex flex-col w-full m-4 gap-4" style={{height:'100vh'}}>
       <AdminCards students={students} projects={project} pending={projects} />
       <div className="flex flex-row justify-between gap-4">
         <div className="flex-1 space-y-4">
@@ -74,7 +75,21 @@ const Dashboard = () => {
           <CreditsCard />
         </div>
       </div>
-    </div>}
+    </div>: <div style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+    <Triangle
+            
+            height="100"
+            width="100"
+            color="white"
+            ariaLabel="triangle-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+            
+            
+          />
+    </div>
+        }
     </>
   );
 };
