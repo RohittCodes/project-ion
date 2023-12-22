@@ -24,15 +24,8 @@
     "react-icons": "^4.12.0",
     "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.18.0",
-<<<<<<< HEAD
     "react-speech-recognition": "^3.10.0",
     "react-tooltip": "^5.22.0"
-=======
-    "react-slick": "^0.29.0",
-    "react-speech-recognition": "^3.10.0",
-    "react-tooltip": "^5.22.0",
-    "slick-carousel": "^1.8.1"
->>>>>>> 40a337a021670f95b2da6a2af4bbf245dee1cc95
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
