@@ -113,7 +113,7 @@ const ProfilePage = () => {
               >
                 {/* Circle with Progress Bars */}
                 <div>
-                  <ProjectTable />
+                  <ProjectTable className="" />
                 </div>
               </div>
             </div>

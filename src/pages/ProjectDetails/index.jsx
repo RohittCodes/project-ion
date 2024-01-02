@@ -59,6 +59,7 @@ const ProjectDetails = () =>{
             const updateData = {
             id: project[0].data.ProjectId,
             likes:list,
+            student_id:project[0].data.StudentProfileId
 
             };
             const response = await fetch(url, {
@@ -69,7 +70,9 @@ const ProjectDetails = () =>{
             body: JSON.stringify(updateData)
             });
             const data = await response.json()
+            
             alert(data)
+
             window.location.reload()
 
         }
@@ -96,13 +99,13 @@ const ProjectDetails = () =>{
                     <div style={{display:'flex',justifyContent:'center'}}>
                         <Slider {...settings} style={{width:'80%'}}>
                             <div>
-                                <img src={`${project[0].data.ProjectImages1}`} alt="Image 1" />
+                                <img src={`${project[0].data.ProjectImages1}`} style={{height:'60vh',width:'100%'}} alt="Image 1" />
                             </div>
                             <div>
-                                <img src={`${project[0].data.ProjectImages2}`} alt="Image 2" />
+                                <img src={`${project[0].data.ProjectImages2}`} style={{height:'60vh',width:'100%'}} alt="Image 2" />
                             </div>
                             <div>
-                                <img src={`${project[0].data.ProjectImages3}`} alt="Image 3" />
+                                <img src={`${project[0].data.ProjectImages3}`} style={{height:'60vh',width:'100%'}} alt="Image 3" />
                             </div>
                             {/* Add more slides as needed */}
                         </Slider>
@@ -121,9 +124,25 @@ const ProjectDetails = () =>{
                         <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.Developer}</h1>
                     </div>
                     <div style={{display:'flex'}}>
+                        <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>College</h1>
+                        <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
+                        <h1 style={{color:'white',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.College}</h1>
+                    </div>
+                    <div style={{display:'flex'}}>
+                        <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>Domain </h1>
+                        <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
+                        <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.Domain}</h1>
+                    </div>
+                    <div style={{display:'flex'}}>
                         <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>Project Id </h1>
                         <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
                         <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.ProjectId}</h1>
+                    </div>
+                    
+                    <div style={{display:'flex'}}>
+                        <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>github</h1>
+                        <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
+                        <h1 style={{color:'blue',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5 cursor-pointer' ><a href={project[0].data.ProjectLink} target="_blank">{project[0].data.ProjectLink}</a></h1>
                     </div>
                     <div style={{display:'flex'}}>
                         <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>Date</h1>
@@ -131,20 +150,11 @@ const ProjectDetails = () =>{
                         <h1 style={{color:'white',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.Date}</h1>
                     </div>
                     <div style={{display:'flex'}}>
-                        <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>github</h1>
-                        <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
-                        <h1 style={{color:'blue',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5 cursor-pointer' ><a href={project[0].data.ProjectLink} target="_blank">{project[0].data.ProjectLink}</a></h1>
-                    </div>
-                    <div style={{display:'flex'}}>
                         <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>Collaborators</h1>
                         <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
                         <h1 style={{color:'white',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.Collaborators}</h1>
                     </div>
-                    <div style={{display:'flex'}}>
-                        <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>College</h1>
-                        <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
-                        <h1 style={{color:'white',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.College}</h1>
-                    </div>
+                   
                     
                     <div>
                         <h1 style={{color:'white',fontSize:'25px'}} className='mt-5 mb-4'>Software Used</h1>

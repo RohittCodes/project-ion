@@ -42,13 +42,14 @@ const AdminApprovalCard = (props) => {
   }
 
   return (
-    <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]">
+    <div className="flex flex-col bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]" style={{minHeight:'40vh'}}>
     
       <div className="flex flex-row items-center justify-between px-2 text-2xl font-bold font-mono text-gray-400">
         <div>Approval(s) Pending</div>
         <IoArrowForwardCircleOutline className="cursor-pointer" />
       </div>
-      <div className="w-full">
+      <div className="w-full" >
+        {projects.length > 0 ? 
         <table className="w-full border-separate">
           <thead className="table-header-group text-text-disabled">
             <tr>
@@ -60,7 +61,7 @@ const AdminApprovalCard = (props) => {
             </tr>
           </thead>
           <tbody className="text-text-disabled">
-            {projects.map((data, index) => (
+          {projects.map((data, index) => (
               <tr key={index}>
                 <td className="h-8 w-20 text-center" key={data.StudentId}>
                   {data.StudentId}
@@ -87,7 +88,7 @@ const AdminApprovalCard = (props) => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>: <h1 style={{paddingTop:'50px',fontSize:'20px',color:'white',textAlign:'center',fontFamily:'monospace'}} className="mt-5">There are currently no pending projects requiring approval.</h1>}
       </div>
     </div>
   );
