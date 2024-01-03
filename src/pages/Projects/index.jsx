@@ -2,14 +2,80 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react"
 import { Triangle } from "react-loader-spinner";
 import { NavLink } from "react-router-dom";
+import './index.css'
 
 const Projects = () =>{
     const [status,setStatus] = useState(false)
     const [count,setCount] = useState(0)
-    const [projects,setProjects] = useState()
+    const [projects,setProjects] = useState([])
     const [display,setDisplay] = useState(false)
+    const [Projects,setProject] = useState([]);
 
-    const [formData, setFormData] = useState({
+
+    let computerScienceDomains = [
+        "Artificial Intelligence (AI)",
+        "Data Science and Analytics",
+        "Cybersecurity and Cryptography",
+        "Software Development",
+        "Internet of Things (IoT)",
+        "Robotics",
+        "Computer Vision and Image Processing",
+        "Natural Language Processing (NLP)",
+        "Cloud Computing",
+        "Database Systems",
+        "Human-Computer Interaction (HCI)",
+        "Game Development",
+        "Bioinformatics and Computational Biology",
+        "Parallel and Distributed Computing",
+        "Computer Graphics and Visualization",
+        "Mobile Development",
+        "Web Development",
+        "Augmented Reality (AR)",
+        "Virtual Reality (VR)",
+        "Blockchain Technology",
+        "Big Data",
+        "Quantum Computing",
+        "Fintech (Financial Technology)",
+        "Geographic Information Systems (GIS)",
+        "E-commerce Technology",
+        "Embedded Systems",
+        "Signal Processing",
+        "Compiler Design",
+        "Operating Systems",
+        "Information Retrieval",
+        "Ethical AI",
+        "Explainable AI",
+        "Machine Learning Engineering",
+        "Deep Learning",
+        "Reinforcement Learning",
+        "Affective Computing",
+        "Computational Linguistics",
+        "Network Security",
+        "Malware Analysis",
+        "Privacy-Preserving Technologies",
+        "Biometric Systems",
+        "Health Informatics",
+        "Data Mining",
+        "Knowledge Representation and Reasoning",
+        "Cognitive Computing",
+        "Penetration Testing",
+        "Vulnerability Assessment",
+        "Digital Forensics",
+        "Incident Response",
+        "Social Engineering",
+        "Web Application Security",
+        "Network Exploitation",
+        "Reverse Engineering",
+        "Cyber Threat Intelligence",
+        "Wireless Network Security",
+        "Security Information and Event Management (SIEM)",
+        "Exploit Development",
+        "Threat Hunting",
+        "Security Operations Center (SOC)",
+        "Red Teaming"
+    ];
+
+    const [formData,setFormData] = useState({
         Name: '',
         OverView: '',
         Technologies: '',
@@ -19,7 +85,8 @@ const Projects = () =>{
         Collaborators: '',
         ProjectImages1:'',
         ProjectImages2:'',
-        ProjectImages3:''
+        ProjectImages3:'',
+        Domain:computerScienceDomains[0],
       });
     
       useEffect(() =>{
@@ -31,17 +98,34 @@ const Projects = () =>{
             if(location.pathname.startsWith("/admin")){
                 let data1 = data.filter(each => each.data.Approved == true && each.data.College == college);
                 console.log(data1)
+                
                 setProjects(data1)
+                setProject(data1)
             }else{
+                console.log(data)
                 
                 setProjects(data)
+                setProject(data)
             }
-            
             setCount(data.length)
             setDisplay(true)
         }
         fetchData()
       },[])
+      
+      const getAllProjects = () =>{
+            setProjects(Projects)
+
+      }
+      const getYourProjects = () =>{
+        const id = Cookies.get('student_id')
+        console.log(id)
+        const data = Projects.filter(each =>each.data.StudentProfileId == id)
+        console.log(data)
+        setProjects(data)
+  
+
+      }
 
 
       function preprocessText(text) {
@@ -92,13 +176,15 @@ const Projects = () =>{
 
     const submitForm = async(e) =>{
         e.preventDefault()
+        setDisplay(false)
         const url1 = 'http://localhost:3001/getProjects'
         const res1 = await fetch(url1)
         const data =await res1.json()
         let list = []
         data.filter(each =>{
             const similarity = documentSimilarity(each.data.OverView, formData.OverView);
-            if(similarity*100 > 30){
+            console.log(similarity)
+            if(similarity*100 > 20){
                 list.push(each)
             }
             
@@ -140,19 +226,33 @@ const Projects = () =>{
             Collaborators: '',
             ProjectImages1:'',
             ProjectImages2:'',
-            ProjectImages3:''
+            ProjectImages3:'',
+            Domain:''
           });
+          setDisplay(true)
           
     }
+
+    let auth = Cookies.get('Auth')
 
 
     return(
         <>
         {display ?
         <div style={{backgroundSize:'cover',minHeight:'100vh',paddingBottom:'5vh',textAlign:'center'}}>
-            <h1 style={{color:'white',fontFamily:"Roboto",fontSize:'35px',width:'90vw',textAlign:'center'}} className="mt-3" >Projects</h1>
-            <div style={{textAlign:'right'}} className="mt-5 mb-3">
-                <button onClick={addProject} className="btn btn-outline-info">{status?'Close':'Add Porject'}</button>
+            <h1 style={{color:'white',fontFamily:"Roboto",fontSize:'35px',width:'90vw',textAlign:'center'}} className="mt-3 " >Projects</h1>
+            <div style={{display:'flex'}}>
+                <div style={{display:'flex',justifyContent:'space-around',width:'92%'}}>
+                    {!status && <div className="mt-5 mb-3">
+                        <button onClick={getAllProjects} style={{width:'15vw'}} className="btn btn-outline-warning">All Projects</button>
+                    </div>}
+                    {!status &&<div  className="mt-5 mb-3">
+                        <button onClick={getYourProjects} style={{width:'15vw'}} className="btn btn-outline-danger">Your Projects</button>
+                    </div>}
+                </div>
+                <div  className="mt-5 mb-3" style={{width:'8%',alignSelf:'flex-end'}}>
+                    <button onClick={addProject} className="btn btn-outline-info">{status?'Close':'Add Porject'}</button>
+                </div>
             </div>
             {status && 
             <div style={{display:'flex',justifyContent:'center'}}>
@@ -167,6 +267,12 @@ const Projects = () =>{
                     <textarea style={{color:'black',fontWeight:'bolder'}} rows={10} className="form-control" type="text" onChange={handleInputChange} name="Outcome" value={formData.Outcome} />
                     <label style={{color:'white'}} className="mb-1 mt-3">DEVELOPER </label>
                     <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Developer" value={formData.Developer}/>
+                    <label style={{color:'white'}} className="mb-1 mt-3">DOMAIN </label>
+                    <select className="form-control" style={{textAlign:'center'}} onChange={handleInputChange} name="Domain" value={formData.Domain}>
+                    {computerScienceDomains.map(each =>(
+                        <option key={each}>{each}</option>
+                    ))}
+                    </select>
                     <label style={{color:'white'}} className="mb-1 mt-3">PROJECT LINK</label>
                     <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="ProjectLink" value={formData.ProjectLink}/>
                     <label style={{color:'white'}} className="mb-1 mt-3">COLLABORATORS</label>
@@ -190,11 +296,14 @@ const Projects = () =>{
                             <th className="text-center h-12" style={{width:'30%'}} key={1}>
                             PROJECT TITLE
                             </th>
-                            <th className="text-center h-12" style={{width:'30%'}} key={1}>
+                            <th className="text-center h-12" style={{width:'20%'}} key={1}>
                             DEVELOPER
                             </th>
-                            <th className="text-center h-12" style={{width:'30%'}} key={1}>
-                            TECHNOLOGIES
+                            <th className="text-center h-12" style={{width:'25%'}} key={1}>
+                            DOMAIN
+                            </th>
+                            <th className="text-center h-12" style={{width:'15%'}} key={1}>
+                                LIKES
                             </th>
                         </tr>
                     </thead>
@@ -205,10 +314,10 @@ const Projects = () =>{
                             
                             <NavLink
                                 to={{
-                                pathname: `/admin/project/${each.data.ProjectId}`,
+                                pathname: `${auth}/project/${each.data.ProjectId}`,
                                 state: { data1: each.data }
                                 }}
-                                style={{color:'blue'}}
+                                style={{color:'red'}}
                                
                             >
                                 {each.data.ProjectId}
@@ -221,7 +330,10 @@ const Projects = () =>{
                             {each.data.Developer}
                             </td>  
                             <td className="h-8 w-40 text-center" key={1}>
-                            {each.data.Technologies}
+                            {each.data.Domain}
+                            </td> 
+                            <td className="h-8 w-40 text-center" key={1}>
+                            {each.data.Likes.length}
                             </td>   
                         </tr>
                         ))}

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
 import Cookies from "js-cookie";
 import { useAuth } from "../../AuthContext";
+import './index.css'
 
 
 
@@ -144,15 +145,17 @@ const Login = () => {
       
       const data1 = await res.json();
       console.log(data1)
-     
-      
-        setErrorStatus(false);
+      if (res.status == 400) {
+        setErrorStatus(true);
+        setError(data1);
+      }else{
         console.log("Comming");
         Cookies.set("Auth", "/admin", { expires: 7 });
         Cookies.set("Login", true, { expires: 7 });
         Cookies.set('student_id',data1.collegename,{expires:7})
         Cookies.set("College",data1.collegename,{expires:7})
         navigate("/admin");
+      }
       
     }else{
           let url = "http://localhost:3001/studentLog"
@@ -207,13 +210,14 @@ const Login = () => {
         ) : (
           <form
             onSubmit={SubmitForm}
+            className="login p-5"
             style={{
               borderStyle: "inset",
               borderWidth: "1px",
               borderColor: "white",
               borderRadius: "12px",
             }}
-            className="p-5"
+          
           >
             <div style={{ textAlign: "center" }}>
               <button
@@ -244,7 +248,7 @@ const Login = () => {
                 />
                 <select className="mb-4 form-control" onChange={setState}>
                   {indianStates.map((each) => (
-                    <option>{each}</option>
+                    <option key={each}>{each}</option>
                   ))}
                 </select>
                 <input

@@ -20,6 +20,9 @@ import Explore from "./pages/explore";
 import Domain from "./pages/explore/domain";
 import Technology from "./pages/explore/technology";
 import AdminProfile from "./pages/admin-pages/AdminProfile";
+import ProjectDetails from "./pages/ProjectDetails";
+import ProtectedRoute from "./ProtectedRoute";
+
 
 function App() {
   return (
@@ -30,27 +33,39 @@ function App() {
           <Sidebar />
           <Routes>
             {/* ADMIN ROUTES */}
-            <Route exact path="/login" element={<Login />} />
-            <Route path="/profile/:id" element={<ProfilePage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/register" element={<AddStudents />} />
-            <Route path="/admin/students" element={<StudentsData />} />
+            <Route exact path="/login" element={<Login/>} />
+            <Route path="/admin/profile/:id" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>} />
+            <Route path="/" element={<ProtectedRoute><HomePage/></ProtectedRoute>} />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/admin/register" element={<ProtectedRoute><AddStudents/></ProtectedRoute>} />
+            <Route path="/admin/students" element={<ProtectedRoute><StudentsData/></ProtectedRoute>} />
+            <Route exact path="/admin/project/:id" element={<ProtectedRoute><ProjectDetails/></ProtectedRoute>}/>
+            <Route exact path="/admin/ranking" element={<ProtectedRoute><Ranking/></ProtectedRoute>} />
+            <Route exact path="/admin/projects" element={<ProtectedRoute><Projects/></ProtectedRoute>} />
+
 
             {/* STUDENTS ROUTES */}
-            <Route path="/student" element={<HomePage />} />
-            <Route exact path="/student/ranking" element={<Ranking />} />
-            <Route exact path="/student/projects" element={<Projects />} />
+            <Route path="/student" element={<ProtectedRoute><HomePage/></ProtectedRoute>} />
+            <Route exact path="/student/project/:id" element={<ProtectedRoute><ProjectDetails/></ProtectedRoute>}/>
+            <Route exact path="/student/ranking" element={<ProtectedRoute><Ranking/></ProtectedRoute>} />
+            <Route exact path="/student/projects" element={<ProtectedRoute><Projects/></ProtectedRoute>} />
 
             {/* TASK ROUTES */}
             <Route path="/task/projectlist" element={<ProjectList />} />
             <Route path="/task/addProject" element={<AddProgramPage />} />
 
             <Route path="*" element={<PageNotFound />} />
-            <Route path="/admin/explore" element={<Explore />} />
-            <Route path="/admin/explore/domain" element={<Domain />} />
+            <Route path="/admin/explore" element={<ProtectedRoute><Explore/></ProtectedRoute>} />
+            <Route path="/admin/explore/domain" element={<ProtectedRoute><Domain/></ProtectedRoute>} />
             <Route path="/admin/explore/technology" />
-            <Route path="/admin/profile" element={<AdminProfile />} />
+            <Route path="/admin/profile" element={<ProtectedRoute><AdminProfile/></ProtectedRoute>} />
           </Routes>
         </div>
       </BrowserRouter>

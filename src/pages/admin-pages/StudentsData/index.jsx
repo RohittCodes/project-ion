@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { Triangle } from "react-loader-spinner";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const StudentsData = () => {
 
@@ -12,9 +13,12 @@ const StudentsData = () => {
         const url = 'http://localhost:3001/getStudent'
         const res = await fetch(url)
         const data =await res.json()
-        setStudents(data)
+        let college = Cookies.get('College')
+        let students = data.filter(each =>each.College == college)
+        students.reverse()
+        setStudents(students)
         setDisplay(true)
-        console.log(data)
+        console.log(students)
     }
     fetchData()
   },[])

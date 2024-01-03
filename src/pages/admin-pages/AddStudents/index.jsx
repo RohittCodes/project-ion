@@ -44,6 +44,7 @@ const AddStudents = () => {
   const submitForm =async e =>{
     e.preventDefault()
     console.log('Form submitted:', formData);
+    formData['likes'] = 0
     formData['StudentProfileId'] = "student_"+count
     const url = 'http://localhost:3001/addStudent'
     let requestOptions = {

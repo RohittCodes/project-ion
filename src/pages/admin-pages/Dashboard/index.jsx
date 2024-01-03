@@ -25,9 +25,11 @@ const Dashboard = () => {
         const res = await fetch(url)
         const data =await res.json()
         let college = Cookies.get('College')
-        setProject(data)
-        console.log(data)
-        let data1 = data.filter(each => each.data.Approved == false);
+        console.log(college)
+        let CollegeProjects = data.filter(each =>each.data.College == college)
+        setProject(CollegeProjects)
+        console.log(CollegeProjects)
+        let data1 = CollegeProjects.filter(each => each.data.Approved == false );
         console.log(data1)
 
        
@@ -36,10 +38,11 @@ const Dashboard = () => {
         const url1 = 'http://localhost:3001/students'
         const res1 = await fetch(url1)
         const data3 =await res1.json()
-        setStudents(data3)
+        const collegeStudents = data3.filter(each => each.College == college )
+        setStudents(collegeStudents)  
         let dataObject = []
-        const filtered = data1.map(obj1 =>
-          data3.some(obj2 => {
+        data1.map(obj1 =>
+          collegeStudents.some(obj2 => {
             if(obj2.StudentProfileId === obj1.data.StudentProfileId){
                 dataObject.push({
                   StudentId :obj2.StudentId,
@@ -66,7 +69,7 @@ const Dashboard = () => {
       <AdminCards students={students} projects={project} pending={projects} />
       <div className="flex flex-row justify-between gap-4">
         <div className="flex-1 space-y-4">
-          <AdminApprovalCard data={projects} />
+          <AdminApprovalCard data={projects}  />
           <StudentsCard students={students} />
         </div>
         <div className="flex flex-col w-4/12 gap-4">
