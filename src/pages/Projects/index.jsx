@@ -98,12 +98,12 @@ const Projects = () =>{
             if(location.pathname.startsWith("/admin")){
                 let data1 = data.filter(each => each.data.Approved == true && each.data.College == college);
                 console.log(data1)
-                
+                data1.sort((a,b) =>b.ProjectId - a.ProjectId)
                 setProjects(data1)
                 setProject(data1)
             }else{
                 console.log(data)
-                
+                data.sort((a,b) =>console.log(a.data.Date))
                 setProjects(data)
                 setProject(data)
             }
@@ -285,8 +285,8 @@ const Projects = () =>{
                 </form>
             </div>}
             {!status && 
-            <div style={{display:'flex',justifyContent:'center',width:'100%'}}>
-            <div className="rounded-lg bg-dark overflow-hidden h-full ml-5 mt-2" style={{width:'100%'}}>
+            <div style={{display:'flex',justifyContent:'center',width:'94vw'}}>
+            <div className="rounded-lg bg-dark overflow-hidden h-full w-full ml-5 mt-2" style={{width:'100%'}}>
                 <table className="table table-bordered table-hover table-dark rounded-xxl">
                     <thead className="table-header-group text-muted">
                         <tr>
@@ -317,7 +317,7 @@ const Projects = () =>{
                                 pathname: `${auth}/project/${each.data.ProjectId}`,
                                 state: { data1: each.data }
                                 }}
-                                style={{color:'red'}}
+                                style={{color:'white'}}
                                
                             >
                                 {each.data.ProjectId}

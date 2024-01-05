@@ -80,6 +80,7 @@ const Sidebar = () => {
 
   const location = useLocation();
 
+  
   if (location.pathname.startsWith("/admin")) {
     return (
       <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary">
