@@ -98,12 +98,12 @@ const Projects = () =>{
             if(location.pathname.startsWith("/admin")){
                 let data1 = data.filter(each => each.data.Approved == true && each.data.College == college);
                 console.log(data1)
-                data1.sort((a,b) =>b.ProjectId - a.ProjectId)
+                data1.sort((a, b) => a.data.ProjectId.localeCompare(b.data.ProjectId));
                 setProjects(data1)
                 setProject(data1)
             }else{
                 console.log(data)
-                data.sort((a,b) =>console.log(a.data.Date))
+                data.sort((a, b) => a.data.ProjectId.localeCompare(b.data.ProjectId));
                 setProjects(data)
                 setProject(data)
             }
@@ -234,6 +234,9 @@ const Projects = () =>{
     }
 
     let auth = Cookies.get('Auth')
+    function capitalizeString(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 
 
     return(
@@ -242,17 +245,18 @@ const Projects = () =>{
         <div style={{backgroundSize:'cover',minHeight:'100vh',paddingBottom:'5vh',textAlign:'center'}}>
             <h1 style={{color:'white',fontFamily:"Roboto",fontSize:'35px',width:'90vw',textAlign:'center'}} className="mt-3 " >Projects</h1>
             <div style={{display:'flex'}}>
-                <div style={{display:'flex',justifyContent:'space-around',width:'92%'}}>
+                <div  className="w-full flex justify-around">
                     {!status && <div className="mt-5 mb-3">
                         <button onClick={getAllProjects} style={{width:'15vw'}} className="btn btn-outline-warning">All Projects</button>
                     </div>}
                     {!status &&<div  className="mt-5 mb-3">
-                        <button onClick={getYourProjects} style={{width:'15vw'}} className="btn btn-outline-danger">Your Projects</button>
+                        <button onClick={getYourProjects} style={{width:'15vw'}} className="btn btn-outline-warning">Your Projects</button>
                     </div>}
+                    <div className="mt-5 mb-3 text-right">
+                        <button onClick={addProject} className="btn btn-outline-warning">{status?'Close':'Add Porject'}</button>
+                    </div>
                 </div>
-                <div  className="mt-5 mb-3" style={{width:'8%',alignSelf:'flex-end'}}>
-                    <button onClick={addProject} className="btn btn-outline-info">{status?'Close':'Add Porject'}</button>
-                </div>
+                
             </div>
             {status && 
             <div style={{display:'flex',justifyContent:'center'}}>
@@ -284,66 +288,47 @@ const Projects = () =>{
                     <button type="submit" className="btn btn-info mt-5" style={{backgroundColor:'gray'}} >Submit</button>
                 </form>
             </div>}
-            {!status && 
-            <div style={{display:'flex',justifyContent:'center',width:'94vw'}}>
-            <div className="rounded-lg bg-dark overflow-hidden h-full w-full ml-5 mt-2" style={{width:'100%'}}>
-                <table className="table table-bordered table-hover table-dark rounded-xxl">
-                    <thead className="table-header-group text-muted">
-                        <tr>
-                            <th className="text-center h-12" style={{width:'10%'}} key={1}>
-                            PROJECT ID
-                            </th>
-                            <th className="text-center h-12" style={{width:'30%'}} key={1}>
-                            PROJECT TITLE
-                            </th>
-                            <th className="text-center h-12" style={{width:'20%'}} key={1}>
-                            DEVELOPER
-                            </th>
-                            <th className="text-center h-12" style={{width:'25%'}} key={1}>
-                            DOMAIN
-                            </th>
-                            <th className="text-center h-12" style={{width:'15%'}} key={1}>
-                                LIKES
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody className="text-muted">
-                        {projects.map(each =>(
-                            <tr key={1}>
-                            <td className="h-8 w-16 text-center" style={{}} key={1 + 1}>
+            {!status && <div className="flex justify-center mt-11 min-w-full flex-wrap">
+                {projects.map(each =>(
+                    <div className="bg-white max-w-md rounded-md m-2 font-sans text-sm p-4 w-2/3">
+                        <h1 className="font-extrabold text-left">{each.data.Name.toUpperCase()}</h1>
+                        <p className="text-left mt-3 font-medium h-24">{each.data.OverView.slice(0,200)}....</p>
+                        <div className="flex justify-between">
+                            <div className="text-left mt-3 font-medium">
+                                <h1 className="text-teal-900">Author</h1>
+                                <h1 className="mt-2">{each.data.Developer.toUpperCase()}</h1>
+                            </div>
+                            <div className="text-left mt-3 font-medium mb-3">
+                                <h1 className="text-teal-900">Collaborator(s)</h1>
+                                <h1 className="mt-2">{each.data.Collaborators.toUpperCase()}</h1>
+                            </div>
+                        </div>
+                        <div className="text-left mt-3 font-medium mb-4">
+                            <h1 className="text-teal-900 font-sans ">College</h1>
+                            <h1 className="mt-2 font-sans ">{each.data.College.toUpperCase()}</h1>
+                        </div>
+                        <div className="text-left mt-3">
+                            <h1 className="text-teal-900 font-sans mb-4 font-medium">Skills to be Learned</h1>
+                            <div className="flex">
+                            <ul className="w-full flex gap-2">
+                            {each.data.Technologies.split(',').slice(0,3).map(each => (
+                                <li key={each}>
+                                    <div className="border-solid border-2 border-gray-600 rounded-full px-2 py-1 font-sm ">{each.toUpperCase()}</div>
+                                </li>
+                            ))}
+                            </ul>
                             
-                            <NavLink
-                                to={{
-                                pathname: `${auth}/project/${each.data.ProjectId}`,
-                                state: { data1: each.data }
-                                }}
-                                style={{color:'white'}}
-                               
-                            >
-                                {each.data.ProjectId}
-                            </NavLink>
-                            </td>
-                            <td className="h-8 w-40 text-center" key={1}>
-                            {each.data.Name}
-                            </td>
-                            <td className="h-8 w-40 text-center" key={1}>
-                            {each.data.Developer}
-                            </td>  
-                            <td className="h-8 w-40 text-center" key={1}>
-                            {each.data.Domain}
-                            </td> 
-                            <td className="h-8 w-40 text-center" key={1}>
-                            {each.data.Likes.length}
-                            </td>   
-                        </tr>
-                        ))}
-                    </tbody>
-                </table>
+                            <NavLink to={{pathname: `${auth}/project/${each.data.ProjectId}`,state: { data1: each.data }}} className="w-1/3 text-blue-700 font-sans font-medium">See more..</NavLink>
+                            </div>
+                            
+                        </div>
+                    </div>
+                ))}
             </div>
-        </div>}
+         }
 
             
-        </div>:<div style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+        </div>:<div  className="w-100 flex justify-center items-center h-96">
     <Triangle
             
             height="100"

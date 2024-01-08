@@ -210,7 +210,7 @@ const Login = () => {
         ) : (
           <form
             onSubmit={SubmitForm}
-            className="login p-5"
+            className="p-5"
             style={{
               borderStyle: "inset",
               borderWidth: "1px",

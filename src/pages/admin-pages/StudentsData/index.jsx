@@ -15,7 +15,7 @@ const StudentsData = () => {
         const data =await res.json()
         let college = Cookies.get('College')
         let students = data.filter(each =>each.College == college)
-        students.reverse()
+        students.sort((a, b) => a.StudentProfileId.localeCompare(b.StudentProfileId));
         setStudents(students)
         setDisplay(true)
         console.log(students)

@@ -18,7 +18,7 @@ const StudentsCard = (props) => {
     <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]">
       <div className="flex flex-row items-center justify-between px-2 text-2xl font-bold font-mono text-gray-400">
         <div>Students Data</div>
-        <IoArrowForwardCircleOutline className="cursor-pointer" />
+        <NavLink to={'/admin/students'}><IoArrowForwardCircleOutline className="cursor-pointer" /></NavLink>
       </div>
       <div className="w-full">
         <table className="w-full border-separate">
@@ -32,6 +32,7 @@ const StudentsCard = (props) => {
             </tr>
           </thead>
           <tbody className="text-text-disabled">
+
             {studentsData.map((data, index) => (
               <tr key={index}>
                 <td className="h-8 w-16 text-center" key={index + 1}>

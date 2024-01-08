@@ -2,7 +2,29 @@ import React, { Component, useState } from "react";
 import Chart from "react-apexcharts";
 import { IoMdArrowForward } from "react-icons/io";
 
-const ProjectSumissionGraph = () => {
+const ProjectSumissionGraph = (props) => {
+  console.log(props.data)
+  let dates = []
+  props.data.map(each => dates.push(each.data.Date))
+  let months = []
+  dates.map(each => {
+    let temp = new Date(each)
+    months.push(temp.getMonth() + 1)
+  })
+  
+  months.sort((a,b) =>a - b)
+  console.log(months)
+  const countMap = {};
+
+  months.forEach((num) => {
+    countMap[num] = (countMap[num] || 0) + 1;
+  });
+
+  const countArray = Array.from({ length: Math.max(...months) + 1 }, (_, i) => countMap[i] || 0);
+  countArray.shift()
+  console.log(countArray);
+
+
   const [selectedYear, setSelectedYear] = useState(() =>
     new Date().getFullYear()
   );
@@ -11,22 +33,13 @@ const ProjectSumissionGraph = () => {
     {
       year: 2023,
       name: "Total Projects",
-      data: [30, 40, 45, 50, 49, 60, 70, 91, 34, 3, 34, 55],
+      data: countArray,
     },
-    {
-      year: 2022,
-      name: "Total Projects",
-      data: [25, 40, 45, 50, 49, 60, 70, 75, 34, 3, 34, 55],
-    },
-    {
-      year: 2021,
-      name: "Total Projects",
-      data: [25, 40, 45, 50, 49, 60, 70, 75, 34, 3, 34, 1],
-    },
+
   ];
 
   const filteredChartData = chartData.find(
-    (item) => item.year === parseInt(selectedYear)
+    (item) => item.year === parseInt(2023)
   );
 
   const seriesData = filteredChartData ? filteredChartData.data : [];
@@ -85,11 +98,9 @@ const ProjectSumissionGraph = () => {
         <select
           className="bg-background-components text-text-disabled border-border-secondary border-[1px] rounded-md px-1 focus:outline-none"
           value={selectedYear}
-          onChange={(e) => setSelectedYear(e.target.value)}
+          onChange={(e) => setSelectedYear(2023)}
         >
           <option value={2023}>2023</option>
-          <option value={2022}>2022</option>
-          <option value={2021}>2021</option>
         </select>
       </div>
       <Chart

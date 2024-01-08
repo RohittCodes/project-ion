@@ -40,6 +40,7 @@ const Dashboard = () => {
         const data3 =await res1.json()
         const collegeStudents = data3.filter(each => each.College == college )
         setStudents(collegeStudents)  
+        collegeStudents.sort((a, b) => a.StudentProfileId.localeCompare(b.StudentProfileId))
         let dataObject = []
         data1.map(obj1 =>
           collegeStudents.some(obj2 => {
@@ -70,11 +71,11 @@ const Dashboard = () => {
       <div className="flex flex-row justify-between gap-4">
         <div className="flex-1 space-y-4">
           <AdminApprovalCard data={projects}  />
-          <StudentsCard students={students} />
+          <StudentsCard students={students.slice(0,4)} />
         </div>
-        <div className="flex flex-col w-4/12 gap-4">
-          <RanksCard />
-          <ProjectSumissionGraph  />
+        <div className="flex flex-col w-5/12 gap-4">
+          <RanksCard students={students} />
+          <ProjectSumissionGraph data={project}  />
           <CreditsCard />
         </div>
       </div>

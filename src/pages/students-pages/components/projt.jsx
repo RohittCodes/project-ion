@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Projt = () => {
-  const tableFields = ["S. No.", "Project name", "Project rank", "Profile"];
+const Projt = ({projects}) => {
+  
+  const tableFields = ["S. No.", "Project name", "Likes", "Profile"];
   const ProjectTable = [
     {
       name: "project management",
@@ -38,7 +39,7 @@ const Projt = () => {
       margin: "10px",
       minHeight: "auto",
       backgroundColor: "#333",
-      width: "42.5vw",
+      width: "60%",
       color: "#fff",
       padding: "20px",
       overflow: "hidden",
@@ -62,16 +63,16 @@ const Projt = () => {
           </tr>
         </thead>
         <tbody className="text-muted">
-          {ProjectTable.map((data, index) => (
-            <tr key={index}>
+          {projects.map((data, index) => (
+            <tr key={data.data.StudentProfileId}>
               <td className="h-8 w-16 text-center" key={index + 1}>
                 {index + 1}
               </td>
-              <td className="h-8 w-32 text-center" key={data.name}>
-                {data.name}
+              <td className="h-8 w-32 text-center" key={data.data.Name}>
+                {data.data.Name}
               </td>
-              <td className="h-8 w-24 text-center" key={data.rank}>
-                {data.rank}
+              <td className="h-8 w-24 text-center" key={data.data.Likes.length}>
+                {data.data.Likes.length}
               </td>
               <td className="h-8 w-24 text-center">
                 <NavLink to="" className="btn btn-primary">
