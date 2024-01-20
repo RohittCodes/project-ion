@@ -52,6 +52,7 @@ function App() {
             <Route exact path="/admin/project/:id" element={<ProtectedRoute><ProjectDetails/></ProtectedRoute>}/>
             <Route exact path="/admin/ranking" element={<ProtectedRoute><Ranking/></ProtectedRoute>} />
             <Route exact path="/admin/projects" element={<ProtectedRoute><Projects/></ProtectedRoute>} />
+          
 
 
             {/* STUDENTS ROUTES */}
@@ -61,6 +62,8 @@ function App() {
             <Route exact path="/student/ranking" element={<ProtectedRoute><Ranking/></ProtectedRoute>} />
             <Route exact path="/student/projects" element={<ProtectedRoute><Projects/></ProtectedRoute>} />
             <Route exact path="/student/following" element={<Following/>}/>
+            <Route path="/student/profile/:id" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>} />
+            <Route exact path="/students" component={<StudentsData/>} />
 
             {/* TASK ROUTES */}
             <Route path="/task/projectlist" element={<ProjectList />} />
