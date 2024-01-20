@@ -3,11 +3,14 @@ import { NavLink } from "react-router-dom";
 import profilePhoto from "./profilepic.png";
 
 const Profilew = (props) => {
+  console.log(props);
+  const student = props.student[0];
+  console.log(student);
   const user = {
     profilePhoto: profilePhoto,
-    user: "dheeraj",
-    userid: "14333333",
-    rank: "10,000",
+    user: student.StudentName,
+    userid: student.StudentId,
+    rank: props.rank,
     views: "10",
     solutions: "100",
     discuss: "5",
@@ -86,7 +89,11 @@ const Profilew = (props) => {
     <div style={styles.userProfile}>
       <div style={{ display: "flex" }}>
         <div style={styles.profilePhoto}>
-          <img src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_male-512.png" alt="..." className="h-full" />
+          <img
+            src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_male-512.png"
+            alt="..."
+            className="h-full"
+          />
         </div>
         <div style={styles.userInfo}>
           <div style={styles.h1}>
