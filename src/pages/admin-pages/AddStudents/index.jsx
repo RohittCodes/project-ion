@@ -83,22 +83,51 @@ const AddStudents = () => {
     <>
     {display ?
     
-    <div className="container mt-5 flex justify-center items-center p-4">
-      <form style={{borderWidth:'1px',width:'35%',alignSelf:'center',backgroundSize:'cover',borderRadius:'8px'}} onSubmit={submitForm} className="p-5" >
-                    <label  style={{color:'white'}} className="mb-1 mt-3">STUDENT NAME</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentName" value={formData.StudentName}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">STUDENT ID</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentId" value={formData.StudentId}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">COLLEGE NAME</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="College" value={formData.College}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">STUDENT YEAR</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentYear" value={formData.StudentYear}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">STUDENT BRANCH</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentBranch" value={formData.StudentBranch}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">STUDENT SECTION</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentSection" value={formData.StudentSection} />
-                    <label style={{color:'white'}} className="mb-1 mt-3">STUDENT EMAIL ID </label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentEmail" value={formData.StudentEmail}/>
+    <div className="container mt-0 flex justify-center items-center p-4">
+      <form onSubmit={submitForm} className="p-5 border-1 w-full rounded-lg" >
+                  <h1 className='text-white text-center mb-5 font-sans font-medium text-lg font-r'>STUDENT DATA FORM</h1>
+                  <div className='flex'>
+                    <div className='w-1/2'>
+                      <label  style={{color:'white'}} className="mb-1 mt-3">STUDENT NAME</label>
+                      <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentName" value={formData.StudentName}/>
+                    </div>
+                    <div className='w-1/2 ml-10'>
+                      <label style={{color:'white'}} className="mb-1 mt-3">STUDENT ID</label>
+                      <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentId" value={formData.StudentId}/>
+                    </div>
+                    
+                  </div>
+                  <div className='flex mt-4'>
+                    <div className='w-1/2'>
+                      <label style={{color:'white'}} className="mb-1 mt-3">COLLEGE NAME</label>
+                      <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="College" value={formData.College}/>
+                    </div>
+                    <div className='w-1/2 ml-10'>
+                      <label style={{color:'white'}} className="mb-1 mt-3">STUDENT EMAIL ID </label>
+                      <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentEmail" value={formData.StudentEmail}/>
+                    </div>
+                    
+                  </div>
+                  <div className='flex mt-4'>
+                    <div className='w-1/3'>
+                        <label style={{color:'white'}} className="mb-1 mt-3">STUDENT YEAR</label>
+                        <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentYear" value={formData.StudentYear}/>
+                      </div>
+                      <div className='w-1/2 ml-10'>
+                        <label style={{color:'white'}} className="mb-1 mt-3">STUDENT BRANCH</label>
+                        <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentBranch" value={formData.StudentBranch}/>
+                      </div>
+                      <div className='w-1/3 ml-10'>
+                        <label style={{color:'white'}} className="mb-1 mt-3">STUDENT SECTION</label>
+                        <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentSection" value={formData.StudentSection} />
+                      </div>
+                  </div>
+                  <div className='flex mt-4'>
+                    <div className='w-1/2'>
+                      <label style={{color:'white'}} className="mb-1 mt-3">STUDENT  LINKEDIN</label>
+                      <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentLinkedin" value={formData.StudentLinkedin}/>
+                    </div>
+                    <div className='w-1/2 ml-10'>
                     <label style={{color:'white'}} className="mb-1 mt-3">STUDENT PASSWORD </label>
                     <div style={{display:'flex'}}>
                       <input style={{color:'black',fontWeight:'bolder',width:'90%'}} className="form-control mr-2"  type={showPassword ? 'text' : 'password'} onChange={handleInputChange} name="StudentPassword" value={formData.StudentPassword}/>
@@ -106,8 +135,8 @@ const AddStudents = () => {
                         {showPassword ? 'Hide' : 'Show'} 
                       </button>
                     </div>
-                    <label style={{color:'white'}} className="mb-1 mt-3">STUDENT  LINKEDIN</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="StudentLinkedin" value={formData.StudentLinkedin}/>
+                    </div>
+                  </div>
                     <div style={{textAlign:'center'}}>
                       <button type="submit" className="btn btn-outline-info mt-5 ">Submit</button>
                     </div>

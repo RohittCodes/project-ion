@@ -1,6 +1,7 @@
 import React from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import 'animate.css'
 
 const StudentsCard = (props) => {
   const tableFields = [
@@ -15,7 +16,7 @@ const StudentsCard = (props) => {
   let studentsData = props.students
   console.log(props.students)
   return (
-    <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]">
+    <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px] animate__animated animate__backInLeft">
       <div className="flex flex-row items-center justify-between px-2 text-2xl font-bold font-mono text-gray-400">
         <div>Students Data</div>
         <NavLink to={'/admin/students'}><IoArrowForwardCircleOutline className="cursor-pointer" /></NavLink>

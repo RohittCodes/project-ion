@@ -3,6 +3,7 @@ import React,{ useEffect,useState } from 'react';
 import { PiStudentFill } from "react-icons/pi";
 import { BiLike,BiDislike } from "react-icons/bi";
 import Cookies from "js-cookie";
+import 'animate.css'
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -92,11 +93,11 @@ const ProjectDetails = () =>{
                     <div>
                         <h1 style={{color:'white',fontSize:'25px'}} className='mt-5 mb-4'>Abstract </h1>
                         <hr style={{color:'white'}}/>
-                        <p style={{color:'white',fontSize:'18px'}} className='mt-3'>{project[0].data.OverView}</p>
+                        <p style={{color:'white',fontSize:'18px'}} className='mt-3 animate__animated animate__fadeInUp'>{project[0].data.OverView}</p>
                     </div>
                     <h1  style={{color:'white',fontSize:'25px'}} className='mt-5 mb-4'>Results</h1>
                     <hr style={{color:'white'}} className='mt-2 mb-4'/>
-                    <div style={{display:'flex',justifyContent:'center'}}>
+                    <div style={{display:'flex',justifyContent:'center'}} className='animate__animated animate__fadeInUp'>
                         <Slider {...settings} style={{width:'80%'}}>
                             <div>
                                 <img src={`${project[0].data.ProjectImages1}`} style={{height:'60vh',width:'100%'}} alt="Image 1" />
@@ -113,7 +114,7 @@ const ProjectDetails = () =>{
                     <div>
                         <h1 style={{color:'white',fontSize:'25px'}} className='mt-5 mb-4'>Project Outcome </h1>
                         <hr style={{color:'white'}}/>
-                        <p style={{color:'white',fontSize:'18px'}} className='mt-3'>{project[0].data.Outcome}</p>
+                        <p style={{color:'white',fontSize:'18px'}} className='mt-3 animate__animated animate__fadeInUp'>{project[0].data.Outcome}</p>
                     </div>
                    
                 </div>
@@ -121,22 +122,22 @@ const ProjectDetails = () =>{
                     <div style={{display:'flex'}}>
                         <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>Developer </h1>
                         <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
-                        <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.Developer}</h1>
+                        <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5 animate__animated animate__fadeInUp' >{project[0].data.Developer}</h1>
                     </div>
                     <div style={{display:'flex'}}>
                         <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>College</h1>
                         <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
-                        <h1 style={{color:'white',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.College}</h1>
+                        <h1 style={{color:'white',marginTop:'28px',fontSize:'20px',width:'75%'}} className='ml-5 animate__animated animate__fadeInUp' >{project[0].data.College}</h1>
                     </div>
                     <div style={{display:'flex'}}>
                         <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>Domain </h1>
                         <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
-                        <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.Domain}</h1>
+                        <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5 animate__animated animate__fadeInUp' >{project[0].data.Domain}</h1>
                     </div>
                     <div style={{display:'flex'}}>
                         <h1 style={{color:'white',fontSize:'20px',width:'30%'}} className='mt-4'>Project Id </h1>
                         <h1 style={{color:'white',fontSize:'20px'}} className='mt-4'>:</h1>
-                        <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5' >{project[0].data.ProjectId}</h1>
+                        <h1 style={{color:'white',marginTop:'22px',fontSize:'20px',width:'75%'}} className='ml-5 animate__animated animate__fadeInUp' >{project[0].data.ProjectId}</h1>
                     </div>
                     
                     <div style={{display:'flex'}}>

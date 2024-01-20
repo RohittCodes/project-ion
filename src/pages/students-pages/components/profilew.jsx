@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import profilePhoto from "./profilepic.jpg";
+import profilePhoto from "./profilepic.png";
 
 const Profilew = (props) => {
   const user = {
@@ -86,7 +86,7 @@ const Profilew = (props) => {
     <div style={styles.userProfile}>
       <div style={{ display: "flex" }}>
         <div style={styles.profilePhoto}>
-          <img src={user.profilePhoto} alt="..." />
+          <img src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_male-512.png" alt="..." className="h-full" />
         </div>
         <div style={styles.userInfo}>
           <div style={styles.h1}>

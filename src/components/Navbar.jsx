@@ -66,12 +66,12 @@ const Navbar = () => {
               
             </li>
             <hr style={{backgroundColor:'white'}}/>
-            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><FaRankingStar className="mt-1 mr-2"/><p>Ranking</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><FaRankingStar className="mt-1 mr-2"/><p><NavLink to={{pathname: `${location.pathname.startsWith("/admin") ? '/admin/ranking':'student/ranking'}`}}>Ranking</NavLink></p></li>
             {!location.pathname.startsWith("/admin")&&
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollow className="mt-1 mr-2"/><p>Followers</p></li>}
             {!location.pathname.startsWith("/admin")&&
-            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollowing className="mt-1 mr-2"/><p>Following</p></li>}
-            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><GoProject className="mt-1 mr-2"/><p>Your Projects</p></li>
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><SlUserFollowing className="mt-1 mr-2"/><p><NavLink to={{pathname: `student/projects`}}>Following</NavLink></p></li>}
+            <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><GoProject className="mt-1 mr-2"/><p><NavLink to={{pathname: `${location.pathname.startsWith("/admin") ? '/admin/projects':'student/projects'}`}}>Projects</NavLink></p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><MdOutlineHelpCenter className="mt-1 mr-2"/><p>Problems</p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer "><RiLockPasswordLine className="mt-1 mr-2"/><p>Reset Password</p></li>
             <li style={{display:'flex',color:'white'}} className="m-3 ml-4 cursor-pointer"><MdSupportAgent className="mt-1 mr-2"/><p>Help</p></li>

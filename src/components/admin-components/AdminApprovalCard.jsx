@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
+import 'animate.css'
 
 
 const AdminApprovalCard = (props) => {
@@ -42,7 +43,7 @@ const AdminApprovalCard = (props) => {
   }
 
   return (
-    <div className="flex flex-col bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]" style={{minHeight:'40vh'}}>
+    <div className="flex flex-col bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px] animate__animated animate__backInLeft" style={{minHeight:'40vh'}}>
     
       <div className="flex flex-row items-center justify-between px-2 text-2xl font-bold font-mono text-gray-400">
         <div>Approval(s) Pending</div>

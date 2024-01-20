@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Triangle } from "react-loader-spinner";
 import { NavLink } from "react-router-dom";
 import './index.css'
+import 'animate.css'
 
 const Projects = () =>{
     const [status,setStatus] = useState(false)
@@ -242,8 +243,8 @@ const Projects = () =>{
     return(
         <>
         {display ?
-        <div style={{backgroundSize:'cover',minHeight:'100vh',paddingBottom:'5vh',textAlign:'center'}}>
-            <h1 style={{color:'white',fontFamily:"Roboto",fontSize:'35px',width:'90vw',textAlign:'center'}} className="mt-3 " >Projects</h1>
+        <div style={{backgroundSize:'cover',minHeight:'100vh',paddingBottom:'5vh',textAlign:'center'}} className="w-full">
+            <h1 style={{color:'white',fontFamily:"Roboto",fontSize:'35px',width:'100%',textAlign:'center'}} className="mt-3 " >Projects</h1>
             <div style={{display:'flex'}}>
                 <div  className="w-full flex justify-around">
                     {!status && <div className="mt-5 mb-3">
@@ -260,37 +261,69 @@ const Projects = () =>{
             </div>
             {status && 
             <div style={{display:'flex',justifyContent:'center'}}>
-                <form style={{borderWidth:'1px',width:'40%',alignSelf:'center',backgroundSize:'cover'}} className="p-5 " onSubmit={submitForm}>
-                    <label  style={{color:'white'}} className="mb-1 mt-3">PROJECT NAME</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Name" value={formData.Name}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">PROJECT OVERVIEW</label>
-                    <textarea style={{color:'black',fontWeight:'bolder'}} rows={10} className="form-control" type="text" onChange={handleInputChange} name="OverView" value={formData.OverView}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">TECHNOLOGIES USED</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Technologies" value={formData.Technologies}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">OUTCOME</label>
-                    <textarea style={{color:'black',fontWeight:'bolder'}} rows={10} className="form-control" type="text" onChange={handleInputChange} name="Outcome" value={formData.Outcome} />
-                    <label style={{color:'white'}} className="mb-1 mt-3">DEVELOPER </label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Developer" value={formData.Developer}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">DOMAIN </label>
-                    <select className="form-control" style={{textAlign:'center'}} onChange={handleInputChange} name="Domain" value={formData.Domain}>
-                    {computerScienceDomains.map(each =>(
-                        <option key={each}>{each}</option>
-                    ))}
-                    </select>
-                    <label style={{color:'white'}} className="mb-1 mt-3">PROJECT LINK</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="ProjectLink" value={formData.ProjectLink}/>
-                    <label style={{color:'white'}} className="mb-1 mt-3">COLLABORATORS</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} type="text" className="form-control" onChange={handleInputChange} name="Collaborators" value={formData.Collaborators} />
-                    <label style={{color:'white'}} className="mb-1 mt-3">IMAGE LINK</label>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control mt-3" type="text" onChange={handleInputChange} placeholder="image_url1" name="ProjectImages1" value={formData.ProjectImages1}/>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control mt-3" type="text" onChange={handleInputChange} placeholder="image_url2" name="ProjectImages2" value={formData.ProjectImages2}/>
-                    <input style={{color:'black',fontWeight:'bolder'}} className="form-control mt-3" type="text" onChange={handleInputChange} placeholder="image_url3" name="ProjectImages3" value={formData.ProjectImages3}/>
+                <form className="p-5 border-solid border-2 rounded-lg w-full m-3 " onSubmit={submitForm}>
+                    <div className="flex">
+                        <div className="w-1/2">
+                            <label  style={{color:'white'}} className="mb-1 mt-3">PROJECT NAME</label>
+                            <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Name" value={formData.Name}/>
+                        </div>
+                        <div className="w-1/2 ml-20">
+                            <label style={{color:'white'}} className="mb-1 mt-3">DEVELOPER </label>
+                            <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Developer" value={formData.Developer}/>
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <div className="w-1/2">
+                            <label style={{color:'white'}} className="mb-1 mt-3">PROJECT OVERVIEW</label>
+                            <textarea style={{color:'black',fontWeight:'bolder'}} rows={10} className="form-control" type="text" onChange={handleInputChange} name="OverView" value={formData.OverView}/>
+                        </div>
+                        <div className="w-1/2 ml-20">
+                            <label style={{color:'white'}} className="mb-1 mt-3">OUTCOME</label>
+                             <textarea style={{color:'black',fontWeight:'bolder'}} rows={10} className="form-control" type="text" onChange={handleInputChange} name="Outcome" value={formData.Outcome} />
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <div className="w-1/2">
+                            <label style={{color:'white'}} className="mb-1 mt-3">TECHNOLOGIES USED</label>
+                            <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="Technologies" value={formData.Technologies}/>
+                        </div>
+                        <div className="w-1/2 ml-20">
+                            <label style={{color:'white'}} className="mb-1 mt-3">DOMAIN </label>
+                            <select className="form-control" style={{textAlign:'center'}} onChange={handleInputChange} name="Domain" value={formData.Domain}>
+                            {computerScienceDomains.map(each =>(
+                                <option key={each}>{each}</option>
+                            ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <div className="w-1/2">
+                            <label style={{color:'white'}} className="mb-1 mt-3">PROJECT LINK</label>
+                            <input style={{color:'black',fontWeight:'bolder'}} className="form-control" type="text" onChange={handleInputChange} name="ProjectLink" value={formData.ProjectLink}/>
+                        </div>
+                        <div className="w-1/2 ml-20">
+                            <label className="mb-1 mt-3 text-white">COLLABORATORS</label>
+                            <input  className="text-black font-bold form-control" type="text" onChange={handleInputChange} name="Collaborators" value={formData.Collaborators} />
+                        </div>
+                    </div>
+                    <label  className="mb-1 mt-3 text-black">IMAGE LINK</label>
+                    <div className="flex">
+                        <div className="w-1/3">
+                            <input className="form-control mt-3 text-black font-bold" type="text" onChange={handleInputChange} placeholder="image_url1" name="ProjectImages1" value={formData.ProjectImages1}/>
+                        </div>
+                        <div className="w-1/3 ml-20">
+                            <input  className="form-control mt-3 text-black font-bold" type="text" onChange={handleInputChange} placeholder="image_url2" name="ProjectImages2" value={formData.ProjectImages2}/>
+                        </div>
+                        <div className="w-1/3 ml-20">
+                            <input className="form-control mt-3 text-black font-bold" type="text" onChange={handleInputChange} placeholder="image_url3" name="ProjectImages3" value={formData.ProjectImages3}/>
+                        </div>
+                    </div>
                     <button type="submit" className="btn btn-info mt-5" style={{backgroundColor:'gray'}} >Submit</button>
                 </form>
             </div>}
             {!status && <div className="flex justify-center mt-11 min-w-full flex-wrap">
                 {projects.map(each =>(
-                    <div className="bg-white max-w-md rounded-md m-2 font-sans text-sm p-4 w-2/3">
+                    <div className="max-w-md rounded-md m-2 font-sans text-sm p-4 w-2/3 bg-white">
                         <h1 className="font-extrabold text-left">{each.data.Name.toUpperCase()}</h1>
                         <p className="text-left mt-3 font-medium h-24">{each.data.OverView.slice(0,200)}....</p>
                         <div className="flex justify-between">

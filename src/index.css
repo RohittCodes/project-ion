@@ -5,7 +5,9 @@
 html,
 body,
 :root {
-  height: 100%;
-  background-color: #080808;
+  min-height: 100vh;
+  background-image: url('https://img.freepik.com/free-vector/circles-background-dark-tones_60389-166.jpg');
   font-family:'Poppins',sans-serif;
+  background-size: cover;
+  height: 100%;
 }

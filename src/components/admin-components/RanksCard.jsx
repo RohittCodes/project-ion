@@ -1,6 +1,7 @@
 import React from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import 'animate.css'
 
 const RanksCard = (props) => {
   const tableFields = ["User id", "Name", "Branch", "Profile"];
@@ -12,7 +13,7 @@ const RanksCard = (props) => {
   let path = location.pathname.startsWith("/admin")
 
   return (
-    <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px]">
+    <div className="flex flex-col h-auto w-full bg-background-components px-3 py-2 rounded-2xl border-border-secondary border-[1px] ">
       <div className="flex flex-row items-center justify-between px-2 text-2xl font-bold font-mono text-gray-400">
         <div>Rankboard</div>
         <NavLink to={'/admin/ranking'}><IoArrowForwardCircleOutline className="cursor-pointer" /></NavLink>

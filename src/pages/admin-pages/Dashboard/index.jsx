@@ -12,6 +12,8 @@ import { Triangle } from "react-loader-spinner";
 
 
 
+
+
 const Dashboard = () => {  
   const [projects,setProjects] = useState()
   const [display,setDisplay] = useState(false)
@@ -66,14 +68,14 @@ const Dashboard = () => {
   return (
     <>
     {display ?
-    <div className="flex flex-col w-full m-4 gap-4" style={{height:'100vh'}}>
+    <div className="flex flex-col w-full m-4 gap-4 " style={{height:'100vh'}}>
       <AdminCards students={students} projects={project} pending={projects} />
       <div className="flex flex-row justify-between gap-4">
-        <div className="flex-1 space-y-4">
+        <div className="flex-1 space-y-4 ">
           <AdminApprovalCard data={projects}  />
           <StudentsCard students={students.slice(0,4)} />
         </div>
-        <div className="flex flex-col w-5/12 gap-4">
+        <div className="flex flex-col w-5/12 gap-4 ">
           <RanksCard students={students} />
           <ProjectSumissionGraph data={project}  />
           <CreditsCard />

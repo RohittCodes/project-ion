@@ -1,39 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Projt = ({projects}) => {
   
   const tableFields = ["S. No.", "Project name", "Likes", "Profile"];
-  const ProjectTable = [
-    {
-      name: "project management",
-      rank: "1,27,326",
-    },
-    {
-      name: "project management",
-      rank: "1,27,326",
-    },
-    {
-      name: "project management",
-      rank: "1,27,326",
-    },
-    {
-      name: "project management",
-      rank: "1,27,326",
-    },
-    {
-      name: "project management",
-      rank: "1,27,326",
-    },
-    {
-      name: "project management",
-      rank: "1,27,326",
-    },
-    {
-      name: "project management",
-      rank: "1,27,326",
-    },
-  ];
+
   const styles = {
     container: {
       margin: "10px",
@@ -48,6 +20,7 @@ const Projt = ({projects}) => {
       boxShadow: "4px 4px 10px rgba(0, 0, 0, 1)",
     },
   };
+  let auth = Cookies.get('Auth')
 
   return (
     <div style={styles.container}>
@@ -75,9 +48,7 @@ const Projt = ({projects}) => {
                 {data.data.Likes.length}
               </td>
               <td className="h-8 w-24 text-center">
-                <NavLink to="" className="btn btn-primary">
-                  View
-                </NavLink>
+              <NavLink className="btn btn-primary" to={{pathname: `${auth}/project/${data.data.ProjectId}`,state: { data1: data.data }}}>View</NavLink>
               </td>
             </tr>
           ))}
