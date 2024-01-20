@@ -13,7 +13,7 @@ import ProfilePage from "./pages/students-pages/ProfilePage";
 import { AuthProvider } from "./AuthContext";
 import Ranking from "./pages/Ranking";
 import Projects from "./pages/Projects";
-import Following from './pages/students-pages/Following'
+import Following from "./pages/students-pages/Following";
 
 import AddProgramPage from "./task/AddProgramPage";
 import ProjectList from "./task/ProjectList";
@@ -25,7 +25,6 @@ import ProjectDetails from "./pages/ProjectDetails";
 import ProtectedRoute from "./ProtectedRoute";
 import Password from "./pages/Password";
 
-
 function App() {
   return (
     <AuthProvider>
@@ -35,10 +34,24 @@ function App() {
           <Sidebar />
           <Routes>
             {/* ADMIN ROUTES */}
-            <Route exact path="/login" element={<Login/>} />
-            <Route exact path="/admin/resetpassword" element={<Password/>}/>
-            <Route path="/admin/profile/:id" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>} />
-            <Route path="/" element={<ProtectedRoute><HomePage/></ProtectedRoute>} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/admin/resetpassword" element={<Password />} />
+            <Route
+              path="/admin/profile/:id"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <HomePage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/admin"
               element={
@@ -47,30 +60,127 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/admin/register" element={<ProtectedRoute><AddStudents/></ProtectedRoute>} />
-            <Route path="/admin/students" element={<ProtectedRoute><StudentsData/></ProtectedRoute>} />
-            <Route exact path="/admin/project/:id" element={<ProtectedRoute><ProjectDetails/></ProtectedRoute>}/>
-            <Route exact path="/admin/ranking" element={<ProtectedRoute><Ranking/></ProtectedRoute>} />
-            <Route exact path="/admin/projects" element={<ProtectedRoute><Projects/></ProtectedRoute>} />
-
+            <Route
+              path="/admin/register"
+              element={
+                <ProtectedRoute>
+                  <AddStudents />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/students"
+              element={
+                <ProtectedRoute>
+                  <StudentsData />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/admin/project/:id"
+              element={
+                <ProtectedRoute>
+                  <ProjectDetails />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/admin/ranking"
+              element={
+                <ProtectedRoute>
+                  <Ranking />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/admin/projects"
+              element={
+                <ProtectedRoute>
+                  <Projects />
+                </ProtectedRoute>
+              }
+            />
 
             {/* STUDENTS ROUTES */}
-            <Route exact path="/student/resetpassword" element={<Password/>}/>
-            <Route path="/student" element={<ProtectedRoute><HomePage/></ProtectedRoute>} />
-            <Route exact path="/student/project/:id" element={<ProtectedRoute><ProjectDetails/></ProtectedRoute>}/>
-            <Route exact path="/student/ranking" element={<ProtectedRoute><Ranking/></ProtectedRoute>} />
-            <Route exact path="/student/projects" element={<ProtectedRoute><Projects/></ProtectedRoute>} />
-            <Route exact path="/student/following" element={<Following/>}/>
+            <Route exact path="/student/resetpassword" element={<Password />} />
+            <Route
+              path="/student"
+              element={
+                <ProtectedRoute>
+                  <HomePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/student/project/:id"
+              element={
+                <ProtectedRoute>
+                  <ProjectDetails />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/student/ranking"
+              element={
+                <ProtectedRoute>
+                  <Ranking />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/student/projects"
+              element={
+                <ProtectedRoute>
+                  <Projects />
+                </ProtectedRoute>
+              }
+            />
+            <Route exact path="/student/following" element={<Following />} />
+            <Route
+              path="/students/profile/:id"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
 
             {/* TASK ROUTES */}
             <Route path="/task/projectlist" element={<ProjectList />} />
             <Route path="/task/addProject" element={<AddProgramPage />} />
-            
+
             <Route path="*" element={<PageNotFound />} />
-            <Route path="/admin/explore" element={<ProtectedRoute><Explore/></ProtectedRoute>} />
-            <Route path="/admin/explore/domain" element={<ProtectedRoute><Domain/></ProtectedRoute>} />
+            <Route
+              path="/admin/explore"
+              element={
+                <ProtectedRoute>
+                  <Explore />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/explore/domain"
+              element={
+                <ProtectedRoute>
+                  <Domain />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/admin/explore/technology" />
-            <Route path="/admin/profile" element={<ProtectedRoute><AdminProfile/></ProtectedRoute>} />
+            <Route
+              path="/admin/profile"
+              element={
+                <ProtectedRoute>
+                  <AdminProfile />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter>

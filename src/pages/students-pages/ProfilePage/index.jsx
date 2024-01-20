@@ -7,6 +7,7 @@ import StudentRank from "../../../components/profile-components/StudentRank";
 import Project from "../../../components/profile-components/Projects";
 import ProjectTable from "../../../components/profile-components/Projects";
 import GraphWidget from "../../../components/profile-components/GraphWidget";
+import Projt from "../components/projt";
 
 const ProfilePage = () => {
   const location = useLocation();
@@ -14,6 +15,8 @@ const ProfilePage = () => {
   const [display, setDisplay] = useState(false);
   const [students, setStudents] = useState();
   const [account, setAccout] = useState(false);
+  const [rank, setRank] = useState();
+  const [yourporjects, setYourProjects] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +24,10 @@ const ProfilePage = () => {
       const res = await fetch(url);
       const data = await res.json();
       setDisplay(true);
+      console.log(data);
+      data.sort((a, b) => b.likes - a.likes);
+      let rank = data.findIndex((item) => item.StudentProfileId == id);
+      setRank(rank);
       console.log(data);
       console.log(data[0].StudentProfileId == id);
       console.log(data[0].StudentProfileId);
@@ -34,6 +41,17 @@ const ProfilePage = () => {
       }
     };
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const someData = async () => {
+      const url = "http://localhost:3001/getProjects";
+      const res = await fetch(url);
+      const data = await res.json();
+      const data1 = data.filter((each) => each.data.StudentProfileId === id);
+      setYourProjects(data1);
+    };
+    someData();
   }, []);
 
   if (!account) {
@@ -90,34 +108,42 @@ const ProfilePage = () => {
   return (
     <>
       {display && (
-        <div
-          style={{ width: "100%", padding: "25px", position: "relative" }}
-          className="flex text-text-primary"
-        >
-          <div>
-            <ProfileWidget props={students} />
-          </div>
-          <div>
-            <div>
-              <div style={{ display: "flex" }}>
-                <StudentRank />
-                <GraphWidget />
-              </div>
-
-              <div
-                style={{
-                  marginTop: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                {/* Circle with Progress Bars */}
-                <div>
-                  <ProjectTable className="" />
+        <div className="flex flex-col w-full px-4 py-4 ">
+          <div className="flex px-4 py-2 bg-gray-800 gap-4 w-full rounded-xl">
+            <div className="rounded-full h-36 w-36 bg-black" />
+            <div className="flex flex-col pt-2 w-[calc(100%-160px)]">
+              {
+                <div className="w-full flex flex-col gap-4">
+                  <div className="w-full">
+                    <div className="flex w-full justify-between items-center">
+                      <h1 className="text-xl text-white">
+                        {students[0].StudentName}
+                      </h1>
+                      <p className=" text-sm text-white">
+                        Profile Id: {students[0].StudentId}
+                      </p>
+                    </div>
+                    <h2 className=" text-sm text-white">
+                      {students[0].College} ({students[0].StudentBranch})
+                    </h2>
+                  </div>
+                  <div className="flex flex-col w-full">
+                    <p className="text-white">Ranking: {rank}</p>
+                    <p className="text-white">
+                      LinkedIn:{" "}
+                      <a
+                        href={`https://linkedin.com/in/${students[0].StudentLinkedin}`}
+                        target="_blank"
+                      >
+                        Visit LinkedIn
+                      </a>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              }
             </div>
           </div>
+          <Projt projects={yourporjects} />
         </div>
       )}
     </>
