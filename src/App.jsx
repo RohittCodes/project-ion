@@ -24,6 +24,8 @@ import AdminProfile from "./pages/admin-pages/AdminProfile";
 import ProjectDetails from "./pages/ProjectDetails";
 import ProtectedRoute from "./ProtectedRoute";
 import Password from "./pages/Password";
+import SnippetAdder from "./pages/explain-that-stuff/snippet-adder";
+import SnippetsSearch from "./pages/explain-that-stuff/snippets-search";
 
 function App() {
   return (
@@ -149,6 +151,12 @@ function App() {
                   <ProfilePage />
                 </ProtectedRoute>
               }
+            />
+
+            <Route path="/student/explain/add" element={<SnippetAdder />} />
+            <Route
+              path="/student/explain/snippets"
+              element={<SnippetsSearch />}
             />
 
             {/* TASK ROUTES */}

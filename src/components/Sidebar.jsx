@@ -10,10 +10,12 @@ import {
   MdSupportAgent,
   MdOutlineHelpCenter,
   MdHelpCenter,
+  MdHdrPlus,
 } from "react-icons/md";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaRankingStar } from "react-icons/fa6";
+import { BiPlus } from "react-icons/bi";
 
 const Sidebar = () => {
   const adminNav = [
@@ -26,11 +28,6 @@ const Sidebar = () => {
       label: "Something1",
       icon: IoPersonOutline,
       href: "/students",
-    },
-    {
-      label: "Something2",
-      icon: MdExplore,
-      href: "/bro",
     },
     {
       label: "Something3",
@@ -60,6 +57,16 @@ const Sidebar = () => {
       label: "Project",
       icon: AiOutlineFundProjectionScreen,
       href: "/projects",
+    },
+    {
+      label: "explain",
+      icon: MdSearch,
+      href: "/explain/snippets",
+    },
+    {
+      label: "add",
+      icon: BiPlus,
+      href: "/explain/add",
     },
     {
       label: "Ranking",
