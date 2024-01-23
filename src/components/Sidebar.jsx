@@ -9,7 +9,7 @@ import {
   MdHelp,
   MdSupportAgent,
   MdOutlineHelpCenter,
-  MdHelpCenter
+  MdHelpCenter,
 } from "react-icons/md";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
@@ -43,10 +43,10 @@ const Sidebar = () => {
       href: "/projects",
     },
     {
-      label:'Ranking',
-      icon:FaRankingStar,
-      href:'/ranking'
-    }
+      label: "Ranking",
+      icon: FaRankingStar,
+      href: "/ranking",
+    },
   ];
 
   const navItems = [
@@ -55,32 +55,21 @@ const Sidebar = () => {
       icon: MdSpaceDashboard,
       href: "/",
     },
-    {
-      label: "Something1",
-      icon: MdSearch,
-      href: "/some",
-    },
-    {
-      label: "Problems",
-      icon: MdOutlineSyncProblem,
-      href: "/problem",
-    },  
+
     {
       label: "Project",
       icon: AiOutlineFundProjectionScreen,
       href: "/projects",
     },
     {
-      label:'Ranking',
-      icon:FaRankingStar,
-      href:'/ranking'
-    }
-
+      label: "Ranking",
+      icon: FaRankingStar,
+      href: "/ranking",
+    },
   ];
 
   const location = useLocation();
 
-  
   if (location.pathname.startsWith("/admin")) {
     return (
       <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary  bg-background-main">
@@ -98,7 +87,6 @@ const Sidebar = () => {
               >
                 <items.icon className="text-2xl text-text-primary" />
               </NavLink>
-              
             ))}
           </div>
           <div className="flex flex-col gap-6">

@@ -7,8 +7,8 @@ const SearchResultsList = () => {
   ]
   return (
     <div className="flex flex-col max-h-[5rem] rounded-md w-full bg-background-components overflow-y-scroll">
-      {data.map((result, id) => (
-        <NavLink to={data.path} key={id} className="cursor-pointer">
+      {results.map((result, id) => (
+        <NavLink to="/some" key={id} className="cursor-pointer">
           {result.name}
         </NavLink>
       ))}
