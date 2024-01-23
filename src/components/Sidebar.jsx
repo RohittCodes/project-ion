@@ -72,7 +72,7 @@ const Sidebar = () => {
 
   if (location.pathname.startsWith("/admin")) {
     return (
-      <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary">
+      <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary  bg-background-main">
         <div className="flex flex-col h-full py-4 font-semibold justify-between">
           <div className="flex flex-col items-center justify-center gap-6 mx-4">
             {adminNav.map((items) => (
@@ -102,7 +102,7 @@ const Sidebar = () => {
     );
   }
   return (
-    <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary">
+    <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary bg-background-main">
       <div className="flex flex-col h-full py-4 font-semibold justify-between">
         <div className="flex flex-col items-center justify-center gap-6 mx-4">
           {navItems.map((items) => (
