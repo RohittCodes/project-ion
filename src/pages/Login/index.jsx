@@ -234,7 +234,7 @@ const Login = () => {
                 } mb-3 ml-3 pl-5 pr-5`}
                 onClick={setLogin}
               >
-                Loin
+                Login
               </button>
             </div>
 
