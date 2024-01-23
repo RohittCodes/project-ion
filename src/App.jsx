@@ -123,6 +123,11 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route exact path="/student/profile/:id"
+            element={
+              <ProtectedRoute><ProfilePage/></ProtectedRoute>
+            }
+            />
             <Route
               exact
               path="/student/ranking"
