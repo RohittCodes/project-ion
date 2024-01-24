@@ -181,17 +181,31 @@ const Projects = () =>{
         const url1 = 'http://localhost:3001/getProjects'
         const res1 = await fetch(url1)
         const data =await res1.json()
-        let list = []
-        data.filter(each =>{
-            const similarity = documentSimilarity(each.data.OverView, formData.OverView);
-            console.log(similarity)
-            if(similarity*100 > 20){
-                list.push(each)
+        const url2 = 'http://localhost:3001/gemini'
+        
+        let status = false
+        for(let i = 0;i<data.length;i++){
+            const request = {
+                para1:formData.OverView,
+                para2:data[i].data.OverView,
+            }
+            let requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(request),
+            };
+            const res = await fetch(url2, requestOptions);
+            const data1 = await res.json()
+            if(data1 == true){
+                status = true
+                break;
+
             }
             
-        })
-        console.log(list)
-        if(list.length>1){
+        }
+        console.log("project status "+ status)
+        
+        if(status){
             alert('The Project already exist')
         }
         else{

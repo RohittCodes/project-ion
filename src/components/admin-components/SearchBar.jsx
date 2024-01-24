@@ -8,19 +8,47 @@ const SearchBar = () => {
   const [results, setResults] = useState([]);
 
   const fetchData = (value) => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => {
-        const results = json.filter((user) => {
-          return (
-            value &&
-            user &&
-            user.name &&
-            user.name.toLowerCase().includes(value)
-          );
-        });
-        setResults(results);
-      });
+    const json = [
+      {
+        name: "Admin Dashboard",
+        path: "/admin",
+      },
+      {
+        name: "Admin Students Data",
+        path: "/admin/students",
+      },
+      {
+        name: "Admin Raning",
+        path: "/admin/ranking",
+      },
+      {
+        name: "Admin Projects",
+        path: "/admin/projects",
+      },
+      {
+        name: "Students Dashboard",
+        path: "/student",
+      },
+      {
+        name: "Students Projects",
+        path: "/student/projects",
+      },
+      {
+        name: "Admin Profile",
+        path: "/admin/profile",
+      },
+      {
+        name: "Admin Profile",
+        path: "/admin/profile",
+      },
+    ];
+    const results = json.filter((user) => {
+      return (
+        value && user && user.name && user.name.toLowerCase().includes(value)
+      );
+    });
+
+    setResults(results);
   };
 
   const inputPassed = (value) => {
