@@ -70,7 +70,7 @@ const HomePage = () => {
               </div>
             </div>
             <div>
-              <Profilew student={student} rank={rank} />
+              <Profilew student={student} rank={rank + 1} />
             </div>
           </div>
           <div style={{ display: "flex", marginLeft: "25px" }}>

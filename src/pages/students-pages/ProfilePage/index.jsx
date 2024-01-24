@@ -109,7 +109,7 @@ const ProfilePage = () => {
     <>
       {display && (
         <div className="flex flex-col w-full px-4 py-4 ">
-          <div className="flex px-4 py-2 bg-gray-800 gap-4 w-full rounded-xl">
+          <div className="flex px-4 py-2 bg-[#1f2937] gap-4 w-full rounded-xl">
             <div className="rounded-full h-36 w-36 bg-black" />
             <div className="flex flex-col pt-2 w-[calc(100%-160px)]">
               {

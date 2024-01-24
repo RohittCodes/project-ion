@@ -4,7 +4,7 @@ import CodeExplainer from "../../components/explain-that-stuff/code-explainer";
 
 const SnippetsSearch = () => {
   return (
-    <div className="h-full w-full flex flex-col mx-2 my-2 gap-4">
+    <div className="h-full w-full flex flex-col mx-2 my-2 gap-4 text-white">
       <SnippetSearch />
       <CodeExplainer />
     </div>

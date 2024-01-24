@@ -153,10 +153,21 @@ function App() {
               }
             />
 
-            <Route path="/student/explain/add" element={<SnippetAdder />} />
+            <Route
+              path="/student/explain/add"
+              element={
+                <ProtectedRoute>
+                  <SnippetAdder />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/student/explain/snippets"
-              element={<SnippetsSearch />}
+              element={
+                <ProtectedRoute>
+                  <SnippetsSearch />
+                </ProtectedRoute>
+              }
             />
 
             {/* TASK ROUTES */}

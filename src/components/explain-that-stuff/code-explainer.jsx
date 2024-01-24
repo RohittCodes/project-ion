@@ -39,7 +39,7 @@ const CodeExplainer = () => {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        className="h-[32rem] overflow-auto w-full p-4 border-2 border-black rounded-md resize-none"
+        className="h-[32rem] overflow-auto w-full p-4 border-2 text-black border-black rounded-md resize-none"
       />
       <button
         onClick={handleProcessData}
