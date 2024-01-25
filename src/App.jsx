@@ -15,8 +15,6 @@ import Ranking from "./pages/Ranking";
 import Projects from "./pages/Projects";
 import Following from "./pages/students-pages/Following";
 
-import AddProgramPage from "./task/AddProgramPage";
-import ProjectList from "./task/ProjectList";
 import Explore from "./pages/explore";
 import Domain from "./pages/explore/domain";
 import Technology from "./pages/explore/technology";
@@ -167,9 +165,6 @@ function App() {
               }
             />
 
-            {/* TASK ROUTES */}
-            <Route path="/task/projectlist" element={<ProjectList />} />
-            <Route path="/task/addProject" element={<AddProgramPage />} />
 
             <Route path="*" element={<PageNotFound />} />
             <Route

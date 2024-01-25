@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Line } from "react-chartjs-2";
-import ProfileWidget from "../../../components/profile-components/ProfileWidget";
-import StudentRank from "../../../components/profile-components/StudentRank";
-import Project from "../../../components/profile-components/Projects";
-import ProjectTable from "../../../components/profile-components/Projects";
-import GraphWidget from "../../../components/profile-components/GraphWidget";
 import Projt from "../components/projt";
+import Modal from './model'
 
 const ProfilePage = () => {
   const location = useLocation();
@@ -17,6 +11,36 @@ const ProfilePage = () => {
   const [account, setAccout] = useState(false);
   const [rank, setRank] = useState();
   const [yourporjects, setYourProjects] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const[followers,setFollowers] = useState([])
+  const [following,setFollowing] = useState([])
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openModal1 = () => {
+    setIsModalOpen1(true);
+  };
+
+  const closeModal1 = () => {
+    setIsModalOpen1(false);
+  };
+
+
+  const persons = [
+    { name: 'John Doe', age: 30, email: 'john@example.com' },
+    { name: 'Jane Smith', age: 28, email: 'jane@example.com' },
+    { name: 'Bob Johnson', age: 35, email: 'bob@example.com' },
+    { name: 'Alice Williams', age: 25, email: 'alice@example.com' },
+    // Add more dummy data as needed
+  ];
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +59,12 @@ const ProfilePage = () => {
       const temp = data.filter((acc) => acc.StudentProfileId == id);
       setStudents(temp);
       console.log(temp);
+      const followers_list = temp[0].followers
+      const following_list = temp[0].following
+      const follow = data.filter(each => followers_list.includes(each.StudentProfileId))
+      setFollowers(follow);
+      const follow1 = data .filter(each => followers_list.includes(each.StudentProfileId))
+      setFollowing(follow1)
       if (temp.length > 0) {
         setAccout(true);
         console.log(temp.length);
@@ -105,6 +135,8 @@ const ProfilePage = () => {
       boxShadow: "4px 4px 10px rgba(0, 0, 0, 1)",
     },
   };
+
+  let id1 =1
   return (
     <>
       {display && (
@@ -127,18 +159,75 @@ const ProfilePage = () => {
                       {students[0].College} ({students[0].StudentBranch})
                     </h2>
                   </div>
-                  <div className="flex flex-col w-full">
-                    <p className="text-white">Ranking: {rank}</p>
-                    <p className="text-white">
-                      LinkedIn:{" "}
-                      <a
-                        href={`https://linkedin.com/in/${students[0].StudentLinkedin}`}
-                        target="_blank"
-                      >
-                        Visit LinkedIn
-                      </a>
-                    </p>
+                  <div className="flex">
+                    <div className="flex flex-col w-full">
+                      <p className="text-white">Ranking: {rank}</p>
+                      <p className="text-white">
+                        LinkedIn:{" "}
+                        <a
+                          href={`https://linkedin.com/in/${students[0].StudentLinkedin}`}
+                          target="_blank"
+                        >
+                          Visit LinkedIn
+                        </a>
+                      </p>
+                    </div>
+                    <div>
+                    <button onClick={openModal} className="text-white mr-5">Following</button>
+
+                    <Modal isOpen={isModalOpen} onClose={closeModal}>
+
+                        <h2 className="text-black text-center font-sans text-xl font-bold mb-3">Following</h2>
+
+                        <table className=" text-center table table-bordered table-hover  rounded-full">
+                            <thead className="table-header-group text-muted">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>COLLEGE</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {followers.map(each =>(
+                                    <tr>
+                                        <td>{each.StudentId}</td>
+                                        <td><a className="text-orange-500">{each.StudentName}</a><br/><a className="text-green-500">{each.StudentEmail}</a></td>
+                                        <td>{each.College}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </Modal>
+                    </div>
+                    <div>
+                      <button onClick={openModal1} className="text-white mr-1">Followers</button>
+
+                      <Modal isOpen={isModalOpen1} onClose={closeModal1}>
+                      <h2 className="text-black text-center font-sans text-xl font-bold mb-3">Followers</h2>
+
+                        <table className=" text-center table table-bordered table-hover  rounded-full">
+                            <thead className="table-header-group text-muted">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>COLLEGE</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {following.map(each =>(
+                                    <tr>
+                                        <td>{each.StudentId}</td>
+                                        <td><a className="text-orange-500">{each.StudentName}</a><br/><a className="text-green-500">{each.StudentEmail}</a></td>
+                                        <td>{each.College}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                      </Modal>
+                    </div>
+                  
                   </div>
+                  
                 </div>
               }
             </div>
