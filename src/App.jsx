@@ -15,8 +15,6 @@ import Ranking from "./pages/Ranking";
 import Projects from "./pages/Projects";
 import Following from "./pages/students-pages/Following";
 
-import AddProgramPage from "./task/AddProgramPage";
-import ProjectList from "./task/ProjectList";
 import Explore from "./pages/explore";
 import Domain from "./pages/explore/domain";
 import Technology from "./pages/explore/technology";
@@ -28,6 +26,7 @@ import SnippetAdder from "./pages/explain-that-stuff/snippet-adder";
 import SnippetsSearch from "./pages/explain-that-stuff/snippets-search";
 import Problems from "./pages/admin-pages/Problems";
 import NewProblem from "./pages/admin-pages/Problems/new-problem";
+import ProblemStatement from "./pages/admin-pages/projectstatement";
 
 function App() {
   return (
@@ -190,10 +189,6 @@ function App() {
               }
             />
 
-            {/* TASK ROUTES */}
-            <Route path="/task/projectlist" element={<ProjectList />} />
-            <Route path="/task/addProject" element={<AddProgramPage />} />
-
             <Route path="*" element={<PageNotFound />} />
             <Route
               path="/admin/explore"
@@ -217,6 +212,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AdminProfile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/problemstatement"
+              element={
+                <ProtectedRoute>
+                  <ProblemStatement />
                 </ProtectedRoute>
               }
             />

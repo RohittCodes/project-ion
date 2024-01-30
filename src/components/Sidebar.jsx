@@ -12,6 +12,7 @@ import {
   MdHelpCenter,
   MdHdrPlus,
 } from "react-icons/md";
+import { GoProjectSymlink } from "react-icons/go";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaRankingStar } from "react-icons/fa6";
@@ -43,6 +44,11 @@ const Sidebar = () => {
       label: "Ranking",
       icon: FaRankingStar,
       href: "/ranking",
+    },
+    {
+      label: "ProblemStatement",
+      icon: GoProjectSymlink,
+      href: "/problemstatement",
     },
   ];
 
