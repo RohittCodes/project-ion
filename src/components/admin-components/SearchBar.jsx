@@ -42,13 +42,14 @@ const SearchBar = () => {
         path: "/admin/profile",
       },
     ];
-    const results = json.filter((user) => {
-      return (
-        value && user && user.name && user.name.toLowerCase().includes(value)
-      );
-    });
 
-    setResults(results);
+    setResults(
+      json.filter((user) => {
+        return (
+          value && user && user.name && user.name.toLowerCase().includes(value)
+        );
+      })
+    );
   };
 
   const inputPassed = (value) => {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { IoMdNotificationsOutline } from "react-icons/io";
 import SearchBar from "./admin-components/SearchBar";
 import { GoProject } from "react-icons/go";
 import { SlUserFollow } from "react-icons/sl";
@@ -9,14 +8,30 @@ import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineHelpCenter, MdSupportAgent } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
+
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { IoPerson } from "react-icons/io5";
-import { PiProjectorScreenLight } from "react-icons/pi";
 
 const Navbar = () => {
+  const [student, setStudent] = useState({ name: "", id: "", email: "" });
+  const userId = Cookies.get("student_id");
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = "http://localhost:3001/getStudent";
+      const res = await fetch(url);
+      const data = await res.json();
+      const userData = data.filter((temp) => temp.StudentProfileId == userId);
+      setStudent({
+        name: userData[0].StudentName,
+        id: userData[0].StudentProfileId,
+        email: userData[0].StudentEmail,
+      });
+    };
+    fetchData();
+  }, []);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -65,20 +80,30 @@ const Navbar = () => {
                 }}
               >
                 <ul>
-                  <li
-                    style={{ color: "black", display: "flex" }}
-                    className="m-3"
+                  <NavLink
+                    to={{
+                      pathname: `${
+                        location.pathname.startsWith("/admin")
+                          ? `/admin/profile/${student.id}`
+                          : `student/profile/${student.id}`
+                      }`,
+                    }}
                   >
-                    <div className="w-8 h-8 mt-1 rounded-full border-border-primary border-[1px] bg-background-main cursor-pointer"></div>
-                    <div className="ml-2">
-                      <p style={{ fontSize: "15px", color: "white" }}>
-                        R.Uday kiran
-                      </p>
-                      <p style={{ fontSize: "13px", color: "white" }}>
-                        uuday3804@gmail.com
-                      </p>
-                    </div>
-                  </li>
+                    <li
+                      style={{ color: "black", display: "flex" }}
+                      className="m-3"
+                    >
+                      <div className="w-8 h-8 mt-1 rounded-full border-border-primary border-[1px] bg-background-main cursor-pointer"></div>
+                      <div className="ml-2">
+                        <p style={{ fontSize: "15px", color: "white" }}>
+                          {student.name}
+                        </p>
+                        <p style={{ fontSize: "13px", color: "white" }}>
+                          {student.email}
+                        </p>
+                      </div>
+                    </li>
+                  </NavLink>
                   <hr style={{ backgroundColor: "white" }} />
                   <li
                     style={{ display: "flex", color: "white" }}
@@ -146,13 +171,6 @@ const Navbar = () => {
                   >
                     <MdOutlineHelpCenter className="mt-1 mr-2" />
                     <p>Problems</p>
-                  </li>
-                  <li
-                    style={{ display: "flex", color: "white" }}
-                    className="m-3 ml-4 cursor-pointer "
-                  >
-                    <RiLockPasswordLine className="mt-1 mr-2" />
-                    <p>Reset Password</p>
                   </li>
                   <li
                     style={{ display: "flex", color: "white" }}

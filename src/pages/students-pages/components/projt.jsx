@@ -36,16 +36,10 @@ const Projt = ({ projects }) => {
         </thead>
         <tbody className="text-muted">
           {projects.map((data, index) => (
-            <tr key={data.data.StudentProfileId}>
-              <td className="h-8 w-16 text-center" key={index + 1}>
-                {index + 1}
-              </td>
-              <td className="h-8 w-32 text-center" key={data.data.Name}>
-                {data.data.Name}
-              </td>
-              <td className="h-8 w-24 text-center" key={data.data.Likes.length}>
-                {data.data.Likes.length}
-              </td>
+            <tr key={index}>
+              <td className="h-8 w-16 text-center">{index + 1}</td>
+              <td className="h-8 w-32 text-center">{data.data.Name}</td>
+              <td className="h-8 w-24 text-center">{data.data.Likes.length}</td>
               <td className="h-8 w-24 text-center">
                 <NavLink
                   className="btn btn-primary"

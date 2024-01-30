@@ -26,6 +26,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import Password from "./pages/Password";
 import SnippetAdder from "./pages/explain-that-stuff/snippet-adder";
 import SnippetsSearch from "./pages/explain-that-stuff/snippets-search";
+import Problems from "./pages/admin-pages/Problems";
+import NewProblem from "./pages/admin-pages/Problems/new-problem";
 
 function App() {
   return (
@@ -46,11 +48,28 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/"
               element={
                 <ProtectedRoute>
                   <HomePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/problems"
+              element={
+                <ProtectedRoute>
+                  <Problems />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/problems/add"
+              element={
+                <ProtectedRoute>
+                  <NewProblem />
                 </ProtectedRoute>
               }
             />
@@ -125,10 +144,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route exact path="/student/profile/:id"
-            element={
-              <ProtectedRoute><ProfilePage/></ProtectedRoute>
-            }
+            <Route
+              exact
+              path="/student/profile/:id"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
             />
             <Route
               exact

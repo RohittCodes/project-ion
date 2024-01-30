@@ -148,7 +148,7 @@ const Profilew = (props) => {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-check2-square"
+              className="bi bi-check2-square"
               viewBox="0 0 16 16"
               style={styles.svgIcon}
             >
