@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import "./Modal.css";
-import { IoCloseCircle } from "react-icons/io5";
+import React, { useState } from 'react';
+import './Modal.css';
 
 const Modal = ({ isOpen, onClose, children }) => {
   return (
@@ -10,7 +9,7 @@ const Modal = ({ isOpen, onClose, children }) => {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             {children}
             <button className="close-button" onClick={onClose}>
-              <IoCloseCircle size={24} />
+              Close
             </button>
           </div>
         </div>
