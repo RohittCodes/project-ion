@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import { TbUserEdit } from "react-icons/tb";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import ProfileWidget from "../../../components/profile-components/ProfileWidget";
@@ -9,8 +8,6 @@ import Project from "../../../components/profile-components/Projects";
 import ProjectTable from "../../../components/profile-components/Projects";
 import GraphWidget from "../../../components/profile-components/GraphWidget";
 import Projt from "../components/projt";
-import Cookies from "js-cookie";
-import Modal from "./modal";
 
 
 const ProfilePage = () => {
@@ -90,6 +87,16 @@ const ProfilePage = () => {
       const follow1 = data .filter(each => following_list.includes(each.StudentProfileId))
       setFollowing(follow1)
       console.log(temp);
+      const followers_list = temp[0].followers;
+      const following_list = temp[0].following;
+      const follow = data.filter((each) =>
+        followers_list.includes(each.StudentProfileId)
+      );
+      setFollowers(follow);
+      const follow1 = data.filter((each) =>
+        followers_list.includes(each.StudentProfileId)
+      );
+      setFollowing(follow1);
       if (temp.length > 0) {
         setAccout(true);
         console.log(temp.length);
@@ -175,7 +182,54 @@ const ProfilePage = () => {
   if (!account) {
     return <div>Account not found</div>;
   }
+  const chartData = {
+    labels: Array.from({ length: 12 }, (_, i) => i + 1),
+    datasets: [
+      {
+        label: "Submissions in the Year",
+        data: account.submissions || [],
+        fill: false,
+        borderColor: "rgba(75,192,192,1)",
+        borderWidth: 2,
+      },
+    ],
+  };
 
+  const chartOptions = {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Month",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Submissions",
+        },
+      },
+    },
+  };
+  const progressData = {
+    easy: 50,
+    medium: 30,
+    hard: 20,
+  };
+  const styles = {
+    userProfile: {
+      margin: "10px",
+      minHeight: "auto",
+      backgroundColor: "#333",
+      width: "280px",
+      color: "#fff",
+      padding: "20px",
+      overflow: "hidden",
+      borderRadius: "10px",
+      border: null,
+      boxShadow: "4px 4px 10px rgba(0, 0, 0, 1)",
+    },
+  };
   return (
     <>
       {display && (
@@ -193,105 +247,11 @@ const ProfilePage = () => {
                       <p className=" text-sm text-white">
                         Profile Id: {students[0].StudentId}
                       </p>
-                      {userId === id ? (
-                        <>
-                          <button
-                            onClick={() => {
-                              setProfileUpdateModal(!profileUpdateModal);
-                            }}
-                            className="flex rounded-full h-10 w-10 p-2 bg-indigo-700 items-center justify-center"
-                          >
-                            <TbUserEdit size={32} />
-                          </button>
-                          <Modal
-                            isOpen={profileUpdateModal}
-                            onClose={() => {
-                              setProfileUpdateModal(!profileUpdateModal);
-                            }}
-                          >
-                            <div className="h-full w-full flex flex-col gap-4">
-                              <div className="flex flex-col gap-1">
-                                Profile Details:
-                                <div className="flex flex-col gap-2">
-                                  <label htmlFor="name">Name</label>
-                                  <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    className="rounded-md h-8 text-black"
-                                    onChange={handleNameChange}
-                                  />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                  <label htmlFor="name">LinkedIn</label>
-                                  <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    className="rounded-md h-8 text-black"
-                                    onChange={handleLinkedinIdChange}
-                                  />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                  <label htmlFor="name">Email ID</label>
-                                  <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    className="rounded-md h-8 text-black"
-                                    onChange={handleEmailChange}
-                                  />
-                                </div>
-                              </div>
-                              <button
-                                onClick={() => {
-                                  handleUpdateProfile(
-                                    name,
-                                    linkedinId,
-                                    emailId,
-                                    userId
-                                  );
-                                }}
-                                className="bg-indigo-600 h-8 rounded-md"
-                              >
-                                Update Profile
-                              </button>
-                              <div>
-                                Update Password:
-                                <div className="flex gap-2">
-                                  <input
-                                    type="text"
-                                    id="password"
-                                    className="w-full h-8 text-black rounded-md"
-                                    value={updatedPassword}
-                                    onChange={handlePasswordChange}
-                                  />
-                                  <button
-                                    className="bg-indigo-600 h-8 w-40 rounded-md"
-                                    onClick={() =>
-                                      handleUpdatePassword(
-                                        userId,
-                                        updatedPassword
-                                      )
-                                    }
-                                  >
-                                    Reset Password
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </Modal>
-                        </>
-                      ) : (
-                        <></>
-                      )}
                     </div>
+                    <h2 className=" text-sm text-white">
+                      {students[0].College} ({students[0].StudentBranch})
+                    </h2>
                   </div>
-                  <h2 className=" text-sm text-white">
-                    {students[0].College} ({students[0].StudentBranch})
-                  </h2>
-                </div>
-                <div className="flex justify-between">
                   <div className="flex flex-col w-full">
                     <p className="text-white">Ranking: {rank}</p>
                     <p className="text-white">
