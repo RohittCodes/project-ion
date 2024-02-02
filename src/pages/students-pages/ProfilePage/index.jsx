@@ -9,6 +9,7 @@ import ProjectTable from "../../../components/profile-components/Projects";
 import GraphWidget from "../../../components/profile-components/GraphWidget";
 import Projt from "../components/projt";
 
+
 const ProfilePage = () => {
   const location = useLocation();
   const id = location.pathname.slice(location.pathname.lastIndexOf("/") + 1);
@@ -17,6 +18,51 @@ const ProfilePage = () => {
   const [account, setAccout] = useState(false);
   const [rank, setRank] = useState();
   const [yourporjects, setYourProjects] = useState([]);
+
+  const userId = Cookies.get("student_id");
+  const [updatedPassword, setUpdatedPassword] = useState("");
+  const [profileUpdateModal, setProfileUpdateModal] = useState(false);
+
+
+  const [emailId, setEmailId] = useState("");
+  const [name, setName] = useState("");
+  const [linkedinId, setLinkedinId] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const[followers,setFollowers] = useState([])
+  const [following,setFollowing] = useState([])
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openModal1 = () => {
+    setIsModalOpen1(true);
+  };
+
+  const closeModal1 = () => {
+    setIsModalOpen1(false);
+  };
+
+
+  const handlePasswordChange = (e) => {
+    setUpdatedPassword(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmailId(e.target.value);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+  const handleLinkedinIdChange = (e) => {
+    setLinkedinId(e.target.value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +80,12 @@ const ProfilePage = () => {
       console.log(id);
       const temp = data.filter((acc) => acc.StudentProfileId == id);
       setStudents(temp);
+      const followers_list = temp[0].followers
+      const following_list = temp[0].following
+      const follow = data.filter(each => followers_list.includes(each.StudentProfileId))
+      setFollowers(follow);
+      const follow1 = data .filter(each => following_list.includes(each.StudentProfileId))
+      setFollowing(follow1)
       console.log(temp);
       const followers_list = temp[0].followers;
       const following_list = temp[0].following;
@@ -212,6 +264,59 @@ const ProfilePage = () => {
                       </a>
                     </p>
                   </div>
+                  <div>
+                    <button onClick={openModal} className="text-white mr-5">Following</button>
+
+                    <Modal isOpen={isModalOpen} onClose={closeModal}>
+                        
+                        <h2 className="text-white text-center font-sans text-xl font-bold mb-3">Following</h2>
+
+                        <table className=" text-center table table-bordered table-hover rounded-full">
+                            <thead className="table-header-group text-muted">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>COLLEGE</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {following.map(each =>(
+                                    <tr>
+                                        <td>{each.StudentId}</td>
+                                        <td><a className="text-orange-500">{each.StudentName}</a><br/><a className="text-green-500">{each.StudentEmail}</a></td>
+                                        <td>{each.College}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </Modal>
+                    </div>
+                    <div>
+                      <button onClick={openModal1} className="text-white mr-1">Followers</button>
+
+                      <Modal isOpen={isModalOpen1} onClose={closeModal1}>
+                      <h2 className="text-white text-center font-sans text-xl font-bold mb-3">Followers</h2>
+
+                        <table className=" text-center table table-bordered table-hover rounded-full">
+                            <thead className="table-header-group text-muted">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>COLLEGE</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {followers.map(each =>(
+                                    <tr>
+                                        <td>{each.StudentId}</td>
+                                        <td><a className="text-orange-500">{each.StudentName}</a><br/><a className="text-green-500">{each.StudentEmail}</a></td>
+                                        <td>{each.College}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                      </Modal>
+                    </div>
                 </div>
               </div>
             </div>

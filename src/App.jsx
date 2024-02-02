@@ -123,6 +123,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/admin/problemstatement"
+              element={
+                <ProtectedRoute>
+                  <ProblemStatement />
+                </ProtectedRoute>
+              }
+            />
 
             {/* STUDENTS ROUTES */}
             <Route exact path="/student/resetpassword" element={<Password />} />

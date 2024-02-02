@@ -1,5 +1,6 @@
 import React from "react";
 import { IoPersonOutline } from "react-icons/io5";
+import { GoProjectSymlink } from "react-icons/go";
 import {
   MdSpaceDashboard,
   MdSearch,
