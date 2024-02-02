@@ -28,6 +28,7 @@ import SnippetAdder from "./pages/explain-that-stuff/snippet-adder";
 import SnippetsSearch from "./pages/explain-that-stuff/snippets-search";
 import Problems from "./pages/admin-pages/Problems";
 import NewProblem from "./pages/admin-pages/Problems/new-problem";
+import ProblemStatement from "./pages/admin-pages/projectstatement";
 
 function App() {
   return (
@@ -121,6 +122,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Projects />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/problemstatement"
+              element={
+                <ProtectedRoute>
+                  <ProblemStatement />
                 </ProtectedRoute>
               }
             />
