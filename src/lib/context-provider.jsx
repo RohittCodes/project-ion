@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState } from "react";
 
 const MyContext = createContext();
 
+// Context Provider for snippets to store inside an array
 const MyContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useMyContext } from "../../lib/context-provider";
 
 const Codebox = () => {
+  // pushing data(snippets) to our context array
   const { pushToData } = useMyContext();
   const [inputValue, setInputValue] = useState("");
   const [titleValue, setTitleValue] = useState("");

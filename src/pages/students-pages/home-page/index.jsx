@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { useAuth } from "../../../AuthContext";
+import { useAuth } from "../../../auth-context";
 import Graphw from "../components/graphw";
 import Profilew from "../components/profilew";
 import Studentr from "../components/studentr";

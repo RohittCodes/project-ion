@@ -1,9 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import profilePhoto from "./profilepic.jpg";
 
 const ProfileWidget = (props) => {
-  console.log(props.props[0].StudentName)
+  console.log(props.props[0].StudentName);
   const user = {
     profilePhoto: profilePhoto,
     user: props.props[0].StudentName,

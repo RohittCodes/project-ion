@@ -5,9 +5,10 @@ import { BiBuildings } from "react-icons/bi";
 import { BsCheck2Circle } from "react-icons/bs";
 
 const AdminCards = (props) => {
-  let pending = props.pending.length
-  let students = props.students.length
-  let projects = props.projects.length
+  let pending = props.pending.length;
+  let students = props.students.length;
+  let projects = props.projects.length;
+
   return (
     <div className="flex flex-row text-text-primary gap-6">
       <div className="flex flex-row gap-4 w-full items-center h-28 bg-background-components px-4 py-2 border-rounded rounded-2xl border-border-secondary border-[1px]">
@@ -17,7 +18,9 @@ const AdminCards = (props) => {
         <div className="flex flex-col w-full gap-1">
           <div className="text-gray-400 font-semibold">Total Projects</div>
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-semibold font-mono">{projects-pending}</div>
+            <div className="text-2xl font-semibold font-mono">
+              {projects - pending}
+            </div>
             <div className="text-green-700 inline-flex text-sm items-center bg-background-main rounded-md px-1">
               <AiOutlineRise />
               12
@@ -57,7 +60,7 @@ const AdminCards = (props) => {
         </div>
       </div>
 
-{/* ....................................................................................................................... */}
+      {/* ....................................................................................................................... */}
 
       <div className="flex flex-row gap-4 w-full items-center h-28 bg-background-components px-4 py-2 border-rounded rounded-2xl border-border-secondary border-[1px]">
         <div className="text-2xl rounded-full bg-green-700 p-2">

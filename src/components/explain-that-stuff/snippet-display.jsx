@@ -4,6 +4,7 @@ import { useDrag } from "react-dnd";
 const SnippetDisplay = ({ title, code, by }) => {
   const [toggle, setToggle] = useState(false);
 
+  // useDrag to drag text with the text in it
   const [, drag] = useDrag({
     type: "SNIPPET_ITEM",
     item: { code },

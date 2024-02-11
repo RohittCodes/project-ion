@@ -6,7 +6,7 @@ import { LuView } from "react-icons/lu";
 import Graph from "../../../components/admin-profile/graph";
 import { AiOutlineRise } from "react-icons/ai";
 import Data from "../../../components/admin-profile/teachers";
-import Table from "../../../components/admin-profile/studenttable";
+import Table from "../../../components/admin-profile/student-table";
 import logo from "./kmit.jpg";
 
 const AdminProfile = () => {

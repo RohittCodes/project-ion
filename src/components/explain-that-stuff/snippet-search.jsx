@@ -41,6 +41,7 @@ const SnippetSearch = () => {
     }
   };
 
+  // pre processing texts for finding cosineSimilarity between them
   function preprocessText(text) {
     return text
       .toLowerCase()
@@ -49,6 +50,7 @@ const SnippetSearch = () => {
       .filter((word) => word.length > 0);
   }
 
+  // Logic to implement cosineSimilarity. You can read the readme.md to understand the same
   function cosineSimilarity(vector1, vector2) {
     const dotProduct = vector1.reduce(
       (acc, val, i) => acc + val * vector2[i],
@@ -79,6 +81,7 @@ const SnippetSearch = () => {
     return cosineSimilarity(vector1, vector2);
   };
 
+  // handleSnippets while fetching the snippets from our database while checking similarity
   const handleSnippets = async () => {
     try {
       const response = await fetch("http://localhost:3001/codes");

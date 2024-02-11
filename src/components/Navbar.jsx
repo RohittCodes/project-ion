@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import SearchBar from "./admin-components/SearchBar";
+import { NavLink } from "react-router-dom";
+import SearchBar from "./admin-components/search-bar";
 import { GoProject } from "react-icons/go";
 import { SlUserFollow } from "react-icons/sl";
 import { SlUserFollowing } from "react-icons/sl";
 import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineHelpCenter, MdSupportAgent } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
 
 import Cookies from "js-cookie";
@@ -18,6 +17,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Fetching the students data using useEffect
   useEffect(() => {
     const fetchData = async () => {
       const url = "http://localhost:3001/getStudent";

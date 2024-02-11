@@ -5,6 +5,7 @@ import { useMyContext } from "../../../lib/context-provider";
 const CodeHolder = () => {
   const { data } = useMyContext();
 
+  // handleAddData to handle POST request of code snippets
   const handleAddData = async () => {
     try {
       const response = await fetch("http://localhost:3001/codes", {

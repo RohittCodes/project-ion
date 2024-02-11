@@ -11,6 +11,7 @@ const Ranking = () => {
   const [status, setStatus] = useState(true);
   const student_id = Cookies.get("student_id");
 
+  // Fetching the college and student data and sorting them as acc to the likes they've for ranking
   useEffect(() => {
     const fetchData = async () => {
       const url = "http://localhost:3001/getStudent";
@@ -41,6 +42,7 @@ const Ranking = () => {
     setStatus(false);
   };
 
+  // Function to handle follow functionality
   const follow = async (data) => {
     const info = {
       user: data.StudentProfileId,
@@ -58,7 +60,7 @@ const Ranking = () => {
 
     window.location.reload();
   };
-  const Unfollow = async(data) =>{
+  const Unfollow = async (data) => {
     setDisplay(false);
     const info = {
       user: data.StudentProfileId,
@@ -74,7 +76,7 @@ const Ranking = () => {
       body: JSON.stringify(info),
     });
     setDisplay(true);
-  }
+  };
 
   let Ranking = 4;
 
@@ -111,85 +113,230 @@ const Ranking = () => {
                     <th className="text-center h-12">NAME</th>
                     <th className="text-center h-12">BRANCH</th>
                     <th className="text-center h-12">COLLEGE NAME</th>
-                    {adminStatus && <th className="text-center h-12">FOLLOW</th>}
+                    {adminStatus && (
+                      <th className="text-center h-12">FOLLOW</th>
+                    )}
                     <th className="text-center h-12">PROFILE</th>
                   </tr>
                 </thead>
                 <tbody className="text-muted">
-                <tr key={students[0].id}>
-
-                  <td className="text-center" style={{width:"100%",display:'flex',justifyContent:'center'}}><img src="https://cdn-icons-png.flaticon.com/128/744/744984.png" style={{height:'5vh',width:'16%'}}/></td>    
-                  <td className="text-center" style={{width:"16%"}}>{students[0].StudentId}</td>
-                  <td className="text-center" style={{width:"16%"}}>{students[0].StudentName}</td>
-                  <td className=" text-center" style={{width:"16%"}}>{students[0].StudentBranch}</td>
-                  <td className="text-center" style={{width:"16%"}}>{students[0].College}</td>
-                  {adminStatus && <td className="text-center" style={{width:"16%"}}><button className="btn btn-close-white" style={{backgroundColor:`${students[0].followers.includes(student_id) ? 'green':'red'}`,color:'white'}} onClick={() =>follow(students[0])} >{students[0].followers.includes(student_id) ? "Following":"Follow"}</button></td>}
-                  <td className="h-8 w-24 text-center">
+                  <tr key={students[0].id}>
+                    <td
+                      className="text-center"
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/128/744/744984.png"
+                        style={{ height: "5vh", width: "16%" }}
+                      />
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[0].StudentId}
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[0].StudentName}
+                    </td>
+                    <td className=" text-center" style={{ width: "16%" }}>
+                      {students[0].StudentBranch}
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[0].College}
+                    </td>
+                    {adminStatus && (
+                      <td className="text-center" style={{ width: "16%" }}>
+                        <button
+                          className="btn btn-close-white"
+                          style={{
+                            backgroundColor: `${
+                              students[0].followers.includes(student_id)
+                                ? "green"
+                                : "red"
+                            }`,
+                            color: "white",
+                          }}
+                          onClick={() => follow(students[0])}
+                        >
+                          {students[0].followers.includes(student_id)
+                            ? "Following"
+                            : "Follow"}
+                        </button>
+                      </td>
+                    )}
+                    <td className="h-8 w-24 text-center">
                       <Link
                         to={`/student/profile/${students[0].StudentProfileId}`}
                         className="btn btn-primary"
                       >
                         Profile
                       </Link>
-                    </td>     
+                    </td>
                   </tr>
                   <tr key={students[1].id}>
-
-                  <td className="text-center" style={{width:"100%",display:'flex',justifyContent:'center'}}><img src="https://cdn-icons-png.flaticon.com/128/7636/7636106.png" style={{height:'5vh',width:'16%'}}/></td>  
-                  <td className="text-center" style={{width:"16%"}}>{students[1].StudentId}</td>
-                  <td className="text-center" style={{width:"16%"}}>{students[1].StudentName}</td>
-                  <td className=" text-center" style={{width:"16%"}}>{students[1].StudentBranch}</td>
-                  <td className="text-center" style={{width:"16%"}}>{students[1].College}</td>
-                  {adminStatus && <td className="text-center" style={{width:"16%"}}><button className="btn btn-close-white" style={{backgroundColor:`${students[1].followers.includes(student_id) ? 'green':'red'}`,color:'white'}} onClick={() =>follow(students[1])}>{students[1].followers.includes(student_id) ? "Following":"Follow"}</button></td>}
-                  <td className="h-8 w-24 text-center">
+                    <td
+                      className="text-center"
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/128/7636/7636106.png"
+                        style={{ height: "5vh", width: "16%" }}
+                      />
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[1].StudentId}
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[1].StudentName}
+                    </td>
+                    <td className=" text-center" style={{ width: "16%" }}>
+                      {students[1].StudentBranch}
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[1].College}
+                    </td>
+                    {adminStatus && (
+                      <td className="text-center" style={{ width: "16%" }}>
+                        <button
+                          className="btn btn-close-white"
+                          style={{
+                            backgroundColor: `${
+                              students[1].followers.includes(student_id)
+                                ? "green"
+                                : "red"
+                            }`,
+                            color: "white",
+                          }}
+                          onClick={() => follow(students[1])}
+                        >
+                          {students[1].followers.includes(student_id)
+                            ? "Following"
+                            : "Follow"}
+                        </button>
+                      </td>
+                    )}
+                    <td className="h-8 w-24 text-center">
                       <Link
                         to={`/student/profile/${students[1].StudentProfileId}`}
                         className="btn btn-primary"
                       >
                         Profile
                       </Link>
-                    </td>     
-
-
-
+                    </td>
                   </tr>
                   <tr key={students[2].id}>
-
-                  <td className="text-center" style={{width:"100%",display:'flex',justifyContent:'center'}}><img src="https://cdn-icons-png.flaticon.com/128/2583/2583434.png" style={{height:'5vh',width:'16%'}}/></td>  
-                  <td className="text-center" style={{width:"16%"}}>{students[2].StudentId}</td>
-                  <td className="text-center" style={{width:"16%"}}>{students[2].StudentName}</td>
-                  <td className=" text-center" style={{width:"16%"}}>{students[2].StudentBranch}</td>
-                  <td className="text-center" style={{width:"16%"}}>{students[2].College}</td>       
-                  {adminStatus &&<td className="text-center" style={{width:"16%"}}><button className="btn btn-close-white" style={{backgroundColor:`${students[2].followers.includes(student_id) ? 'green':'red'}`,color:'white'}}   onClick={() =>follow(students[2])}>{students[2].followers.includes(student_id) ? "Following":"Follow"}</button></td>}    
-                  <td className="h-8 w-24 text-center">
+                    <td
+                      className="text-center"
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/128/2583/2583434.png"
+                        style={{ height: "5vh", width: "16%" }}
+                      />
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[2].StudentId}
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[2].StudentName}
+                    </td>
+                    <td className=" text-center" style={{ width: "16%" }}>
+                      {students[2].StudentBranch}
+                    </td>
+                    <td className="text-center" style={{ width: "16%" }}>
+                      {students[2].College}
+                    </td>
+                    {adminStatus && (
+                      <td className="text-center" style={{ width: "16%" }}>
+                        <button
+                          className="btn btn-close-white"
+                          style={{
+                            backgroundColor: `${
+                              students[2].followers.includes(student_id)
+                                ? "green"
+                                : "red"
+                            }`,
+                            color: "white",
+                          }}
+                          onClick={() => follow(students[2])}
+                        >
+                          {students[2].followers.includes(student_id)
+                            ? "Following"
+                            : "Follow"}
+                        </button>
+                      </td>
+                    )}
+                    <td className="h-8 w-24 text-center">
                       <Link
                         to={`/student/profile/${students[2].StudentProfileId}`}
                         className="btn btn-primary"
                       >
                         Profile
                       </Link>
-                    </td>     
+                    </td>
                   </tr>
-                  {students.slice(3,).map(each =>(
+                  {students.slice(3).map((each) => (
                     <tr key={each.id}>
-
-                                <td className="text-center" style={{width:"16%"}}>{Ranking++}</td>    
-                                <td className="text-center" style={{width:"16%"}}>{each.StudentId}</td>
-                                <td className="text-center" style={{width:"16%"}}>{each.StudentName}</td>
-                                <td className=" text-center" style={{width:"16%"}}>{each.StudentBranch}</td>
-                                <td className="text-center" style={{width:"16%"}}>{each.College}</td>
-                               {adminStatus && <td className="text-center" style={{width:"16%"}}>{each.followers.includes(student_id) ? <button className="btn btn-close-white" style={{backgroundColor:'green',color:'white'}} onClick={() =>Unfollow(each)}> Unfollow</button>:
-                               <button className="btn btn-close-white" style={{backgroundColor:'red',color:'white'}} onClick={() =>follow(each)}>Follow</button>}</td>}
-                               <td className="h-8 w-24 text-center">
-                                <Link
-                                  to={`/student/profile/${each.StudentProfileId}`}
-                                  className="btn btn-primary"
-                                >
-                                  Profile
-                                </Link>
-                              </td>
-                            </tr>
-                        ))}
+                      <td className="text-center" style={{ width: "16%" }}>
+                        {Ranking++}
+                      </td>
+                      <td className="text-center" style={{ width: "16%" }}>
+                        {each.StudentId}
+                      </td>
+                      <td className="text-center" style={{ width: "16%" }}>
+                        {each.StudentName}
+                      </td>
+                      <td className=" text-center" style={{ width: "16%" }}>
+                        {each.StudentBranch}
+                      </td>
+                      <td className="text-center" style={{ width: "16%" }}>
+                        {each.College}
+                      </td>
+                      {adminStatus && (
+                        <td className="text-center" style={{ width: "16%" }}>
+                          {each.followers.includes(student_id) ? (
+                            <button
+                              className="btn btn-close-white"
+                              style={{
+                                backgroundColor: "green",
+                                color: "white",
+                              }}
+                              onClick={() => Unfollow(each)}
+                            >
+                              {" "}
+                              Unfollow
+                            </button>
+                          ) : (
+                            <button
+                              className="btn btn-close-white"
+                              style={{ backgroundColor: "red", color: "white" }}
+                              onClick={() => follow(each)}
+                            >
+                              Follow
+                            </button>
+                          )}
+                        </td>
+                      )}
+                      <td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/student/profile/${each.StudentProfileId}`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             ) : (
@@ -233,9 +380,7 @@ const Ranking = () => {
                         {each.email}
                       </td>
                       <td className="text-center" style={{ width: "20%" }}>
-                        <Link
-                          to={`/student/profile/${each.StudentProfileId}`}
-                        >
+                        <Link to={`/student/profile/${each.StudentProfileId}`}>
                           Profile
                         </Link>
                       </td>

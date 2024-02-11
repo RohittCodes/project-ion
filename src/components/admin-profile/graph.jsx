@@ -61,12 +61,12 @@ const Graph = () => {
     yaxis: {
       labels: {
         formatter: function (val) {
-          return Math.round(val); // Display whole numbers on the Y-axis
+          return Math.round(val); // To display whole numbers on the Y-axis
         },
       },
     },
     theme: {
-      mode: "dark", // Use dark theme to ensure white text is visible
+      mode: "dark",
     },
   };
 

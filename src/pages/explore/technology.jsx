@@ -20,7 +20,7 @@ const Technology = () => {
       margin: "20px",
       height: "100%",
       width: "22em",
-      display: "inline-block", // Set display to inline-block
+      display: "inline-block",
       backgroundColor: "#333",
       color: "#fff",
       overflow: "hidden",
@@ -38,7 +38,7 @@ const Technology = () => {
     img: {
       width: "100%",
       height: "100%",
-      objectFit: "cover", // Ensure the image covers the entire space
+      objectFit: "cover",
     },
   };
 

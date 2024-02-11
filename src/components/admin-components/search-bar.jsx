@@ -1,6 +1,6 @@
 import { IoIosCloseCircleOutline, IoIosSearch } from "react-icons/io";
 import React, { useState } from "react";
-import SearchResultsList from "./SearchResultsList";
+import SearchResultsList from "./search-results-list";
 
 const SearchBar = () => {
   const [inputData, setInputData] = useState("");
@@ -18,7 +18,7 @@ const SearchBar = () => {
         path: "/admin/students",
       },
       {
-        name: "Admin Raning",
+        name: "Admin Ranking",
         path: "/admin/ranking",
       },
       {
@@ -32,10 +32,6 @@ const SearchBar = () => {
       {
         name: "Students Projects",
         path: "/student/projects",
-      },
-      {
-        name: "Admin Profile",
-        path: "/admin/profile",
       },
       {
         name: "Admin Profile",

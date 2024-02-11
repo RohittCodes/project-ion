@@ -3,14 +3,9 @@ import { IoPersonOutline } from "react-icons/io5";
 import {
   MdSpaceDashboard,
   MdSearch,
-  MdExplore,
   MdPersonAdd,
-  MdOutlineSyncProblem,
   MdHelp,
   MdSupportAgent,
-  MdOutlineHelpCenter,
-  MdHelpCenter,
-  MdHdrPlus,
 } from "react-icons/md";
 import { GoProjectSymlink } from "react-icons/go";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";

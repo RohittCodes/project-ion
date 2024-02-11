@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom"; // Import NavLink from react-router-dom
+import { NavLink } from "react-router-dom";
+
 import artificial from "./background/ARTIFICIAL.jpg";
 import blockchain from "./background/BLOCKCHAIN.jpg";
 import cyber from "./background/CYBER.jpg";
@@ -18,7 +19,7 @@ const styles = {
     margin: "20px",
     height: "100%",
     width: "22em",
-    display: "inline-block", // Set display to inline-block
+    display: "inline-block",
     backgroundColor: "#333",
     color: "#fff",
     overflow: "hidden",
@@ -36,7 +37,7 @@ const styles = {
   img: {
     width: "100%",
     height: "100%",
-    objectFit: "cover", // Ensure the image covers the entire space
+    objectFit: "cover",
   },
 };
 

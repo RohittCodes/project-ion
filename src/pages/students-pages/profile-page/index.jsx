@@ -57,6 +57,7 @@ const ProfilePage = () => {
     setLinkedinId(e.target.value);
   };
 
+  // Function to fetch student data
   useEffect(() => {
     const fetchData = async () => {
       const url = "http://localhost:3001/getStudent";
@@ -93,6 +94,7 @@ const ProfilePage = () => {
     fetchData();
   }, []);
 
+  // Fetching project data
   useEffect(() => {
     const someData = async () => {
       const url = "http://localhost:3001/getProjects";
@@ -104,6 +106,7 @@ const ProfilePage = () => {
     someData();
   }, []);
 
+  // handling password update
   const handleUpdatePassword = async (userId, updatedPassword) => {
     try {
       const response = await fetch(
@@ -132,6 +135,7 @@ const ProfilePage = () => {
     }
   };
 
+  // Handling updates made on profile
   const handleUpdateProfile = async (name, linkedinId, emailId, userId) => {
     try {
       const response = await fetch("http://localhost:3001/updateStudent", {

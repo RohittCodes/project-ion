@@ -1,32 +1,33 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@babel/polyfill";
 
-import Navbar from "./components/Navbar";
-import AdminDashboard from "./pages/admin-pages/Dashboard";
-import Sidebar from "./components/Sidebar";
-import PageNotFound from "./pages/PageNotFound";
-import AddStudents from "./pages/admin-pages/AddStudents/index";
-import StudentsData from "./pages/admin-pages/StudentsData/index";
-import HomePage from "./pages/students-pages/HomePage";
-import Login from "./pages/Login";
-import ProfilePage from "./pages/students-pages/ProfilePage";
-import { AuthProvider } from "./AuthContext";
-import Ranking from "./pages/Ranking";
-import Projects from "./pages/Projects";
-import Following from "./pages/students-pages/Following";
+import ProtectedRoute from "./protected-route";
+import { AuthProvider } from "./auth-context";
+
+import AdminDashboard from "./pages/admin-pages/dashboard";
+import AddStudents from "./pages/admin-pages/add-students/index";
+import AdminProfile from "./pages/admin-pages/admin-profile";
+import StudentsData from "./pages/admin-pages/students-data/index";
+import Problems from "./pages/admin-pages/problems";
+import NewProblem from "./pages/admin-pages/problems/new-problem";
+import ProblemStatement from "./pages/admin-pages/project-statement";
+
+import PageNotFound from "./pages/page-not-found";
+import Login from "./pages/login";
+import ProfilePage from "./pages/students-pages/profile-page";
+import HomePage from "./pages/students-pages/home-page";
+import Following from "./pages/students-pages/following";
+import SnippetAdder from "./pages/explain-that-stuff/snippet-adder";
+import SnippetsSearch from "./pages/explain-that-stuff/snippets-search";
 
 import Explore from "./pages/explore";
 import Domain from "./pages/explore/domain";
-import Technology from "./pages/explore/technology";
-import AdminProfile from "./pages/admin-pages/AdminProfile";
-import ProjectDetails from "./pages/ProjectDetails";
-import ProtectedRoute from "./ProtectedRoute";
-import Password from "./pages/Password";
-import SnippetAdder from "./pages/explain-that-stuff/snippet-adder";
-import SnippetsSearch from "./pages/explain-that-stuff/snippets-search";
-import Problems from "./pages/admin-pages/Problems";
-import NewProblem from "./pages/admin-pages/Problems/new-problem";
-import ProblemStatement from "./pages/admin-pages/projectstatement";
+import ProjectDetails from "./pages/project-details";
+import Ranking from "./pages/ranking";
+import Projects from "./pages/projects";
+import Sidebar from "./components/sidebar";
+import Navbar from "./components/navbar";
+import Password from "./pages/password";
 
 function App() {
   return (
@@ -214,7 +215,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/admin/explore/technology" />
             <Route
               path="/admin/profile"
               element={
@@ -224,7 +224,7 @@ function App() {
               }
             />
             <Route
-              path="/admin/problemstatement"
+              path="/admin/problem-statement"
               element={
                 <ProtectedRoute>
                   <ProblemStatement />

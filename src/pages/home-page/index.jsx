@@ -1,6 +1,6 @@
 import React from "react";
-import ProfileProjects from "../../components/ProfileProjects";
-import HomeSection from "../../components/HomeSection";
+import ProfileProjects from "../../components/profile-projects";
+import HomeSection from "../../components/home-section";
 
 const index = () => {
   return (

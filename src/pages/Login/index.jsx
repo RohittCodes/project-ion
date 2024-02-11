@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
 import Cookies from "js-cookie";
-import { useAuth } from "../../AuthContext";
-import './index.css'
-
-
+import { useAuth } from "../../auth-context";
+import "./index.css";
 
 const Login = () => {
   const navigate = useNavigate();
-  const {login,logUser} = useAuth()
+  const { login, logUser } = useAuth();
+
+  // Setting up initial form data
   const indianStates = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -94,6 +94,8 @@ const Login = () => {
   const SubmitForm = (e) => {
     e.preventDefault();
   };
+
+  // Handle registration or sign up for college admins
   const setRegister = async () => {
     setLoader(true);
     if (pass === data.password) {
@@ -120,9 +122,11 @@ const Login = () => {
     }
     setLoader(false);
   };
+
   const loginEmail = (e) => {
     loginData.email = e.target.value;
   };
+
   const loginPass = (e) => {
     loginData.password = e.target.value;
   };
@@ -131,59 +135,58 @@ const Login = () => {
     setPos(e.target.value);
   };
 
+  // handle login for college admin and student login
   const goLogin = async () => {
     setLoader(true);
-    if(position == "Admin"){
+    if (position == "Admin") {
       let url = "http://localhost:3001/adminLog";
       let requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData),
       };
-      console.log(loginData)
+      console.log(loginData);
       const res = await fetch(url, requestOptions);
-      
+
       const data1 = await res.json();
-      console.log(data1)
+      console.log(data1);
       if (res.status == 400) {
         setErrorStatus(true);
         setError(data1);
-      }else{
-        console.log("Comming");
+      } else {
         Cookies.set("Auth", "/admin", { expires: 7 });
         Cookies.set("Login", true, { expires: 7 });
-        Cookies.set('student_id',data1.collegename,{expires:7})
-        Cookies.set("College",data1.collegename,{expires:7})
+        Cookies.set("student_id", data1.collegename, { expires: 7 });
+        Cookies.set("College", data1.collegename, { expires: 7 });
         navigate("/admin");
       }
-      
-    }else{
-          let url = "http://localhost:3001/studentLog"
-          let requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(loginData),
-          };
-          const res = await fetch(url, requestOptions);
-          const data1 = await res.json();
-          if (res.status == 400) {
-            setErrorStatus(true);
-            setError(data1);
-          } else {
-            console.log(data1.StudentName)
-            setErrorStatus(false);
-            Cookies.set("Auth", "/student", { expires: 7 });
-            Cookies.set('User',data1.StudentName,{expires:7})
-            Cookies.set('student_id',data1.StudentProfileId,{expires:7})
-            Cookies.set("College",data1.College,{expires:7})
-            Cookies.set("Login", true, { expires: 7 });
-            login(data1)
-            
-            navigate("/student");
-            
-          }
+    } else {
+      let url = "http://localhost:3001/studentLog";
+      let requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+      };
+
+      const res = await fetch(url, requestOptions);
+      const data1 = await res.json();
+      if (res.status == 400) {
+        setErrorStatus(true);
+        setError(data1);
+      } else {
+        console.log(data1.StudentName);
+        setErrorStatus(false);
+        Cookies.set("Auth", "/student", { expires: 7 });
+        Cookies.set("User", data1.StudentName, { expires: 7 });
+        Cookies.set("student_id", data1.StudentProfileId, { expires: 7 });
+        Cookies.set("College", data1.College, { expires: 7 });
+        Cookies.set("Login", true, { expires: 7 });
+        login(data1);
+
+        navigate("/student");
+      }
     }
-    
+
     setLoader(false);
   };
 
@@ -217,7 +220,6 @@ const Login = () => {
               borderColor: "white",
               borderRadius: "12px",
             }}
-          
           >
             <div style={{ textAlign: "center" }}>
               <button
@@ -293,7 +295,7 @@ const Login = () => {
                 )}
               </div>
             ) : (
-              <div style={{width:'40vh'}}>
+              <div style={{ width: "40vh" }}>
                 <label>Role</label>
                 <select className="form-control" onChange={setPosition}>
                   <option>Admin</option>

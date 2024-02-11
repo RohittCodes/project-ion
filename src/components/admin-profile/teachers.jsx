@@ -3,9 +3,6 @@ import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import profilePhoto from "./head.jpg";
 
-// Sample profile photo URL (replace with your actual photo URL)
-const sampleProfilePhotoUrl = "https://example.com/your-photo.jpg";
-
 const Data = () => {
   const tableFields = ["Profile", "Professor Details"];
   const professorsData = [
@@ -39,7 +36,6 @@ const Data = () => {
       name: "Jason",
       profession: "Professor of AI",
     },
-    // Add more professors data here...
   ];
   const styles = {
     container: {
@@ -85,7 +81,6 @@ const Data = () => {
               <tr key={data.id}>
                 <td className="py-3">
                   {" "}
-                  {/* Add padding on the y-axis for vertical spacing */}
                   <div className="flex items-center justify-center">
                     <img
                       src={profilePhoto}
@@ -96,7 +91,6 @@ const Data = () => {
                 </td>
                 <td className="py-3 border-b">
                   {" "}
-                  {/* Add padding on the y-axis for vertical spacing */}
                   <NavLink to={"/profile/" + data.id}>{data.name}</NavLink>
                   <div>{data.profession}</div>
                 </td>

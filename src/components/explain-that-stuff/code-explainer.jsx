@@ -5,6 +5,7 @@ const CodeExplainer = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
+  // For handling the input for code-explanation against the API
   const handleProcessData = async () => {
     try {
       const response = await fetch("http://localhost:3001/code-explain", {
@@ -24,6 +25,7 @@ const CodeExplainer = () => {
 
   const displayData = output.split("\n");
 
+  // useDrop for setting the text input to drop after dragging
   const [, drop] = useDrop({
     accept: "SNIPPET_ITEM",
     drop: (item) => setInput(item.code),
