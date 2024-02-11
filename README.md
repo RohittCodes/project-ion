@@ -4,7 +4,7 @@ Project-Ion is a place to explore projects and collaborate on problem statements
 
 ## Backend
 
-To have a look at the backend code of Project-Ion, you can head over to the [Project-Ion Backend](https://github.com/UdaykiranRegimudi/Backend-) repository. It is maintained by [Me](https://github.com/RohittCodes), [@Uday Regimudi](https://www.github.com/username), and the team.
+To have a look at the backend code of Project-Ion, you can head over to the [Project-Ion Backend](https://github.com/UdaykiranRegimudi/Backend-) repository (Private initially, as it is in development stage). It is maintained by [Me](https://github.com/RohittCodes), [@Uday Regimudi](https://www.github.com/username), and the team.
 
 ## Algorithm to find similarity between two documents:
 
