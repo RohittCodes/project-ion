@@ -4,6 +4,7 @@ import Projt from "../components/projt";
 import Cookies from "js-cookie";
 import Modal from "./modal";
 import { TbUserEdit } from "react-icons/tb";
+import Skills from "../components/skills";
 
 const ProfilePage = () => {
   const location = useLocation();
@@ -188,214 +189,226 @@ const ProfilePage = () => {
   };
 
   return (
-    <>
-      {display && (
-        <div className="flex flex-col w-full px-4 py-4 ">
-          <div className="flex px-4 py-2 bg-[#1f2937] gap-4 w-full rounded-xl">
-            <div className="rounded-full h-36 w-36 bg-black" />
-            <div className="flex flex-col pt-2 w-[calc(100%-160px)]">
-              <div className="w-full flex flex-col gap-4">
-                <div className="w-full">
-                  <div className="flex justify-between ">
-                    <h1 className="text-xl text-white">
-                      {students[0].StudentName}
-                    </h1>
-                    <div className="flex gap-2 items-center w-1/8">
-                      <p className=" text-sm text-white">
-                        Profile Id: {students[0].StudentId}
-                      </p>
-                      {userId === id ? (
-                        <>
-                          <button
-                            onClick={() => {
-                              setProfileUpdateModal(!profileUpdateModal);
-                            }}
-                            className="flex rounded-full h-10 w-10 p-2 bg-indigo-700 items-center justify-center"
-                          >
-                            <TbUserEdit size={32} />
-                          </button>
-                          <Modal
-                            isOpen={profileUpdateModal}
-                            onClose={() => {
-                              setProfileUpdateModal(!profileUpdateModal);
-                            }}
-                          >
-                            <div className="h-full w-full flex flex-col gap-4">
-                              <div className="flex flex-col gap-1">
-                                Profile Details:
-                                <div className="flex flex-col gap-2">
-                                  <label htmlFor="name">Name</label>
-                                  <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    className="rounded-md h-8 text-black"
-                                    onChange={handleNameChange}
-                                  />
+    <div style={{ width: "100vw" }}>
+      <>
+        {display && (
+          <div className="flex flex-col w-full px-4 py-4 ">
+            <div className="flex px-4 py-2 bg-[#1f2937] gap-4 w-full rounded-xl">
+              <div className="rounded-full h-36 w-36 bg-black" />
+              <div className="flex flex-col pt-2 w-[calc(100%-160px)]">
+                <div className="w-full flex flex-col gap-4">
+                  <div className="w-full">
+                    <div className="flex justify-between ">
+                      <h1 className="text-xl text-white">
+                        {students[0].StudentName}
+                      </h1>
+                      <div className="flex gap-2 items-center w-1/8">
+                        <p className=" text-sm text-white">
+                          Profile Id: {students[0].StudentId}
+                        </p>
+                        {userId === id ? (
+                          <>
+                            <button
+                              onClick={() => {
+                                setProfileUpdateModal(!profileUpdateModal);
+                              }}
+                              className="flex rounded-full h-10 w-10 p-2 bg-indigo-700 items-center justify-center"
+                            >
+                              <TbUserEdit size={32} />
+                            </button>
+                            <Modal
+                              isOpen={profileUpdateModal}
+                              onClose={() => {
+                                setProfileUpdateModal(!profileUpdateModal);
+                              }}
+                            >
+                              <div className="h-full w-full flex flex-col gap-4">
+                                <div className="flex flex-col gap-1">
+                                  Profile Details:
+                                  <div className="flex flex-col gap-2">
+                                    <label htmlFor="name">Name</label>
+                                    <input
+                                      type="text"
+                                      name="name"
+                                      id="name"
+                                      className="rounded-md h-8 text-black"
+                                      onChange={handleNameChange}
+                                    />
+                                  </div>
+                                  <div className="flex flex-col gap-2">
+                                    <label htmlFor="name">LinkedIn</label>
+                                    <input
+                                      type="text"
+                                      name="name"
+                                      id="name"
+                                      className="rounded-md h-8 text-black"
+                                      onChange={handleLinkedinIdChange}
+                                    />
+                                  </div>
+                                  <div className="flex flex-col gap-2">
+                                    <label htmlFor="name">Email ID</label>
+                                    <input
+                                      type="text"
+                                      name="name"
+                                      id="name"
+                                      className="rounded-md h-8 text-black"
+                                      onChange={handleEmailChange}
+                                    />
+                                  </div>
                                 </div>
-                                <div className="flex flex-col gap-2">
-                                  <label htmlFor="name">LinkedIn</label>
-                                  <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    className="rounded-md h-8 text-black"
-                                    onChange={handleLinkedinIdChange}
-                                  />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                  <label htmlFor="name">Email ID</label>
-                                  <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    className="rounded-md h-8 text-black"
-                                    onChange={handleEmailChange}
-                                  />
+                                <button
+                                  onClick={() => {
+                                    handleUpdateProfile(
+                                      name,
+                                      linkedinId,
+                                      emailId,
+                                      userId
+                                    );
+                                  }}
+                                  className="bg-indigo-600 h-8 rounded-md"
+                                >
+                                  Update Profile
+                                </button>
+                                <div>
+                                  Update Password:
+                                  <div className="flex gap-2">
+                                    <input
+                                      type="text"
+                                      id="password"
+                                      className="w-full h-8 text-black rounded-md"
+                                      value={updatedPassword}
+                                      onChange={handlePasswordChange}
+                                    />
+                                    <button
+                                      className="bg-indigo-600 h-8 w-40 rounded-md"
+                                      onClick={() =>
+                                        handleUpdatePassword(
+                                          userId,
+                                          updatedPassword
+                                        )
+                                      }
+                                    >
+                                      Reset Password
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
-                              <button
-                                onClick={() => {
-                                  handleUpdateProfile(
-                                    name,
-                                    linkedinId,
-                                    emailId,
-                                    userId
-                                  );
-                                }}
-                                className="bg-indigo-600 h-8 rounded-md"
-                              >
-                                Update Profile
-                              </button>
-                              <div>
-                                Update Password:
-                                <div className="flex gap-2">
-                                  <input
-                                    type="text"
-                                    id="password"
-                                    className="w-full h-8 text-black rounded-md"
-                                    value={updatedPassword}
-                                    onChange={handlePasswordChange}
-                                  />
-                                  <button
-                                    className="bg-indigo-600 h-8 w-40 rounded-md"
-                                    onClick={() =>
-                                      handleUpdatePassword(
-                                        userId,
-                                        updatedPassword
-                                      )
-                                    }
-                                  >
-                                    Reset Password
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </Modal>
-                        </>
-                      ) : (
-                        <></>
-                      )}
+                            </Modal>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-white mb-4">Ranking: {rank}</p>
-                  <div className="flex">
-                    <div className="flex flex-col w-full">
-                      <p className="text-white">
-                        LinkedIn:{" "}
-                        <a
-                          href={`https://linkedin.com/in/${students[0].StudentLinkedin}`}
-                          target="_blank"
-                        >
-                          Visit LinkedIn
-                        </a>
-                      </p>
-                    </div>
-                    <div>
-                      <button onClick={openModal} className="text-white mr-5">
-                        Following
-                      </button>
-
-                      <Modal isOpen={isModalOpen} onClose={closeModal}>
-                        <h2 className="text-white text-center font-sans text-xl font-bold mb-3">
+                    <p className="text-white mb-4">Ranking: {rank}</p>
+                    <div className="flex">
+                      <div className="flex flex-col w-full">
+                        <p className="text-white">
+                          LinkedIn:{" "}
+                          <a
+                            href={`https://linkedin.com/in/${students[0].StudentLinkedin}`}
+                            target="_blank"
+                          >
+                            Visit LinkedIn
+                          </a>
+                        </p>
+                      </div>
+                      <div>
+                        <button onClick={openModal} className="text-white mr-5">
                           Following
-                        </h2>
+                        </button>
 
-                        <table className=" text-center table table-bordered table-hover rounded-full">
-                          <thead className="table-header-group text-muted">
-                            <tr>
-                              <th>ID</th>
-                              <th>NAME</th>
-                              <th>COLLEGE</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {following.map((each) => (
+                        <Modal isOpen={isModalOpen} onClose={closeModal}>
+                          <h2 className="text-white text-center font-sans text-xl font-bold mb-3">
+                            Following
+                          </h2>
+
+                          <table className=" text-center table table-bordered table-hover rounded-full">
+                            <thead className="table-header-group text-muted">
                               <tr>
-                                <td>{each.StudentId}</td>
-                                <td>
-                                  <a className="text-orange-500">
-                                    {each.StudentName}
-                                  </a>
-                                  <br />
-                                  <a className="text-green-500">
-                                    {each.StudentEmail}
-                                  </a>
-                                </td>
-                                <td>{each.College}</td>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>COLLEGE</th>
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </Modal>
-                    </div>
-                    <div>
-                      <button onClick={openModal1} className="text-white mr-1">
-                        Followers
-                      </button>
-
-                      <Modal isOpen={isModalOpen1} onClose={closeModal1}>
-                        <h2 className="text-white text-center font-sans text-xl font-bold mb-3">
+                            </thead>
+                            <tbody>
+                              {following.map((each) => (
+                                <tr>
+                                  <td>{each.StudentId}</td>
+                                  <td>
+                                    <a className="text-orange-500">
+                                      {each.StudentName}
+                                    </a>
+                                    <br />
+                                    <a className="text-green-500">
+                                      {each.StudentEmail}
+                                    </a>
+                                  </td>
+                                  <td>{each.College}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </Modal>
+                      </div>
+                      <div>
+                        <button
+                          onClick={openModal1}
+                          className="text-white mr-1"
+                        >
                           Followers
-                        </h2>
+                        </button>
 
-                        <table className=" text-center table table-bordered table-hover rounded-full">
-                          <thead className="table-header-group text-muted">
-                            <tr>
-                              <th>ID</th>
-                              <th>NAME</th>
-                              <th>COLLEGE</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {followers.map((each) => (
+                        <Modal isOpen={isModalOpen1} onClose={closeModal1}>
+                          <h2 className="text-white text-center font-sans text-xl font-bold mb-3">
+                            Followers
+                          </h2>
+
+                          <table className=" text-center table table-bordered table-hover rounded-full">
+                            <thead className="table-header-group text-muted">
                               <tr>
-                                <td>{each.StudentId}</td>
-                                <td>
-                                  <a className="text-orange-500">
-                                    {each.StudentName}
-                                  </a>
-                                  <br />
-                                  <a className="text-green-500">
-                                    {each.StudentEmail}
-                                  </a>
-                                </td>
-                                <td>{each.College}</td>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>COLLEGE</th>
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </Modal>
+                            </thead>
+                            <tbody>
+                              {followers.map((each) => (
+                                <tr>
+                                  <td>{each.StudentId}</td>
+                                  <td>
+                                    <a className="text-orange-500">
+                                      {each.StudentName}
+                                    </a>
+                                    <br />
+                                    <a className="text-green-500">
+                                      {each.StudentEmail}
+                                    </a>
+                                  </td>
+                                  <td>{each.College}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </Modal>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div
+              style={{ width: "80vw", display: "flex", flexDirection: "row" }}
+            >
+              <div>
+                <Skills />
+              </div>
+              <Projt projects={yourporjects} />
+            </div>
           </div>
-          <Projt projects={yourporjects} />
-        </div>
-      )}
-    </>
+        )}
+      </>
+    </div>
   );
 };
 

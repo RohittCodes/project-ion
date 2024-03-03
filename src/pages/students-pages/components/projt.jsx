@@ -11,6 +11,7 @@ const Projt = ({ projects }) => {
       minHeight: "auto",
       backgroundColor: "#333",
       width: "60%",
+      height: "auto",
       color: "#fff",
       padding: "20px",
       overflow: "hidden",

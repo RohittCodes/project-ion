@@ -2,7 +2,8 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import "animate.css";
-
+import { FcLike } from "react-icons/fc";
+import { FcLikePlaceholder } from "react-icons/fc";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -95,20 +96,19 @@ const ProjectDetails = () => {
             </h1>
           </div>
           <div
-            className="container mr-5"
+            className="container"
             style={{ display: "flex", justifyContent: "space-between" }}
           >
             <div
-              style={{ display: "flex", flexDirection: "column", width: "60%" }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "60%",
+              }}
               className="container"
             >
               <div>
-                <h1
-                  style={{ color: "white", fontSize: "25px" }}
-                  className="mt-5 mb-4"
-                >
-                  Abstract{" "}
-                </h1>
+                <h1 style={{ color: "white", fontSize: "50px" }}>Abstract </h1>
                 <hr style={{ color: "white" }} />
                 <p
                   style={{ color: "white", fontSize: "18px" }}
@@ -118,7 +118,7 @@ const ProjectDetails = () => {
                 </p>
               </div>
               <h1
-                style={{ color: "white", fontSize: "25px" }}
+                style={{ color: "white", fontSize: "50px" }}
                 className="mt-5 mb-4"
               >
                 Results
@@ -155,7 +155,7 @@ const ProjectDetails = () => {
               </div>
               <div>
                 <h1
-                  style={{ color: "white", fontSize: "25px" }}
+                  style={{ color: "white", fontSize: "50px" }}
                   className="mt-5 mb-4"
                 >
                   Project Outcome{" "}
@@ -173,190 +173,212 @@ const ProjectDetails = () => {
               style={{ width: "40%", marginLeft: "80px" }}
               className="mt-4 container"
             >
-              <div style={{ display: "flex" }}>
-                <h1
-                  style={{ color: "white", fontSize: "20px", width: "30%" }}
-                  className="mt-4"
-                >
-                  Developer{" "}
-                </h1>
-                <h1
-                  style={{ color: "white", fontSize: "20px" }}
-                  className="mt-4"
-                >
-                  :
-                </h1>
-                <h1
-                  style={{
-                    color: "white",
-                    marginTop: "22px",
-                    fontSize: "20px",
-                    width: "75%",
-                  }}
-                  className="ml-5 animate__animated animate__fadeInUp"
-                >
-                  {project[0].data.Developer}
-                </h1>
-              </div>
-              <div style={{ display: "flex" }}>
-                <h1
-                  style={{ color: "white", fontSize: "20px", width: "30%" }}
-                  className="mt-4"
-                >
-                  College
-                </h1>
-                <h1
-                  style={{ color: "white", fontSize: "20px" }}
-                  className="mt-4"
-                >
-                  :
-                </h1>
-                <h1
-                  style={{
-                    color: "white",
-                    marginTop: "28px",
-                    fontSize: "20px",
-                    width: "75%",
-                  }}
-                  className="ml-5 animate__animated animate__fadeInUp"
-                >
-                  {project[0].data.College}
-                </h1>
-              </div>
-              <div style={{ display: "flex" }}>
-                <h1
-                  style={{ color: "white", fontSize: "20px", width: "30%" }}
-                  className="mt-4"
-                >
-                  Domain{" "}
-                </h1>
-                <h1
-                  style={{ color: "white", fontSize: "20px" }}
-                  className="mt-4"
-                >
-                  :
-                </h1>
-                <h1
-                  style={{
-                    color: "white",
-                    marginTop: "22px",
-                    fontSize: "20px",
-                    width: "75%",
-                  }}
-                  className="ml-5 animate__animated animate__fadeInUp"
-                >
-                  {project[0].data.Domain}
-                </h1>
-              </div>
-              <div style={{ display: "flex" }}>
-                <h1
-                  style={{ color: "white", fontSize: "20px", width: "30%" }}
-                  className="mt-4"
-                >
-                  Project Id{" "}
-                </h1>
-                <h1
-                  style={{ color: "white", fontSize: "20px" }}
-                  className="mt-4"
-                >
-                  :
-                </h1>
-                <h1
-                  style={{
-                    color: "white",
-                    marginTop: "22px",
-                    fontSize: "20px",
-                    width: "75%",
-                  }}
-                  className="ml-5 animate__animated animate__fadeInUp"
-                >
-                  {project[0].data.ProjectId}
-                </h1>
-              </div>
+              <div
+                style={{
+                  marginTop: "2rem",
+                  minHeight: "auto",
+                  backgroundColor: "#333",
+                  color: "#fff",
+                  padding: "20px",
+                  overflow: "hidden",
+                  borderRadius: "10px",
+                  border: "1px solid #fff",
+                  boxShadow: "4px 4px 10px rgba(0, 0, 0, 1)",
+                }}
+              >
+                <div style={{ display: "flex" }}>
+                  <h1
+                    style={{ color: "white", fontSize: "20px", width: "30%" }}
+                    className="mt-4"
+                  >
+                    Developer{" "}
+                  </h1>
+                  <h1
+                    style={{ color: "white", fontSize: "20px" }}
+                    className="mt-4"
+                  >
+                    :
+                  </h1>
+                  <h1
+                    style={{
+                      color: "white",
+                      marginTop: "22px",
+                      fontSize: "20px",
+                      width: "75%",
+                    }}
+                    className="ml-5 animate__animated animate__fadeInUp"
+                  >
+                    {project[0].data.Developer}
+                  </h1>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <h1
+                    style={{ color: "white", fontSize: "20px", width: "30%" }}
+                    className="mt-4"
+                  >
+                    College
+                  </h1>
+                  <h1
+                    style={{ color: "white", fontSize: "20px" }}
+                    className="mt-4"
+                  >
+                    :
+                  </h1>
+                  <h1
+                    style={{
+                      color: "white",
+                      marginTop: "28px",
+                      fontSize: "20px",
+                      width: "75%",
+                    }}
+                    className="ml-5 animate__animated animate__fadeInUp"
+                  >
+                    {project[0].data.College}
+                  </h1>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <h1
+                    style={{ color: "white", fontSize: "20px", width: "30%" }}
+                    className="mt-4"
+                  >
+                    Domain{" "}
+                  </h1>
+                  <h1
+                    style={{ color: "white", fontSize: "20px" }}
+                    className="mt-4"
+                  >
+                    :
+                  </h1>
+                  <h1
+                    style={{
+                      color: "white",
+                      marginTop: "22px",
+                      fontSize: "20px",
+                      width: "75%",
+                    }}
+                    className="ml-5 animate__animated animate__fadeInUp"
+                  >
+                    {project[0].data.Domain}
+                  </h1>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <h1
+                    style={{ color: "white", fontSize: "20px", width: "30%" }}
+                    className="mt-4"
+                  >
+                    Project Id{" "}
+                  </h1>
+                  <h1
+                    style={{ color: "white", fontSize: "20px" }}
+                    className="mt-4"
+                  >
+                    :
+                  </h1>
+                  <h1
+                    style={{
+                      color: "white",
+                      marginTop: "22px",
+                      fontSize: "20px",
+                      width: "75%",
+                    }}
+                    className="ml-5 animate__animated animate__fadeInUp"
+                  >
+                    {project[0].data.ProjectId}
+                  </h1>
+                </div>
 
-              <div style={{ display: "flex" }}>
-                <h1
-                  style={{ color: "white", fontSize: "20px", width: "30%" }}
-                  className="mt-4"
-                >
-                  github
-                </h1>
-                <h1
-                  style={{ color: "white", fontSize: "20px" }}
-                  className="mt-4"
-                >
-                  :
-                </h1>
-                <h1
-                  style={{
-                    color: "blue",
-                    marginTop: "28px",
-                    fontSize: "20px",
-                    width: "75%",
-                  }}
-                  className="ml-5 cursor-pointer"
-                >
-                  <a href={project[0].data.ProjectLink} target="_blank">
-                    {project[0].data.ProjectLink}
-                  </a>
-                </h1>
+                <div style={{ display: "flex" }}>
+                  <h1
+                    style={{ color: "white", fontSize: "20px", width: "30%" }}
+                    className="mt-4"
+                  >
+                    github
+                  </h1>
+                  <h1
+                    style={{ color: "white", fontSize: "20px" }}
+                    className="mt-4"
+                  >
+                    :
+                  </h1>
+                  <h1
+                    style={{
+                      color: "#89CFF0",
+                      marginTop: "28px",
+                      fontSize: "20px",
+                      width: "75%",
+                    }}
+                    className="ml-5 cursor-pointer"
+                  >
+                    <a href={project[0].data.ProjectLink} target="_blank">
+                      {project[0].data.ProjectLink}
+                    </a>
+                  </h1>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <h1
+                    style={{ color: "white", fontSize: "20px", width: "30%" }}
+                    className="mt-4"
+                  >
+                    Date
+                  </h1>
+                  <h1
+                    style={{ color: "white", fontSize: "20px" }}
+                    className="mt-4"
+                  >
+                    :
+                  </h1>
+                  <h1
+                    style={{
+                      color: "white",
+                      marginTop: "28px",
+                      fontSize: "20px",
+                      width: "75%",
+                    }}
+                    className="ml-5"
+                  >
+                    {project[0].data.Date}
+                  </h1>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <h1
+                    style={{ color: "white", fontSize: "20px", width: "30%" }}
+                    className="mt-4"
+                  >
+                    Collaborators
+                  </h1>
+                  <h1
+                    style={{ color: "white", fontSize: "20px" }}
+                    className="mt-4"
+                  >
+                    :
+                  </h1>
+                  <h1
+                    style={{
+                      color: "white",
+                      marginTop: "28px",
+                      fontSize: "20px",
+                      width: "75%",
+                    }}
+                    className="ml-5"
+                  >
+                    {project[0].data.Collaborators}
+                  </h1>
+                </div>
               </div>
-              <div style={{ display: "flex" }}>
-                <h1
-                  style={{ color: "white", fontSize: "20px", width: "30%" }}
-                  className="mt-4"
-                >
-                  Date
-                </h1>
-                <h1
-                  style={{ color: "white", fontSize: "20px" }}
-                  className="mt-4"
-                >
-                  :
-                </h1>
-                <h1
-                  style={{
-                    color: "white",
-                    marginTop: "28px",
-                    fontSize: "20px",
-                    width: "75%",
-                  }}
-                  className="ml-5"
-                >
-                  {project[0].data.Date}
-                </h1>
-              </div>
-              <div style={{ display: "flex" }}>
-                <h1
-                  style={{ color: "white", fontSize: "20px", width: "30%" }}
-                  className="mt-4"
-                >
-                  Collaborators
-                </h1>
-                <h1
-                  style={{ color: "white", fontSize: "20px" }}
-                  className="mt-4"
-                >
-                  :
-                </h1>
-                <h1
-                  style={{
-                    color: "white",
-                    marginTop: "28px",
-                    fontSize: "20px",
-                    width: "75%",
-                  }}
-                  className="ml-5"
-                >
-                  {project[0].data.Collaborators}
-                </h1>
-              </div>
-
-              <div>
-                <h1
-                  style={{ color: "white", fontSize: "25px" }}
-                  className="mt-5 mb-4"
-                >
+              <div
+                style={{
+                  marginTop: "2rem",
+                  minHeight: "auto",
+                  backgroundColor: "#333",
+                  color: "#fff",
+                  padding: "20px",
+                  overflow: "hidden",
+                  borderRadius: "10px",
+                  border: "1px solid #fff",
+                  boxShadow: "4px 4px 10px rgba(0, 0, 0, 1)",
+                }}
+              >
+                <h1 style={{ color: "white", fontSize: "25px" }}>
                   Software Used
                 </h1>
                 <hr style={{ color: "white" }} />
@@ -368,54 +390,55 @@ const ProjectDetails = () => {
                   ))}
                 </ul>
               </div>
-              <h1
-                style={{ color: "white", fontSize: "25px", width: "25%" }}
-                className="mt-5 mb-3"
-              >
-                Like/Dislike
-              </h1>
-              <hr style={{ color: "white" }} />
-              <h1 style={{ color: "white" }} className="mt-2">
-                Note: If you like the project then click on Like button
-              </h1>
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  width: "100%",
+                  marginTop: "2rem",
+                  minHeight: "auto",
+                  backgroundColor: "#333",
+                  color: "#fff",
+                  padding: "20px",
+                  overflow: "hidden",
+                  borderRadius: "10px",
+                  border: "1px solid #fff",
+                  boxShadow: "4px 4px 10px rgba(0, 0, 0, 1)",
                 }}
-                className="mt-5"
               >
-                {!like ? (
-                  <img
-                    src="https://cdn0.iconfinder.com/data/icons/fillicons-information-technology/1550/programmer_software_developer-1024.png"
-                    style={{
-                      backgroundColor: "#212121",
-                      height: "30vh",
-                      width: "10vw",
-                      alignSelf: "center",
-                    }}
-                    alt="img"
-                  />
-                ) : (
-                  <img
-                    src="https://clipartix.com/wp-content/uploads/2016/05/Smiley-images-happy-clipart.png"
-                    style={{
-                      height: "30vh",
-                      width: "10vw",
-                      alignSelf: "center",
-                    }}
-                    alt="img"
-                  />
-                )}
-                <button
-                  className="btn btn-success mt-5"
-                  style={{ width: "25%", alignSelf: "center" }}
-                  onClick={LikeProject}
+                <h1 style={{ color: "white", fontSize: "25px", width: "25%" }}>
+                  Like/Dislike
+                </h1>
+                <hr style={{ color: "white" }} />
+                <h1 style={{ color: "white" }} className="mt-2"></h1>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    gap: "2rem ",
+                  }}
+                  className="mt-2"
                 >
-                  {like ? "Liked" : "Like"}
-                </button>
+                  {!like ? (
+                    <button
+                      className="btn mt"
+                      style={{ width: "25%", alignSelf: "center" }}
+                      onClick={LikeProject}
+                    >
+                      <FcLikePlaceholder size={50} />
+                    </button>
+                  ) : (
+                    <button
+                      className="btn mt"
+                      style={{ width: "25%", alignSelf: "center" }}
+                      onClick={LikeProject}
+                    >
+                      <FcLike size={50} />
+                    </button>
+                  )}
+
+                  {like ? "you Liked this" : "Like"}
+                </div>
               </div>
             </div>
           </div>
