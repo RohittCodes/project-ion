@@ -23,14 +23,14 @@ function Skills() {
       });
       const data = await res.json();
       const { skills, proficiency } = data;
+      if (skills === undefined || proficiency === undefined) {
+        return;
+      }
       const combinedSkills = skills.map((skill, index) => ({
         value: skill,
         label: skill,
         proficiencyLevel: proficiency[index],
       }));
-      if (skills === undefined || proficiency === undefined) {
-        return;
-      }
       setDisplayedSkills(combinedSkills);
     };
     fetchData(user);
