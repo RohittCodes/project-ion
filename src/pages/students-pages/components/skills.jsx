@@ -1,12 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TbUserEdit } from "react-icons/tb";
 import Modal from "../profile-page/modal";
 import Select from "react-select";
+import Cookies from "js-cookie";
 
 function Skills() {
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [proficiencyLevels, setProficiencyLevels] = useState({});
+
+  const user = Cookies.get("student_id");
+
   const [displayedSkills, setDisplayedSkills] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async (student_id) => {
+      const url = `http://localhost:3001/studentSkills/?userId=${student_id}`;
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      const { skills, proficiency } = data;
+      const combinedSkills = skills.map((skill, index) => ({
+        value: skill,
+        label: skill,
+        proficiencyLevel: proficiency[index],
+      }));
+      setDisplayedSkills(combinedSkills);
+    };
+    fetchData(user);
+  }, []);
 
   // Simulated skills options (replace with actual data)
   const skillOptions = [
@@ -43,12 +68,30 @@ function Skills() {
   };
 
   const handleUpdateProfile = () => {
-    // Combine selected skills and proficiency levels
-    const combinedSkills = selectedSkills.map((skill) => ({
-      ...skill,
-      proficiencyLevel: proficiencyLevels[skill.value] || "",
-    }));
-    setDisplayedSkills(combinedSkills);
+    try {
+      // Combine selected skills and proficiency levels
+      const combinedSkills = selectedSkills.map((skill) => ({
+        ...skill,
+        proficiencyLevel: proficiencyLevels[skill.value] || "",
+      }));
+      const skills = combinedSkills.map((skill) => skill.value);
+      const proficiency = combinedSkills.map((skill) => skill.proficiencyLevel);
+      // update the skills in the database
+      const url = `http://localhost:3001/studentSkills/?userId=${user}`;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user,
+          skills: skills,
+          proficiency: proficiency,
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // Render stars based on proficiency level

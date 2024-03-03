@@ -182,7 +182,7 @@ const Navbar = () => {
                   <hr style={{ backgroundColor: "white" }} />
                   <li
                     style={{ display: "flex", color: "white" }}
-                    className="ml-3 mt-2 mb-2 ml-4 cursor-pointer"
+                    className="ml-3 mt-2 mb-2 cursor-pointer"
                     onClick={setLogout}
                   >
                     <CiLogout className="mt-1 mr-2" />
