@@ -28,6 +28,9 @@ function Skills() {
         label: skill,
         proficiencyLevel: proficiency[index],
       }));
+      if (skills === undefined || proficiency === undefined) {
+        return;
+      }
       setDisplayedSkills(combinedSkills);
     };
     fetchData(user);
