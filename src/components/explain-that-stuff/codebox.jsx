@@ -25,7 +25,7 @@ const Codebox = () => {
         onChange={(e) => {
           setTitleValue(e.target.value);
         }}
-        className="w-full h-[56px] rounded-md ring-black ring-1 focus:outline-none p-2"
+        className="w-full h-[56px] rounded-md bg-gray-200 ring-black ring-1 focus:outline-none p-2"
         placeholder="What it does..??"
       />
       <textarea
@@ -35,7 +35,7 @@ const Codebox = () => {
           setInputValue(e.target.value);
         }}
         placeholder="Enter your code snippet..."
-        className="w-full h-full rounded-md ring-black ring-1 focus:outline-none resize-none p-2 font-mono"
+        className="w-full h-full rounded-md bg-gray-200 ring-black ring-1 focus:outline-none resize-none p-2 font-mono"
       />
       <input
         type="text"
@@ -43,7 +43,7 @@ const Codebox = () => {
           setWrittenBy(e.target.value);
         }}
         placeholder="Written by??"
-        className="w-full h-[32px] rounded-md ring-black ring-1 focus:outline-none px-2"
+        className="w-full h-[36px] rounded-md bg-gray-200 ring-black ring-1 focus:outline-none px-2"
       />
       <button
         onClick={handleAddData}

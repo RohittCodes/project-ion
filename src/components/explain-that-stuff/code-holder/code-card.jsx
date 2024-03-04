@@ -8,9 +8,16 @@ const CodeCard = (props) => {
       <div className="flex flex-col gap-2">
         <div className="flex justify-between">
           <p className="truncate">{props.title}</p>
-          <button onClick={() => setToggle(!toggle)}>Open</button>
+          <button onClick={() => setToggle(!toggle)}>
+            {!toggle ? "Open" : "Close"}
+          </button>
         </div>
-        {toggle && <div className="px-2 py-2">{props.code}</div>}
+        {toggle && (
+          <div>
+            <div className="h-[1px] bg-gray-700 mt-1 mx-2" />
+            <div className="px-2 py-2">{props.code}</div>
+          </div>
+        )}
       </div>
     </div>
   );
