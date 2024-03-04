@@ -173,8 +173,8 @@ function Skills() {
                   value={selectedSkills}
                   styles={customStyles} // Apply custom styles
                 />
-                {selectedSkills.map((skill) => (
-                  <div key={skill.value}>
+                {selectedSkills.map((skill, index) => (
+                  <div key={index}>
                     <label htmlFor={skill.value}>
                       {skill.label}
                       {":"}
@@ -209,8 +209,8 @@ function Skills() {
       )}
       {/* Display selected skills and proficiency levels */}
       <div>
-        {displayedSkills.map((skill) => (
-          <div key={skill.value}>
+        {displayedSkills.map((skill, index) => (
+          <div key={index}>
             <span>{skill.label}: </span>
             <span>{renderStars(skill.proficiencyLevel)}</span>
           </div>

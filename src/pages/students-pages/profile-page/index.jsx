@@ -68,7 +68,7 @@ const ProfilePage = () => {
       console.log(data);
       data.sort((a, b) => b.likes - a.likes);
       let rank = data.findIndex((item) => item.StudentProfileId == id);
-      setRank(rank);
+      setRank(rank + 1);
       console.log(data);
       console.log(data[0].StudentProfileId == id);
       console.log(data[0].StudentProfileId);
