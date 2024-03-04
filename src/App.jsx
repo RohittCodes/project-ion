@@ -216,7 +216,15 @@ function App() {
               }
             />
             <Route
-              path="/admin/profile"
+              path="/admin/college/profile"
+              element={
+                <ProtectedRoute>
+                  <AdminProfile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/student/college/profile"
               element={
                 <ProtectedRoute>
                   <AdminProfile />

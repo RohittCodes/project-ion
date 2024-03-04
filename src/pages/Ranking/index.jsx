@@ -79,6 +79,7 @@ const Ranking = () => {
   };
 
   let Ranking = 4;
+  let collegeRanking = 1
 
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "93%" }}>
@@ -394,10 +395,7 @@ const Ranking = () => {
                           justifyContent: "center",
                         }}
                       >
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/128/744/744984.png"
-                          style={{ height: "5vh" }}
-                        />
+                        <td style={{height:'5vh'}}>{collegeRanking++}</td>
                       </td>
                       <td className="text-center" style={{ width: "20%" }}>
                         {each.collegename}
@@ -411,11 +409,24 @@ const Ranking = () => {
                       <td className="text-center" style={{ width: "20%" }}>
                         {each.email}
                       </td>
-                      <td className="text-center" style={{ width: "20%" }}>
-                        <Link to={`/admin/profile`}>
+                      
+                        
+                     
+                      {!adminStatus ?<td className="h-8 w-24 text-center">
+                      <Link
+                          to={`/admin/college/profile`}
+                          className="btn btn-primary"
+                        >
                           Profile
                         </Link>
-                      </td>
+                      </td>:<td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/student/college/profile`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td> }
                     </tr>
                   ))}
                 </tbody>
