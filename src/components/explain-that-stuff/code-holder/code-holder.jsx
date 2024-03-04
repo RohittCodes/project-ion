@@ -22,9 +22,9 @@ const CodeHolder = () => {
   };
 
   return (
-    <div className="min-w-[32rem] max-w-[32rem] h-full flex flex-col gap-2 items-end text-white">
-      <div className="w-full h-full rounded-md ring-1 px-2 py-4 overflow-y-scroll ring-black">
-        <div className="flex flex-col gap-2">
+    <div className="min-w-[32rem] max-w-[32rem] h-screen flex flex-col gap-2 items-end text-white">
+      <div className="w-full h-full rounded-md ring-1 px-2 py-4 text-black bg-gray-200 overflow-y-auto ring-black">
+        <div className="flex flex-col gap-2 bg-white">
           {data.map((data, index) => (
             <CodeCard key={index} title={data.title} code={data.key} />
           ))}

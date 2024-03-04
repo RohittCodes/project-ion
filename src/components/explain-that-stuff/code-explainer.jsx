@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
+import MarkdownView from "react-showdown";
 
 const CodeExplainer = () => {
   const [input, setInput] = useState("");
@@ -49,13 +50,16 @@ const CodeExplainer = () => {
       >
         Click me
       </button>
-      {displayData !== "" && (
-        <div className="">
-          {displayData.map((data, index) => (
-            <div key={index}>{data}</div>
-          ))}
-        </div>
-      )}
+      <div className="w-full border-2 bg-gray-200 text-black border-black rounded-md p-4">
+        <h2 className="text-xl font-bold">Explanation:</h2>
+        {displayData !== "" && (
+          <MarkdownView
+            className=""
+            markdown={displayData.map((line) => line + "\n").join("")}
+            options={{ tables: true, emoji: true, simpleLineBreaks: true }}
+          />
+        )}
+      </div>
     </div>
   );
 };
