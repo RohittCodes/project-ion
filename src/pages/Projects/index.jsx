@@ -290,7 +290,7 @@ const Projects = () => {
                   <button
                     onClick={getAllProjects}
                     style={{ width: "15vw" }}
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-light"
                   >
                     All Projects
                   </button>
@@ -301,7 +301,7 @@ const Projects = () => {
                   <button
                     onClick={getYourProjects}
                     style={{ width: "15vw" }}
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-light"
                   >
                     Your Projects
                   </button>
@@ -310,7 +310,7 @@ const Projects = () => {
               <div className="mt-5 mb-3 text-right">
                 <button
                   onClick={addProject}
-                  className="btn btn-outline-warning"
+                  className="btn btn-outline-light"
                 >
                   {status ? "Close" : "Add Porject"}
                 </button>
@@ -483,7 +483,7 @@ const Projects = () => {
             </div>
           )}
           {!status && (
-            <div className="flex justify-center mt-11 min-w-full flex-wrap">
+            <div className="flex justify-center mt-11 min-w-full flex-wrap" style={{color:"#301934"}}>
               {projects.map((each) => (
                 <div className="max-w-md rounded-md m-2 font-sans text-sm p-4 w-2/3 bg-white">
                   <h1 className="font-extrabold text-left">

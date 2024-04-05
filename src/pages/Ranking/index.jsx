@@ -87,14 +87,14 @@ const Ranking = () => {
         <button
           style={{ width: "15vw" }}
           onClick={getStudents}
-          className="btn btn-outline-warning mt-5 ml-5"
+          className="btn btn-outline-light mt-5 ml-5"
         >
           Students Ranking
         </button>
         <button
           style={{ width: "15vw" }}
           onClick={getColleges}
-          className="btn btn-outline-warning mt-5 ml-5"
+          className="btn btn-outline-light mt-5 ml-5"
         >
           College Ranking
         </button>
@@ -461,7 +461,7 @@ const Ranking = () => {
             <Triangle
               height="100"
               width="100"
-              color="yellow"
+              color="white"
               ariaLabel="triangle-loading"
               wrapperStyle={{}}
               wrapperClassName=""

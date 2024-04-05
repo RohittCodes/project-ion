@@ -8,6 +8,9 @@ import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineHelpCenter, MdSupportAgent } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import Logo from "../assets/logo.png";
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -69,7 +72,9 @@ const Navbar = () => {
               <div className="flex flex-row gap-3"></div>
             </div>
             <div onClick={toggleDropdown}>
-              <div className="w-8 h-8 rounded-full border-border-primary border-[1px] bg-background-main cursor-pointer"></div>
+              {/* <div className="w-8 h-8 rounded-full border-border-primary border-[1px] bg-background-main cursor-pointer"></div> */}
+              
+              <Avatar className="w-8 h-8 cursor-pointer" sx={{ bgcolor: deepPurple[500] }}>{userId.slice(0,2)}</Avatar>
             </div>
           </div>
         </div>
