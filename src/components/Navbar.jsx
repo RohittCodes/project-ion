@@ -7,6 +7,7 @@ import { SlUserFollowing } from "react-icons/sl";
 import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineHelpCenter, MdSupportAgent } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
+import Logo from "../assets/logo.png";
 
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +55,14 @@ const Navbar = () => {
     <div className="bg-background-main border-border-primary border-b-[1px] text-text-primary">
       <div className="w-full px-2 sm:px-4 lg:px-4">
         <div className="h-16 relative flex items-center justify-between">
-          <div className="font-bold text-xl">ProjectIon</div>
+          <div className="flex items-center justify-start">
+            <NavLink to="/admin">
+              <div className="flex items-center gap-2">
+                <img src={Logo} alt="logo" className="w-40 h-32" />
+              </div>
+            </NavLink>
+          </div>
+
           <div className="flex flex-row items-center justify-end gap-4">
             <SearchBar />
             <div>

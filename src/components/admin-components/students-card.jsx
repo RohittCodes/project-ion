@@ -60,7 +60,9 @@ const StudentsCard = (props) => {
                   {data.StudentId}
                 </td>
                 <td className="h-8 w-24 text-center">
-                  <NavLink to={`/profile/${data.id}`}>Profile</NavLink>
+                  <NavLink to={`/admin/profile/${data.StudentProfileId}`}>
+                    Profile
+                  </NavLink>
                 </td>
               </tr>
             ))}

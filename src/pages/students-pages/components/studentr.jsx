@@ -2,25 +2,23 @@ import React, { useState } from "react";
 import Chart from "react-apexcharts";
 
 const Studentr = () => {
-  const [selectedYear, setSelectedYear] = useState(() =>
-    new Date().getFullYear()
-  );
+  const [selectedYear, setSelectedYear] = useState(2023);
 
   const chartData = [
     {
       year: 2023,
       name: "Total Projects",
-      data: [30, 40, 45, 50, 49, 60, 70, 91, 34, 3, 34, 55],
+      data: [1, 0, 2, 0, 1, 1, 0, 1, 2, 0, 0, 0],
     },
     {
       year: 2022,
       name: "Total Projects",
-      data: [25, 40, 45, 50, 49, 60, 70, 75, 34, 3, 34, 55],
+      data: [1, 0, 0, 1, 1, 0, 1, 2, 0, 3, 0, 1],
     },
     {
       year: 2021,
       name: "Total Projects",
-      data: [25, 40, 45, 50, 49, 60, 70, 75, 34, 3, 34, 1],
+      data: [1, 0, 0, 2, 0, 1, 0, 3, 0, 1, 1, 1],
     },
   ];
 
@@ -61,12 +59,12 @@ const Studentr = () => {
     yaxis: {
       labels: {
         formatter: function (val) {
-          return Math.round(val); // Display whole numbers on the Y-axis
+          return Math.round(val);
         },
       },
     },
     theme: {
-      mode: "dark", // Use dark theme to ensure white text is visible
+      mode: "dark",
     },
   };
 
@@ -75,7 +73,7 @@ const Studentr = () => {
       margin: "10px",
       height: "auto",
       backgroundColor: "#333",
-      width: "500px",
+      width: "568px",
       color: "#fff",
       padding: "20px",
       overflow: "hidden",

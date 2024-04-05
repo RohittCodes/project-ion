@@ -19,6 +19,11 @@ const Graphw = () => {
 
   const options = {
     labels: data.map((item) => item.label),
+    legend: {
+      labels: {
+        colors: "#fff",
+      },
+    },
   };
 
   const styles = {
@@ -26,7 +31,7 @@ const Graphw = () => {
       margin: "10px",
       minHeight: "auto",
       backgroundColor: "#333",
-      width: "500px",
+      width: "564px",
       color: "#fff",
       padding: "20px",
       overflow: "hidden",

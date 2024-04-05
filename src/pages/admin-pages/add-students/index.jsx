@@ -80,12 +80,13 @@ const AddStudents = () => {
             onSubmit={submitForm}
             className="p-5 border-1 w-full rounded-lg"
           >
-            <h1 className="text-white text-center mb-5 font-sans font-medium text-lg font-r">
-              STUDENT DATA FORM
+            <h1 className="text-white text-center mb-4 font-sans font-bold text-2xl">
+              STUDENT DETAILS FORM
             </h1>
-            <div className="flex">
+            <div className="flex justify-center items-center h-[1px] bg-gray-700 rounded-full" />
+            <div className="flex gap-10 mt-1">
               <div className="w-1/2">
-                <label style={{ color: "white" }} className="mb-1 mt-3">
+                <label className="mb-1 mt-3 text-text-primary">
                   STUDENT NAME
                 </label>
                 <input
@@ -95,9 +96,10 @@ const AddStudents = () => {
                   onChange={handleInputChange}
                   name="StudentName"
                   value={formData.StudentName}
+                  placeholder="Student Name"
                 />
               </div>
-              <div className="w-1/2 ml-10">
+              <div className="w-1/2">
                 <label style={{ color: "white" }} className="mb-1 mt-3">
                   STUDENT ID
                 </label>
@@ -108,6 +110,7 @@ const AddStudents = () => {
                   onChange={handleInputChange}
                   name="StudentId"
                   value={formData.StudentId}
+                  placeholder="Student ID"
                 />
               </div>
             </div>
@@ -123,6 +126,7 @@ const AddStudents = () => {
                   onChange={handleInputChange}
                   name="College"
                   value={formData.College}
+                  placeholder="College Name"
                 />
               </div>
               <div className="w-1/2 ml-10">
@@ -136,51 +140,11 @@ const AddStudents = () => {
                   onChange={handleInputChange}
                   name="StudentEmail"
                   value={formData.StudentEmail}
+                  placeholder="Student Email ID"
                 />
               </div>
             </div>
-            <div className="flex mt-4">
-              <div className="w-1/3">
-                <label style={{ color: "white" }} className="mb-1 mt-3">
-                  STUDENT YEAR
-                </label>
-                <input
-                  style={{ color: "black", fontWeight: "bolder" }}
-                  className="form-control"
-                  type="text"
-                  onChange={handleInputChange}
-                  name="StudentYear"
-                  value={formData.StudentYear}
-                />
-              </div>
-              <div className="w-1/2 ml-10">
-                <label style={{ color: "white" }} className="mb-1 mt-3">
-                  STUDENT BRANCH
-                </label>
-                <input
-                  style={{ color: "black", fontWeight: "bolder" }}
-                  className="form-control"
-                  type="text"
-                  onChange={handleInputChange}
-                  name="StudentBranch"
-                  value={formData.StudentBranch}
-                />
-              </div>
-              <div className="w-1/3 ml-10">
-                <label style={{ color: "white" }} className="mb-1 mt-3">
-                  STUDENT SECTION
-                </label>
-                <input
-                  style={{ color: "black", fontWeight: "bolder" }}
-                  className="form-control"
-                  type="text"
-                  onChange={handleInputChange}
-                  name="StudentSection"
-                  value={formData.StudentSection}
-                />
-              </div>
-            </div>
-            <div className="flex mt-4">
+            <div className="flex mt-4 gap-10">
               <div className="w-1/2">
                 <label style={{ color: "white" }} className="mb-1 mt-3">
                   STUDENT LINKEDIN
@@ -192,9 +156,10 @@ const AddStudents = () => {
                   onChange={handleInputChange}
                   name="StudentLinkedin"
                   value={formData.StudentLinkedin}
+                  placeholder="Linkedin Profile Link"
                 />
               </div>
-              <div className="w-1/2 ml-10">
+              <div className="w-1/2">
                 <label style={{ color: "white" }} className="mb-1 mt-3">
                   STUDENT PASSWORD{" "}
                 </label>
@@ -210,15 +175,60 @@ const AddStudents = () => {
                     onChange={handleInputChange}
                     name="StudentPassword"
                     value={formData.StudentPassword}
+                    placeholder="********"
                   />
                   <button
                     onClick={togglePasswordVisibility}
                     type="button"
-                    className="btn btn-outline-danger"
+                    className="btn btn-outline-danger w-20"
                   >
                     {showPassword ? "Hide" : "Show"}
                   </button>
                 </div>
+              </div>
+            </div>
+            <div className="flex mt-4">
+              <div className="w-1/3">
+                <label style={{ color: "white" }} className="mb-1 mt-3">
+                  STUDENT YEAR
+                </label>
+                <input
+                  style={{ color: "black", fontWeight: "bolder" }}
+                  className="form-control"
+                  type="text"
+                  onChange={handleInputChange}
+                  name="StudentYear"
+                  value={formData.StudentYear}
+                  placeholder="Studying Year"
+                />
+              </div>
+              <div className="w-1/3 ml-10">
+                <label style={{ color: "white" }} className="mb-1 mt-3">
+                  STUDENT BRANCH
+                </label>
+                <input
+                  style={{ color: "black", fontWeight: "bolder" }}
+                  className="form-control"
+                  type="text"
+                  onChange={handleInputChange}
+                  name="StudentBranch"
+                  value={formData.StudentBranch}
+                  placeholder="Branch Name"
+                />
+              </div>
+              <div className="w-1/3 ml-10">
+                <label style={{ color: "white" }} className="mb-1 mt-3">
+                  STUDENT SECTION
+                </label>
+                <input
+                  style={{ color: "black", fontWeight: "bolder" }}
+                  className="form-control"
+                  type="text"
+                  onChange={handleInputChange}
+                  name="StudentSection"
+                  value={formData.StudentSection}
+                  placeholder="Section Name"
+                />
               </div>
             </div>
             <div style={{ textAlign: "center" }}>

@@ -44,7 +44,7 @@ const RanksCard = (props) => {
                   {data.StudentBranch}
                 </td>
                 <td className="h-8" key={data.StudentProfileId}>
-                  <NavLink to={"/profile/" + data.StudentProfileId}>
+                  <NavLink to={"/admin/profile/" + data.StudentProfileId}>
                     Profile
                   </NavLink>
                 </td>

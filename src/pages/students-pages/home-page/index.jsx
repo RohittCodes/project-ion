@@ -9,8 +9,6 @@ import Profol from "../components/profol";
 import { Triangle } from "react-loader-spinner";
 
 const HomePage = () => {
-  let { auth } = useAuth();
-  const user = Cookies.get("User");
   const studentId = Cookies.get("student_id");
   const [yourporjects, setYourProjects] = useState([]);
   const [student, setstudent] = useState();
@@ -56,22 +54,13 @@ const HomePage = () => {
   return (
     <>
       {status ? (
-        <div>
-          <div
-            style={{ width: "100%", padding: "25px" }}
-            className="flex text-text-primary"
-          >
-            <div>
-              <div>
-                <div style={{ display: "flex" }}>
-                  <Studentr />
-                  <Graphw />
-                </div>
-              </div>
+        <div className="w-full pr-8">
+          <div className="flex text-text-primary w-full p-[25px] gap-x-2">
+            <div className="flex">
+              <Studentr />
+              <Graphw />
             </div>
-            <div>
-              <Profilew student={student} rank={rank + 1} />
-            </div>
+            <Profilew student={student} rank={rank + 1} />
           </div>
           <div style={{ display: "flex", marginLeft: "25px" }}>
             <Projt projects={yourporjects} />

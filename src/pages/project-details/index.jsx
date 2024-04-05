@@ -84,7 +84,7 @@ const ProjectDetails = () => {
     <>
       {display && (
         <div
-          className="container p-1"
+          className="container p-1 mb-4"
           style={{ minHeight: "100vh", backgroundSize: "cover" }}
         >
           <div style={{ textAlign: "center", width: "100%" }}>
@@ -381,14 +381,14 @@ const ProjectDetails = () => {
                 <h1 style={{ color: "white", fontSize: "25px" }}>
                   Software Used
                 </h1>
-                <hr style={{ color: "white" }} />
-                <ul className="mt-3">
+                <hr className="mt-2" style={{ color: "white" }} />
+                <div className="flex flex-wrap pt-2">
                   {techStacks.map((each) => (
-                    <li
-                      style={{ color: "white", fontSize: "18px" }}
-                    >{`->${each}`}</li>
+                    <div className="bg-indigo-500 p-2 m-2 rounded-lg">
+                      <p className="text-white font-bold text-base">{each}</p>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
               <div
                 style={{

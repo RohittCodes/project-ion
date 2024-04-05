@@ -79,9 +79,9 @@ const Dashboard = () => {
             <div className="flex flex-col w-5/12 gap-4 ">
               <RanksCard students={students} />
               <ProjectSumissionGraph data={project} />
-              <CreditsCard />
             </div>
           </div>
+          <CreditsCard />
         </div>
       ) : (
         <div

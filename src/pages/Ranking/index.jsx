@@ -79,7 +79,7 @@ const Ranking = () => {
   };
 
   let Ranking = 4;
-  let collegeRanking = 1
+  let collegeRanking = 1;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "93%" }}>
@@ -167,21 +167,25 @@ const Ranking = () => {
                         </button>
                       </td>
                     )}
-                    {!adminStatus ?<td className="h-8 w-24 text-center">
-                    <Link
-                      to={`/admin/profile/${students[0].StudentProfileId}`}
-                      className="btn btn-primary"
-                    >
-                      Profile
-                    </Link>
-                  </td>:<td className="h-8 w-24 text-center">
-                      <Link
-                        to={`/student/profile/${students[0].StudentProfileId}`}
-                        className="btn btn-primary"
-                      >
-                        Profile
-                      </Link>
-                    </td> }
+                    {!adminStatus ? (
+                      <td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/admin/profile/${students[0].StudentProfileId}`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td>
+                    ) : (
+                      <td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/student/profile/${students[0].StudentProfileId}`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td>
+                    )}
                   </tr>
                   <tr key={students[1].id}>
                     <td
@@ -229,21 +233,25 @@ const Ranking = () => {
                         </button>
                       </td>
                     )}
-                    {!adminStatus ?<td className="h-8 w-24 text-center">
-                    <Link
-                      to={`/admin/profile/${students[1].StudentProfileId}`}
-                      className="btn btn-primary"
-                    >
-                      Profile
-                    </Link>
-                  </td>:<td className="h-8 w-24 text-center">
-                      <Link
-                        to={`/student/profile/${students[1].StudentProfileId}`}
-                        className="btn btn-primary"
-                      >
-                        Profile
-                      </Link>
-                    </td> }
+                    {!adminStatus ? (
+                      <td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/admin/profile/${students[1].StudentProfileId}`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td>
+                    ) : (
+                      <td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/student/profile/${students[1].StudentProfileId}`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td>
+                    )}
                   </tr>
                   <tr key={students[2].id}>
                     <td
@@ -291,24 +299,26 @@ const Ranking = () => {
                         </button>
                       </td>
                     )}
-                  
-                         
-                    {!adminStatus ?<td className="h-8 w-24 text-center">
-                    <Link
-                      to={`/admin/profile/${students[2].StudentProfileId}`}
-                      className="btn btn-primary"
-                    >
-                      Profile
-                    </Link>
-                  </td>:<td className="h-8 w-24 text-center">
-                      <Link
-                        to={`/student/profile/${students[2].StudentProfileId}`}
-                        className="btn btn-primary"
-                      >
-                        Profile
-                      </Link>
-                    </td> }
-                    
+
+                    {!adminStatus ? (
+                      <td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/admin/profile/${students[2].StudentProfileId}`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td>
+                    ) : (
+                      <td className="h-8 w-24 text-center">
+                        <Link
+                          to={`/student/profile/${students[2].StudentProfileId}`}
+                          className="btn btn-primary"
+                        >
+                          Profile
+                        </Link>
+                      </td>
+                    )}
                   </tr>
                   {students.slice(3).map((each) => (
                     <tr key={each.id}>
@@ -352,22 +362,25 @@ const Ranking = () => {
                           )}
                         </td>
                       )}
-                      {!adminStatus ?<td className="h-8 w-24 text-center">
-                        <Link
-                          to={`/admin/profile/${each.StudentProfileId}`}
-                          className="btn btn-primary"
-                        >
-                          Profile
-                        </Link>
-                      </td>:<td className="h-8 w-24 text-center">
-                        <Link
-                          to={`/student/profile/${each.StudentProfileId}`}
-                          className="btn btn-primary"
-                        >
-                          Profile
-                        </Link>
-                      </td> }
-                      
+                      {!adminStatus ? (
+                        <td className="h-8 w-24 text-center">
+                          <Link
+                            to={`/admin/profile/${each.StudentProfileId}`}
+                            className="btn btn-primary"
+                          >
+                            Profile
+                          </Link>
+                        </td>
+                      ) : (
+                        <td className="h-8 w-24 text-center">
+                          <Link
+                            to={`/student/profile/${each.StudentProfileId}`}
+                            className="btn btn-primary"
+                          >
+                            Profile
+                          </Link>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
@@ -395,7 +408,7 @@ const Ranking = () => {
                           justifyContent: "center",
                         }}
                       >
-                        <td style={{height:'5vh'}}>{collegeRanking++}</td>
+                        <td style={{ height: "5vh" }}>{collegeRanking++}</td>
                       </td>
                       <td className="text-center" style={{ width: "20%" }}>
                         {each.collegename}
@@ -409,24 +422,26 @@ const Ranking = () => {
                       <td className="text-center" style={{ width: "20%" }}>
                         {each.email}
                       </td>
-                      
-                        
-                     
-                      {!adminStatus ?<td className="h-8 w-24 text-center">
-                      <Link
-                          to={`/admin/college/profile`}
-                          className="btn btn-primary"
-                        >
-                          Profile
-                        </Link>
-                      </td>:<td className="h-8 w-24 text-center">
-                        <Link
-                          to={`/student/college/profile`}
-                          className="btn btn-primary"
-                        >
-                          Profile
-                        </Link>
-                      </td> }
+
+                      {!adminStatus ? (
+                        <td className="h-8 w-24 text-center">
+                          <Link
+                            to={`/admin/college/profile`}
+                            className="btn btn-primary"
+                          >
+                            Profile
+                          </Link>
+                        </td>
+                      ) : (
+                        <td className="h-8 w-24 text-center">
+                          <Link
+                            to={`/student/college/profile`}
+                            className="btn btn-primary"
+                          >
+                            Profile
+                          </Link>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
