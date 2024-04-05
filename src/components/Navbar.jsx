@@ -58,8 +58,8 @@ const Navbar = () => {
           <div className="flex items-center justify-start">
             <NavLink to="/admin">
               <div className="flex items-center gap-2">
-                <img src={Logo} alt="logo" className="w-40 h-32" />
-              </div>
+                <img src={Logo} alt="logo" className="w-40 h-32" style={{mixBlendMode:"color-dodge"}} />
+              </div> 
             </NavLink>
           </div>
 

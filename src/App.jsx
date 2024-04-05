@@ -26,7 +26,7 @@ import ProjectDetails from "./pages/project-details";
 import Ranking from "./pages/ranking";
 import Projects from "./pages/projects";
 import Sidebar from "./components/sidebar";
-import Navbar from "./components/navbar";
+import Navbar from './components/Navbar'
 import Password from "./pages/password";
 
 function App() {
